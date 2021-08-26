@@ -7,6 +7,204 @@ A repo covering basics of programming concepts.
 
 ## Core
 
+### Interpreter
+
+In interpreter, the source code is read line by line.
+It neither links the files nor generates machine code.
+
+- Translates one statement at a time into machine code. 
+- Takes very less time to analyze the source code. However, the overall time to execute the process is much slower.
+- Does not generate an intermediary code. Hence, an highly efficient in terms of memory. 
+- Keeps translating the program continuously till the first error is confronted. If any error is spotted, it stops working and hence debugging becomes easy. 
+- Interpreters are used by programming languages like Ruby and Python for example. 
+
+### Compiler
+
+In compiled, the source file typically will be “compiled” to machine code (or byte code) before being executed.
+Compiler will first analyze all the code, if something is worng, it thorws an error. If no errors are spotted, it converts into machine code.
+
+- Scans the entire program and translates whole into machine code at once.
+- Takes a lot of time to analyze the source code. However, the overall time taken to execute the process is much faster.
+- A compiler always generates an intermediary object code. It will need further linking. Hence more memory is needed. 
+- A compiler generates the error message only after it scans the complete program and hence debugging is relatively harder while working with a compiler. 
+- Compliers are used by programming languages like C and C++ for example.
+
+### Interpreted vs Compiled
+
+
+
+### Transpiler
+
+Transpiler is a type of translator that takes the source code of a program written in a programming language as its input and produces an equivalent source code in the same or a different programming language
+
+### Transpiler vs Compiler
+
+The difference between transpiler and compiler is in the level of abstraction in the output. Generally, a compiler produces machine executable code, whereas transpiler produces another developer artifact
+
+### Const
+
+Const create a variable name binding so that name cannot be re-inialized but the properties can. So its mutable.
+
+### Primitive Types
+
+They are simple and atomic. They are stored as values in memory.
+
+- number
+- string
+- boolean
+- undefined
+- null
+- symbol
+
+    They are introduced in ECMAScript 2015. Once you create a symbol, its value is kept `private and for internal use`. All that remains after the creation is the `symbol reference`.
+
+        const mySymbol = Symbol();
+
+    Every time you invoke Symbol() we get a new and unique symbol, guaranteed to be different from all other symbols
+
+        Symbol() === Symbol() //false
+
+    You can pass a parameter to Symbol(), and that is used as the symbol description, useful just for debugging purposes
+
+        console.log(Symbol()) //Symbol()
+        console.log(Symbol('Some Test')) //Symbol(Some Test)
+    
+    Symbols are often used to identify object properties
+
+        const NAME = Symbol()
+        const person = {
+          [NAME]: 'Ema'
+        }
+
+        person[NAME] //'Ema'
+
+        const RUN = Symbol()
+        person[RUN] = () => 'Ema is running'
+        console.log(person[RUN]()) //'Ema is running'
+
+    Symbols are `not enumerated`, which means that they do `not get included in a for..of or for..in loop` ran upon an object.
+
+    Symbols are `not` part of the `Object.keys()` or `Object.getOwnPropertyNames()` result.
+
+    You can access all the symbols assigned to an object using the `Object.getOwnPropertySymbols()` method.
+
+
+### Referenced Types
+
+They are not simple atomic values but are objects made up of multiple properties. They are stored as a reference in memory.
+
+- objects
+- arrays
+- functions
+
+### Functional Programming (FP)
+
+A process of creating software through `pure functions`, `avoiding shared state`, `mutable data` and `side effects`.
+
+It is declarative. 
+
+- Pure functions [see details in Pure Function's section]
+- Function composition (Combining 2 functions. Using the result of one function in another function and so on...)
+- Avoid shared state
+- Avoid mutating state
+- Avoid side effects (any state change that is observed outside the called function other than its return value. The include: Modifying external var/prop, logging to console, writing to screen, writing to file, writing to network, triggering external process, calling any other function with side effects)
+
+### Imperitive vs Declarative
+
+In imperative style, we'll have to tell the framework step by step what needs to be done
+
+    const doubleMap = numbers => {
+      const doubled = [];
+      for (let i = 0; i < numbers.length; i++) {
+        doubled.push(numbers[i] * 2);
+      }
+      return doubled;
+    };
+
+    console.log(doubleMap([2, 3, 4])); // [4, 6, 8]
+
+In a declarative style, we'll just ask the framework what needs to be done and that framework should know how and what to do.
+
+    onst doubleMap = numbers => numbers.map(n => n * 2);
+
+    console.log(doubleMap([2, 3, 4])); // [4, 6, 8]
+
+### Mutable/Imutable
+
+  In immuatability, we create and assign it again, the reference is also changed. In mutability, the reference remains the same, only value changes.
+
+  The first approach is to mutate the data by directly changing the data’s values. The second approach is to replace the data with a new copy which has the desired changes.
+
+  Detecting change in mutable component requires comparing it with the previous copies of itself. In immutablity, the new object can be compared with the object which it is referenced by.
+
+  JS provides a method called `freeze` which then doesnt allow the `1st level` properties to update. So only the primitive properties are frozen. Will have to iterate over each nested one in order to completly freeze it.
+
+  We can use `Object.assign` or `spread` to avoid mutation.
+
+### Binding
+
+### Closure
+
+When an inner function has access to outer function's variables along with its own and global variables.
+
+They are functions with preserved data.
+
+In JS, the inner functions will have access to its outer vars but anything outside wont have access to the vars defined inside because JS uses `lexical scoping`.
+
+    var passed = 3;
+
+    var add = () => {
+      var inner = 2;
+      return passed + inner;
+    };
+
+    console.log(add());
+
+We could've passed the global var 3 as a param but we didnt and now the above example is the simplest form of closure cuz it is using variables from the outside. We can verify by logging the func add to console and see in `function scope` where it has a Closure with a key `passed` and value `3`.
+
+A detailed example would be a function inside a function.
+
+    var add = (passed) => {
+      var _add = (inner) => { // inner in context to `add`
+        return passed + inner;
+      };
+
+      return _add;
+    };
+
+    console.log(add(3)); // returns the func `_add`
+
+    var addThree = new add(3);
+    var addFour = new add(4);
+
+    console.log(addThree(1)); // returns 4;
+
+Here, within this `add` function, we have a function `_add` which returns a value but the `add` returns a function i.e. `_add`
+
+Every function has a set of variables that it can access. So all the references to these vars are stored in a stack.
+
+A closure has three `scope chains`.
+
+- Has access to its own scope. Vars defined inside it
+- Has access to the vars of outer function
+- Has access to the global variables
+
+### Hoisting
+
+### Memory 
+
+### Heap
+
+### Lexical vs Dynamic Scope
+
+### Class & Prototypal Inheritance
+
+### Promise
+
+### Anonymous Functions
+
+They are the functions which dont have a name.
+
 ## Data Structures
 - Stack
 
@@ -88,6 +286,8 @@ A repo covering basics of programming concepts.
 
 - Circular queue
 - Trie
+
+  A datastructure many functional programmings support which `deep freeze` all the properties of the object. 
 
 - Binary Search Tree
 
@@ -215,8 +415,23 @@ A repo covering basics of programming concepts.
 
       var objectIsNew = JSON.parse(JSON.stringify(objectIsOld));
 
+- Throttling
+  
+  Delaying function execution. Like search after 500ms
 
-- Pure components
+- Debouncing
+  
+  Prevent the event trigger from being fired too often
+
+- Pure Functions
+
+  A pure function is a function which,
+
+  - Given the same inputs, always returns the same output
+  - Has no side-effects (only changes to local scope are allowed. Read operations are okay. Some read operations have side effects like `Math.random()` which generates new number by changing the Math's reading position and other methods which involves reading from an external sensor that involves a "take measurement" command.) 
+
+  A pure function is `Referentially Transparent`. Referential Transparency, roughly, means that you can replace the call to the function with its return value or vice versa at any point in the program, without changing the meaning of the program.
+
 - HOCs
 
   Its a function that either takes a function as a parameter or returns a function
@@ -251,6 +466,10 @@ A repo covering basics of programming concepts.
 
 - lodash
 
+## ES6
+
+- Arrow funcs
+- let, const
 
 ## Git/GitHub
 
