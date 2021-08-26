@@ -29,9 +29,7 @@ Compiler will first analyze all the code, if something is worng, it thorws an er
 - A compiler generates the error message only after it scans the complete program and hence debugging is relatively harder while working with a compiler. 
 - Compliers are used by programming languages like C and C++ for example.
 
-### Interpreted vs Compiled
-
-
+JS does just in time compilation. There is no clear distinction that JS is a compiled or interpreted language. 
 
 ### Transpiler
 
@@ -40,6 +38,8 @@ Transpiler is a type of translator that takes the source code of a program writt
 ### Transpiler vs Compiler
 
 The difference between transpiler and compiler is in the level of abstraction in the output. Generally, a compiler produces machine executable code, whereas transpiler produces another developer artifact
+
+### Polymorphism
 
 ### Const
 
@@ -143,13 +143,19 @@ In a declarative style, we'll just ask the framework what needs to be done and t
 
 ### Binding
 
+### Asynchronous
+
+### Synchronous
+
+### Async await
+
 ### Closure
 
 When an inner function has access to outer function's variables along with its own and global variables.
 
 They are functions with preserved data.
 
-In JS, the inner functions will have access to its outer vars but anything outside wont have access to the vars defined inside because JS uses `lexical scoping`.
+In JS, the inner functions will have access to its outer vars but anything outside wont have access to the vars defined inside because JS uses `lexical scoping` i.e. a closure is a function that captures variables from its lexical scope.
 
     var passed = 3;
 
@@ -195,7 +201,53 @@ A closure has three `scope chains`.
 
 ### Heap
 
+### Lexical Scoping (Static Scoping)
+
+Lexical scoping is a convention used with many programming languages that sets the scope (range of functionality) of a variable so that it may only be called (referenced) from within the block of code in which it is defined. The scope is determined when the code is compiled.
+
+In this scoping a variable always `refers to its top level` environment.
+
+    const global = 20;
+
+    function foo() {
+      return 10;
+    }
+
+    function bar() {
+      const global = 10;
+      return foo();
+    }
+
+    console.log(bar()); // returns 20 cuz lexical scope  is looking at the top level declaration.
+
+  In static scoping the compiler first searches in the `current block`, then in `global variables`, then in successively `smaller scopes`.
+
+### Dynamic Scope
+
+With dynamic scope, a global identifier refers to the identifier associated with the most recent environment. This means that each identifier has a `global stack` of bindings and the occurrence of an identifier is searched in the `most recent binding`.
+
+    const global = 20;
+
+    function foo() {
+      return 10;
+    }
+
+    function bar() {
+      const global = 10;
+      return foo();
+    }
+
+    console.log(bar()); // returns 10 cuz dynamic scope is looking at the latest executed function's scope.
+
+In simpler terms, in dynamic scoping the compiler first searches the `current block` and then successively all the `calling functions`.
+
 ### Lexical vs Dynamic Scope
+
+Lexical scoping refers to when the location of a function's definition determines which variables you have access to. On the other hand, dynamic scoping uses the location of the function's invocation to determine which variables are available.
+
+In most programming languages `static scoping is dominant`. This is simply because in static scoping it’s `easy to reason about and understand` just by looking at code. We can see what variables are in the scope just by `looking at the text` in the editor.
+
+Dynamic scoping does `not care how the code is written`, but instead `how it executes`. Each time a new function is executed, a new scope is `pushed onto the stack`.
 
 ### Class & Prototypal Inheritance
 
