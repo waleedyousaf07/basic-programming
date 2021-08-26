@@ -39,10 +39,6 @@ Transpiler is a type of translator that takes the source code of a program writt
 
 The difference between transpiler and compiler is in the level of abstraction in the output. Generally, a compiler produces machine executable code, whereas transpiler produces another developer artifact
 
-### OOP
-
-### Polymorphism
-
 ### JS Variable declartors
 
 let, const, var
@@ -174,6 +170,10 @@ In a declarative style, we'll just ask the framework what needs to be done and t
 
   We can use `Object.assign` or `spread` to avoid mutation.
 
+### OOP
+
+### Polymorphism
+
 ### Binding
 
 ### Asynchronous
@@ -181,6 +181,14 @@ In a declarative style, we'll just ask the framework what needs to be done and t
 ### Synchronous
 
 ### Async await
+
+### Class & Prototypal Inheritance
+
+### Promise
+
+### Anonymous Functions
+
+They are the functions which dont have a name.
 
 ### Closure
 
@@ -324,14 +332,6 @@ Lexical scoping refers to when the location of a function's definition determine
 In most programming languages `static scoping is dominant`. This is simply because in static scoping it’s `easy to reason about and understand` just by looking at code. We can see what variables are in the scope just by `looking at the text` in the editor.
 
 Dynamic scoping does `not care how the code is written`, but instead `how it executes`. Each time a new function is executed, a new scope is `pushed onto the stack`.
-
-### Class & Prototypal Inheritance
-
-### Promise
-
-### Anonymous Functions
-
-They are the functions which dont have a name.
 
 ## Data Structures
 - Stack
