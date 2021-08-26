@@ -170,21 +170,37 @@ In a declarative style, we'll just ask the framework what needs to be done and t
 
   We can use `Object.assign` or `spread` to avoid mutation.
 
-### OOP
-
-### Polymorphism
-
-### Binding
-
 ### Asynchronous
 
 ### Synchronous
 
 ### Async await
 
-### Class & Prototypal Inheritance
-
 ### Promise
+
+### Binding
+
+### OOP
+
+- Class
+
+- Object
+
+- Inheritance
+
+- Polymorphism
+
+- Abstraction
+
+- Encapsulation
+
+- Association
+
+- Aggregation
+
+- Composition 
+
+### Class & Prototypal Inheritance
 
 ### Anonymous Functions
 
