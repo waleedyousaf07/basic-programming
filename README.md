@@ -39,11 +39,44 @@ Transpiler is a type of translator that takes the source code of a program writt
 
 The difference between transpiler and compiler is in the level of abstraction in the output. Generally, a compiler produces machine executable code, whereas transpiler produces another developer artifact
 
+### OOP
+
 ### Polymorphism
+
+### JS Variable declartors
+
+let, const, var
+
+### Var
+
+Var declarations are globally scoped or function/locally scoped. They can be re-declared and updated. They are hoisted and can be used if declared after getting called.
 
 ### Const
 
-Const create a variable name binding so that name cannot be re-inialized but the properties can. So its mutable.
+Cannot be reinialized. Has a block level scope. Primitive types cannot be updated/re-assigned/re-declared but objects and arrays can. Every const declaration, therefore, must be initialized at the time of declaration.
+
+Const create a variable name binding so that name cannot be re-inialized but the properties can. So its mutable. They cant be hoisted. 
+
+### Let
+
+Can be re initialized. Has a block level scope. It cannot be redeclared withing its scope.
+
+### Var, Let, Const Scopes
+
+    var a = 5;
+    const b = 10;
+    let c = 15;
+
+    function foo() {
+      a = 51;
+      const b = 101;
+      let c = 151;
+      console.log('inside foo: ', a, b, c);
+    }
+
+    console.log('Before foo: ', a, b, c); // 5 10 15
+    foo(); // 51 101 151
+    console.log('After foo: ', a, b, c); // 51 10 15
 
 ### Primitive Types
 
@@ -197,9 +230,52 @@ A closure has three `scope chains`.
 
 ### Hoisting
 
-### Memory 
+The default behavior of moving all the declarations at the top of the scope before code execution. A function or a variable can be used before declaration.
 
-### Heap
+In terms of variables and constants, keyword var is hoisted and let and const does not allow hoisting.
+
+    a = 5;
+    console.log(a); // 5
+    var a;
+
+However, initializations are not hoisted.
+
+    console.log(a); // undefined
+    var a = 5;
+
+The above program behaves as
+
+    var a;
+    console.log(a); // undefined
+    a = 5;
+
+For `functions`, if used as an expression, an error occurs because only declarations are hoisted.
+
+    greet(); // gives reference error
+
+    let greet = function() {
+        console.log('Hi, there.');
+    }
+  
+But it can be fixed by
+
+    greet(); // Hi, there.
+
+    function greet() {
+        console.log('Hi, there.');
+    }
+
+
+
+### Stack vs Heap based Memory
+
+Because the data is added and removed in a `LIFO` manner, `stack-based memory` allocation is `very simple` and typically `much faster` than `heap-based` memory allocation (also known as `dynamic memory allocation`) typically allocated via `malloc` (memory allocation).
+
+The major difference between Stack memory and heap memory is that the stack is used to store the order of method execution and local variables while the heap memory stores the objects and it uses dynamic memory allocation and deallocation.
+
+`Stack is a linear` data structure whereas `Heap is a hierarchical` data structure.
+
+Stack variables can't be `resized` whereas Heap variables can be resized. Stack memory is allocated in a `contiguous block` (consective) whereas Heap memory is allocated in any random order.
 
 ### Lexical Scoping (Static Scoping)
 
