@@ -170,13 +170,83 @@ In a declarative style, we'll just ask the framework what needs to be done and t
 
   We can use `Object.assign` or `spread` to avoid mutation.
 
+### DOM
+
+    const btn = document.querySelector('button');
+    btn.addEventListener('click', () => {
+      alert('Clicked!');
+
+      let pElem = document.createElement('p');
+      pElem.textContent = 'This is a newly-added paragraph.';
+      document.body.appendChild(pElem);
+    });
+
+
+### Time and Space Complexity (BigO)
+
 ### Asynchronous
 
+Some actions may take time like fetching data from api, video streaming etc. To overcome these, we use `async callbacks` or `promises` which keeps the task in the background and continue main program execution and responds/notifies when the task is completed. Now as JS is `single threaded`, the async operations which are in-progress in the background are pushed in an `event queue` which runs after the `main thread` has finished processing. The queued operations finish asap and return their result to js environment. 
+
 ### Synchronous
+
+While each operation is being processed, rendering is blocked.
 
 ### Async await
 
 ### Promise
+
+The promise is an object representing the completion or failure of the async operation. They are essentially a returned object to which you attach callback functions, rather than having to pass callbacks into a function. 
+
+Advantages of promise over conventional callbacks:
+- Can `chain multiple async operations` together using `multiple .then()` operations, passing the result of one into the next one as an input.
+- Promise callbacks are always called in the `strict order` they are placed in the `event queue`.
+- `Error handling` is much `better` — all errors are handled by a `single .catch()` block at the end of the block.
+- Promises `avoid inversion of control`, unlike old-style callbacks, which lose full control of how the function will be executed when passing a callback to a third-party library.
+
+      doSomething()
+      .then(result => doSomethingElse(result))
+      .then(newResult => doThirdThing(newResult))
+      .then(finalResult => {
+        console.log(`Got the final result: ${finalResult}`);
+      })
+      .catch(failureCallback);
+
+  Important: `Always return results`, otherwise callbacks won't catch the result of a previous promise
+
+
+### Threads
+
+A thread is basically a `single process` that a program can use to complete tasks. Each thread can only do a `single task at once`. Each task `will run sequentially`; a task has to complete before the next one can be started.
+
+Many computers now have `multiple cores`, so can do multiple things at once. Programming `languages that can support multiple threads` can use multiple cores to complete `multiple tasks simultaneously`.
+
+`JS is single threaded`. Means everything runs on the main thread. Although, now `Web workers` allow you to send some of the js processing off to a `separate thread`, called a `worker` so that you `can run multiple js chunks` simultaneously. You'd generally use a worker to run `expensive processes off the main thread` so that user interaction is `not blocked`. The worker thread can perform tasks `without interfering with the user interface`.
+
+
+### Web Workers
+
+When `executing scripts` in an HTML page, the page becomes `unresponsive` until the script is finished.
+
+A web worker is a JavaScript that `runs in the background`, independently of other scripts, `without affecting the performance` of the page. You can `continue to do whatever` you want: clicking, selecting things, etc., while the `web worker runs in the background`.
+
+A worker is an object created using a `constructor (e.g. Worker())` that runs a named JavaScript file — this file contains the code that will run in the worker thread; workers run in `another global context` that is different from the current window. Thus, using the `window shortcut` to get the current global scope (instead of self) within a Worker will `return an error`.
+
+The worker `context` is represented by a `DedicatedWorkerGlobalScope object` in the case of `dedicated workers (standard workers that are utilized by a single script; shared workers use SharedWorkerGlobalScope)`. A dedicated worker is only accessible from the script that `first spawned` it, whereas `shared workers` can be accessed from `multiple scripts`.
+
+You can run whatever code you like inside the worker thread, with some exceptions. For example, you `can't directly manipulate the DOM` from inside a worker, or use some default methods and `properties of the window`  or the `parent`. But you can use a large number of items available under window, including WebSockets, and data storage mechanisms like IndexedDB.
+
+Data is sent between workers and the main thread via a system of messages — both sides send their messages using the postMessage() method, and respond to messages via the onmessage event handler (the message is contained within the Message event's data attribute.) The data is copied rather than shared.
+
+If you need to immediately terminate a running worker from the main thread, you can do so by calling the worker's terminate method.
+
+    var myWorker = new Worker('worker.js');
+    myWorker.terminate();
+
+Problem:
+- Not able to access the DOM — you can't get a worker to directly do anything to update the UI.
+
+### Blob
 
 ### Binding
 
@@ -319,6 +389,19 @@ In this scoping a variable always `refers to its top level` environment.
     }
 
     console.log(bar()); // returns 20 cuz lexical scope  is looking at the top level declaration.
+
+        var global = 20;
+
+        function foo() {
+          return global;
+        }
+
+        function bar() {
+          var global = 10;
+          return foo();
+        }
+
+        console.log(bar()); // returns 20 cuz lexical scope  is looking at the top level declaration.
 
   In static scoping the compiler first searches in the `current block`, then in `global variables`, then in successively `smaller scopes`.
 
