@@ -220,8 +220,6 @@ Some actions may take time like fetching data from api, video streaming etc. To 
 
 While each operation is being processed, rendering is blocked.
 
-### Async await
-
 ### Promise
 
 The promise is an object representing the completion or failure of the async operation. They are essentially a returned object to which you attach callback functions, rather than having to pass callbacks into a function. 
@@ -242,6 +240,75 @@ Advantages of promise over conventional callbacks:
 
   Important: `Always return results`, otherwise callbacks won't catch the result of a previous promise
 
+### Async await
+
+### Time and Space Complexity (BigO)
+
+### MVC
+
+It is a design pattern. The goal is divide large application into specific sections each having their own purpose.
+
+User requesting a specific page from the server. The server responds to a specific controller. 
+
+Controller: `Handles the entire request` from the client. And will tell the rest of the server what to do with the request. It acts as a middleman b/w model and view. It should not contain much code. 
+
+Model: After receiving the request, the controller asks the model to get the data. Model is `responsible for all of the data logic` of the request. It interacts with the DB and handles all CRUD saving and other data operations. The controller shouldnt interact with the data it should always ask the model. Model doesnt need to do anything on failure or success, controller will handle that.
+
+View: After the model sends the data to controller, then controller sends the data to view to `render` and view is only concerned for displaying the data its feeded with. The view will send the HTML (or so) back to controller which then is served to the user.
+
+Important to note is that `model and view never interact` with each other. Presentation and Logic is completely separate.
+
+### Blob
+
+It is a `file-like object` of immutable raw data which can be `read as text or binary data`. Blobs can represent data that isn't necessarily in a JavaScript-native format.
+
+    const obj = {hello: 'world'};
+    const blob = new Blob([JSON.stringify(obj, null, 2)], {type : 'application/json'});
+
+One way to read content from a Blob is to use a FileReader. Another way to read content from a Blob is to use a Response.
+
+### Binding
+
+It is when we explicitly(by default its windows, objects' own etc) assign this to a value.
+
+Binding an object to function: 
+
+    let player = {
+      name: 'Neymar',
+      club: 'PSG',
+    };
+
+    function printPlayerName() {
+      console.log(this.name);
+    }
+
+    let playerNameFunc = printPlayerName.bind(player);
+
+    playerNameFunc();
+
+Binding doesnt work with arrow function.
+
+### OOP
+
+- Class
+
+- Object
+
+- Inheritance
+
+- Polymorphism
+
+- Abstraction
+
+- Encapsulation
+
+- Association
+
+- Aggregation
+
+- Composition 
+
+### Class & Prototypal Inheritance
 
 ### Threads
 
@@ -273,36 +340,6 @@ If you need to immediately terminate a running worker from the main thread, you 
 
 Problem:
 - Not able to access the DOM — you can't get a worker to directly do anything to update the UI.
-
-### Time and Space Complexity (BigO)
-
-### MVC
-
-### Blob
-
-### Binding
-
-### OOP
-
-- Class
-
-- Object
-
-- Inheritance
-
-- Polymorphism
-
-- Abstraction
-
-- Encapsulation
-
-- Association
-
-- Aggregation
-
-- Composition 
-
-### Class & Prototypal Inheritance
 
 ### Anonymous Functions
 
