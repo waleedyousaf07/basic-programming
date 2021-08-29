@@ -7,6 +7,24 @@ A repo covering basics of programming concepts.
 
 ## Core
 
+JavaScript is a lightweight, interpreted, object-oriented language with first-class functions, and is best known as the scripting language for Web pages, but it's used in many non-browser environments as well.
+
+EcmaScript uses `just in time` compiler.
+
+### JS to Machine Code
+
+JS file enters the engine (`V8`). The parser does `lexical analysis (tokennizer)` which breaks the code into tokens to indentify their meaning. These tokens makes `Abstract Syntax Tree` which validates the correct use of language keywords and elements. Later on `ASTs` are used to generate actual machine code.
+
+JS is interpreted by `Ignition` and compiled by JIT compiler i.e. `TurboFan`.
+
+Initially, the ASTs generated in the previous step are given to the interpreter which generates `non-optimized machine code` quickly and the `execution can start with no delay`.
+
+`Profiler watches` the code as it runs and `identifies areas` where `optimizations can be performed`. For example, a ‘for’ loop running 100 times but producing the same result in each iteration.
+
+Using this profiler, `any unoptimized code` is `passed to the compiler` to perform optimizations and generate machine code which `eventually replaces its counterpart` in the previously generated non-optimized code by the interpreter.
+
+As the `profiler and compiler constantly make changes` to the bytecode, the JavaScript execution `performance gradually improves`.
+
 ### Interpreter
 
 In interpreter, the source code is read line by line.
@@ -73,6 +91,19 @@ Can be re initialized. Has a block level scope. It cannot be redeclared withing 
     console.log('Before foo: ', a, b, c); // 5 10 15
     foo(); // 51 101 151
     console.log('After foo: ', a, b, c); // 51 10 15
+
+Following is only true for `var`
+
+    for (var i = 0; i < 5; i++) {
+      console.log('i is: ', i);
+    };
+
+    const bool = true;
+    if (bool) {
+      let blockLevelVar = 'Heyy';
+    }
+
+    console.log('i outside is: ', i, blockLevelVar); // i outside is: 5 Heyy
 
 ### Primitive Types
 
@@ -181,9 +212,6 @@ In a declarative style, we'll just ask the framework what needs to be done and t
       document.body.appendChild(pElem);
     });
 
-
-### Time and Space Complexity (BigO)
-
 ### Asynchronous
 
 Some actions may take time like fetching data from api, video streaming etc. To overcome these, we use `async callbacks` or `promises` which keeps the task in the background and continue main program execution and responds/notifies when the task is completed. Now as JS is `single threaded`, the async operations which are in-progress in the background are pushed in an `event queue` which runs after the `main thread` has finished processing. The queued operations finish asap and return their result to js environment. 
@@ -245,6 +273,10 @@ If you need to immediately terminate a running worker from the main thread, you 
 
 Problem:
 - Not able to access the DOM — you can't get a worker to directly do anything to update the UI.
+
+### Time and Space Complexity (BigO)
+
+### MVC
 
 ### Blob
 
@@ -359,7 +391,47 @@ But it can be fixed by
         console.log('Hi, there.');
     }
 
+### Heap
 
+Whenever you `define a variable, constant, object, etc` in your javascript program, you need some `place to store` it. This place is nothing but the `memory heap`.
+
+When the statement var a = 10 is encountered, a location in the memory is assigned to store the value of a.
+
+The memory available is limited and complex programs may have a number of variable and nested objects. This makes it essential to make wise use of the available memory.
+
+Unlike languages like C, where we need to explicitly allocate and free memory, JS provides the feature of `automatic garbage collection`. Once the `object/variable is out of context` and will not be of use anymore, it’s `memory is reclaimed and returned to the free memory pool`.
+
+### Mark and Sweep algorithm
+
+Mark the objects as reachable/unreachable and sweep the unreachable ones.
+
+### Memory Leaks
+
+Memory leaks are `parts of memory` that the `application needed` and used `in the past` and it is `not needed anymore` but its `storage is yet not returned` to the memory pool. `Global variables` are common examples which are kept even if they arent being used. Also, if we create `Event Listeners` and not remove them after going out of context.
+
+### Web APIs
+
+The things which browsers provide out of the box which V8 doesnt orivudes. Like `DOM, ajax (XMLHTTPRequest), setTimeout`. They are other threads but we cant use them as normal threads.
+
+### Call Stack
+
+As JS is a single threaded language, it has one call stack, can do one thing at a time(so we need asynchronous to get around).
+
+Callstack records where in the program we are. We call a function, we push it on the top of the stack, when that function returns, it gets popped from the top. 
+
+If we go in an infinite loop or many function calls pushed in the stack, the stack overflows giving error `Maximum call stack size exceeded`.
+
+### Event Loops
+
+Although JS is `single threaded`, but that means it can do one thing only at the `runtime` but browser is more than runtime. When an async task starts, it comes to `call stack`, initiates and then goes to web apis and gets removed from the call stack. Then in `web apis` it keeps on processing as a background task in thread. 
+
+When it gets completed, it `comes to task queue`, and then to the `event loop`. Now the event loop's job is to see if there is anything in the call stack or like its empty, it looks at the  `task queue` and if there is anything, it pushes to the stack.
+
+The reason we need event loop is that we cant simply push back the queued task directly on the stack cuz then it'll disturb the normal flow of things happening.
+
+### Render Queue
+
+Render runs after every around 16ms. Render only runs if the callstack is empty. So debounce can be used on heavy event based process like on scroll if something is happening. 
 
 ### Stack vs Heap based Memory
 
@@ -610,7 +682,7 @@ Dynamic scoping does `not care how the code is written`, but instead `how it exe
     
     Takes 2 arguments, the first one is a callback method, which further takes
     two arguments where first one is the `total` or `accumalator` and second 
-    one is the `current` of this iteration, where and second parameter of reduce
+    one is the `current` of this iteration, and second parameter of reduce
     is the initial value of accumalator. It returns a single value
 
         const myReducedArray = myArray.reduce((total, item) => total + (item.num1 + item.num2), 0) 
@@ -651,6 +723,8 @@ Dynamic scoping does `not care how the code is written`, but instead `how it exe
   Prevent the event trigger from being fired too often
 
 - Pure Functions
+
+  When a function calculates its output from using other than its parameters as an input. When its not completly and only dependant on its inputs. 
 
   A pure function is a function which,
 
@@ -702,9 +776,14 @@ Dynamic scoping does `not care how the code is written`, but instead `how it exe
 
 ## Middlewares
 
+Software that enables one or more kinds of communication or connectivity between two or more applications or application components in a distributed network.
+
 ## APIs
 - CRUD
 - Axios
+
+  Used to make requests to an API endpoint
+
 - REST Arch & RestFul APIs
 
 ## Linting
