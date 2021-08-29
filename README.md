@@ -290,23 +290,51 @@ Binding doesnt work with arrow function.
 
 ### OOP
 
-- Class
+- Class (`class className`)
 
-- Object
+- Object (`new ClassName(params)`)
 
-- Inheritance
+- Inheritance (`extends`)
 
 - Polymorphism
 
+  Polymorphism -> `Many-forms`. Can have a same function in parent and a class which is `inherited` and if we `override` in child class(function overriding) then the parent's function has 2 forms.
+
 - Abstraction
+
+  It is hiding the implementation and only showing the functionality or essentials.
+
+  Not allowing the user to access a class's variable or function. Instead, let other local functions of the class calculate and use those methods and properties.
 
 - Encapsulation
 
+  It is wrapping up the data and methods under a single unit.
+
+  Properties and methods are private.
+
+  It is binding of data to functions.
+
+  A mechanism of `restriciting direct access` to some of the object's components. It also bundles methods which operate on that data. Its required for:
+
+  - Security, controlled access
+  - Hide implementation and expose behaviour
+  - Loose coupling - modify the implementation anytime
+
+  `Getters and setter methods` are used to get those objects/properties. 
+
 - Association
+
+  If two classes in a model need to communicate with each other, there must be a link between them, and that can be represented by an association (connector).
+
+  Aggregation and Composition are subsets of association meaning they are specific cases of association.
 
 - Aggregation
 
+  Aggregation implies a relationship where the child can exist independently of the parent. Example: Class (parent) and Student (child). Delete the Class and the Students still exist.
+
 - Composition 
+
+  Composition implies a relationship where the child cannot exist independent of the parent. Example: House (parent) and Room (child). Rooms don't exist separate to a House.
 
 ### Class & Prototypal Inheritance
 
