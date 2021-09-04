@@ -220,7 +220,7 @@ Some actions may take time like fetching data from api, video streaming etc. To 
 
 While each operation is being processed, rendering is blocked.
 
-### Promise
+### Promise **-**
 
 The promise is an object representing the completion or failure of the async operation. They are essentially a returned object to which you attach callback functions, rather than having to pass callbacks into a function. 
 
@@ -240,9 +240,9 @@ Advantages of promise over conventional callbacks:
 
   Important: `Always return results`, otherwise callbacks won't catch the result of a previous promise
 
-### Async await
+### Async await **-**
 
-### Time and Space Complexity (BigO)
+### Time and Space Complexity (BigO) **-**
 
 ### MVC
 
@@ -338,6 +338,14 @@ Binding doesnt work with arrow function.
 
 ### Class & Prototypal Inheritance
 
+Every object by default has a property `prototype`. By default, its empty. We can add properties and methods to it. When we create objects from this function like instance of a class, that object will inherit these preoperties and methods from the parent.
+
+JS has no literal `class` implementation. ES6 has class keyword but it prototype and gives constructor.
+
+Every function is a constructor in JS.
+
+We create an object from the func/class, then is created from a master object and all have the properties and they look up the prototype chain. 
+
 ### Threads
 
 A thread is basically a `single process` that a program can use to complete tasks. Each thread can only do a `single task at once`. Each task `will run sequentially`; a task has to complete before the next one can be started.
@@ -418,6 +426,103 @@ A closure has three `scope chains`.
 - Has access to its own scope. Vars defined inside it
 - Has access to the vars of outer function
 - Has access to the global variables
+
+### Curring
+
+It is when a function `doesnt take all of its arguments` upfront. It `gets one argument` and then it `returns another function` which we'll call with the second argument and so on until all the arguments are provided. The function at the end of the chain will return the value.
+
+Simple version of a function
+
+    let dragon = (name, size, element) => name + ' is a' + size + ' that breathes ' + element;
+
+    console.log(dragon('duffy', 'tiny', 'fire'));
+
+
+Currying version
+
+    let dragon = (name) => (size) => (element) => name + ' is a' + size + ' that breathes ' + element;
+
+        console.log(dragon('duffy')('tiny')('fire'));
+        // OR
+        const duffy = dragon('duffy');
+        const tinyDuffy = duffy('tiny');
+
+        console.log(tinyDuffy('fire'));
+
+We made the function curriable but if we already have functions which are not curriable, then we can use libraries like lodash which provides methods to make them curriable.
+
+### Functional Chaining
+
+We can call another method on the result of one method. Its a way to call a sequence of methods in `OOP`. Each of the function call would be returning the reference to `this` and hence can call another method against that object.
+
+    new Array(1, 2, 3, 4)
+      .filter(x => x % 2 === 0)
+      .reduce((mem, x) => mem + x)
+
+
+### Functional Composition
+We can call another method on the result of one method. Its a way to call a sequence of methods in `Functional Programming`. f(g(x)). This functionality of calling the first function and passing its result directly to a second function can be extracted to avoid code repetition.
+
+    const isEven = x => x % 2 === 0;
+    const filterOutOdd = collection => collection.filter(isEven);
+
+    const add = (x, y) => x + y;
+    const sum = collection => collection.reduce(add);
+
+    const sumEven = collection => sum(filterOutOdd(collection));
+
+    sumEven([1, 2, 3, 4]);
+
+    // Using compose
+    const compose = (fn1, fn2) => inputObject => fn1(fn2(inputObject));
+
+    const isEven = x => x % 2 === 0
+    const filterOutOdd = collection => collection.filter(isEven)
+
+    const add = (x, y) => x + y
+    const sum = collection => collection.reduce(add)
+
+    const sumEven = collection => compose(sum, filterOutOdd)(collection)
+
+    sumEven([1, 2, 3, 4])
+
+Which functions to compose:
+
+- unary — ones that accept just one argument,
+- small — to achieve more reusability,
+- pure — this is especially important when composing complex functionality, as function impurity is “contagious”,
+- curried, and accepting data as the last argument — to make expressions more concise.
+
+### Imediately Invoked Functions
+
+    // Block level code
+    {
+      (function() {
+        var v = 'var';
+        let l = 'let';
+      })()
+    }
+
+### Memoization
+
+A technique where we `store the result` of a function for later usage. If in future, we call that method with the same input, it wouldnt do complex and long computations and will return the same `cached result`. It should be applied to pure functions.
+
+Can use `Ramda` which has other features as well. `nano-memoize` is another
+
+### Event Bubbling
+
+Click events execute from the element clicked and then will go all the way to the parent.
+
+`e.stopPropagation()` can be used to avoid bubbling and will stop execution of the elements further up the order. 
+
+### Event Capturing
+
+First the parent element executes and goes all the way to the child. 
+
+By default event bubbling occurs but we can choose to use event capturing by:
+
+    var elem = document.querySelector('#my-element');
+    elem.addEventListener('click', () => console.log('Elem clicked'), true); // 3rd arg is useCapture
 
 ### Hoisting
 
