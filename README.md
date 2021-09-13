@@ -239,6 +239,35 @@ Advantages of promise over conventional callbacks:
       .catch(failureCallback);
 
   Important: `Always return results`, otherwise callbacks won't catch the result of a previous promise
+  
+We can define a promise like:
+
+      let myPromise = new Promise(resolve, reject) => {
+      	let myFlag = false;
+	if (myFlag) {
+	  resolve('Had success');	
+	} else {
+	  reject('Had a failure');
+	}
+      };
+      
+      myPromise
+        .then((message) => console.log(message))
+	.catch((error) =>  console.log(error))
+      
+      doSomething()
+      .then(result => doSomethingElse(result))
+      .then(newResult => doThirdThing(newResult))
+      .then(finalResult => {
+        console.log(`Got the final result: ${finalResult}`);
+      })
+      .catch(failureCallback);
+      
+      Promise.all([myPromise1, myPromise2, myPromise3]).then((messages) => console.log(messages);
+      // it waits until all are resolved and returns all the results in an array
+      
+      Promise.race([myPromise1, myPromise2, myPromise3]).then((message) => console.log(message);
+      // it returns the first resolved promise's result
 
 ### Async await **-**
 
