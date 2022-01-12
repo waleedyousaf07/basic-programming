@@ -646,7 +646,7 @@ First the parent element executes and goes all the way to the child.
 By default event bubbling occurs but we can choose to use event capturing by:
 
     var elem = document.querySelector('#my-element');
-    elem.addEventListener('click', () => console.log('Elem clicked'), true); // 3rd arg is useCapture
+    elem.addEventListener('click', () => console.log('Element clicked'), true); // 3rd arg is useCapture
 
 ### Hoisting
 
