@@ -212,6 +212,23 @@ In a declarative style, we'll just ask the framework what needs to be done and t
       document.body.appendChild(pElem);
     });
 
+### Component vs Element (React)
+
+An element is a basis object that describe DOM node and its properties. Cant apply any methods on it.
+
+A component is a function or class which takes props and can have state and returns an element.
+
+### Controlled vs Uncontrolled Components (React)
+
+A Controlled Component is one that takes its `current value through props` and `notifies changes through callbacks` like onChange. A `parent component "controls"` it by handling the callback and managing its own state and passing the new values as props to the controlled component. You could also call this a `"dumb component"`. 
+
+    <input type="text" value={value} onChange={handleChange} />
+
+A Uncontrolled Component is one that `stores its own state internally`, and you `query the DOM` using a `ref` to find its current value when you need it. This is a bit more like traditional HTML.
+
+    <input type="text" defaultValue="foo" ref={inputRef} />
+    // Use `inputRef.current.value` to read the current value of <input>
+
 ### Asynchronous
 
 Some actions may take time like fetching data from api, video streaming etc. To overcome these, we use `async callbacks` or `promises` which keeps the task in the background and continue main program execution and responds/notifies when the task is completed. Now as JS is `single threaded`, the async operations which are in-progress in the background are pushed in an `event queue` which runs after the `main thread` has finished processing. The queued operations finish asap and return their result to js environment. 
@@ -229,6 +246,20 @@ Advantages of promise over conventional callbacks:
 - Promise callbacks are always called in the `strict order` they are placed in the `event queue`.
 - `Error handling` is much `better` — all errors are handled by a `single .catch()` block at the end of the block.
 - Promises `avoid inversion of control`, unlike old-style callbacks, which lose full control of how the function will be executed when passing a callback to a third-party library.
+
+      const myPromise = () => {
+        return new Promise((resolve, reject) => {
+          let error = false;
+          setTimeout(() => {
+            if (!error) {
+              resolve(/* some nested logic */);    	
+            }
+            else {
+              reject('Something went wrong');
+            }
+          }, 2000);
+        }) 
+      }	
 
       doSomething()
       .then(result => doSomethingElse(result))
@@ -269,9 +300,35 @@ We can define a promise like:
       Promise.race([myPromise1, myPromise2, myPromise3]).then((message) => console.log(message);
       // it returns the first resolved promise's result
 
-### Async await **-**
+### Async await
 
-### Time and Space Complexity (BigO) **-**
+    const myPromise = () => {
+      return new Promise((resolve, reject) => {
+        let error = false;
+        setTimeout(() => {
+          if (!error) {
+            resolve();    	
+          }
+          else {
+            reject('Something went wrong');
+          }
+        }, 2000);
+      }) 
+    }
+
+    const myAsyncFunction = async () => {
+      await myPromise();
+      console.log('In async - promise ran')
+    }
+
+    /* async function myAsyncFunction() {
+      await myPromise();
+      console.log('In async - promise ran')
+    } */
+
+    myAsyncFunction();
+
+### Time and Space Complexity (BigO) (https://github.com/jamiebuilds/itsy-bitsy-data-structures/blob/master/itsy-bitsy-data-structures.js) **-**
 
 ### MVC
 
@@ -366,6 +423,16 @@ Binding doesnt work with arrow function.
   Composition implies a relationship where the child cannot exist independent of the parent. Example: House (parent) and Room (child). Rooms don't exist separate to a House.
 
 ### Class & Prototypal Inheritance
+
+Its like one object trying to access properties and methods of other objects.
+
+Each primitive or referenced type will have access to certain properties like an array can use `forEach` `length` `push` etc. Thats given by prototype. Every time js attaches an hidden obj `__proto__` (or `prototype`) which has all these functions and properties.
+
+The __proto__ also has its own __proto__ property which is `Array.prototype`, that has its own __proto__ which is `Object.prototype` and it has its own __proto__ which is null. This is called prototype chain. This was for array (same for function). For objects, the first __proto__ will be an `Object prototype` so the next one would be null.
+
+This supports the notion that everything in js is an object.
+
+---------------OR----------
 
 Every object by default has a property `prototype`. By default, its empty. We can add properties and methods to it. When we create objects from this function like instance of a class, that object will inherit these preoperties and methods from the parent.
 
@@ -531,6 +598,34 @@ Which functions to compose:
         let l = 'let';
       })()
     }
+    
+### call, apply and bind methods
+
+In JS, every function has a `call` method in which we can pass the reference of the callee (the params can be the 2nd parameter (and go on)) like another function can borrow it. 
+
+    const obj = {
+      firstName: 'Cristiano',
+      lastName: 'Ronaldo',
+      printFullName: (skill, age) => {
+        console.log(this.firstName + ' ' + this.lastName + ' skilled in ' + skill);
+      }
+    };
+
+    const obj2 = {
+      firstName: 'Neymar',
+      lastName: 'JR',
+    };
+
+    obj.printFullName.call(obj2, 'speed', 33);
+    
+Same as call but sends an array of params as second parameter
+    
+    obj.printFullName.apply(obj2, ['speed', 29]);
+
+Its also almost same to call but instead of directly calling, it returns a method which we can call later
+
+    const bindedMethod = obj.printFullName.apply(obj2, ['speed', 29]);
+    bindedMethod();
 
 ### Memoization
 
@@ -702,6 +797,37 @@ Lexical scoping refers to when the location of a function's definition determine
 In most programming languages `static scoping is dominant`. This is simply because in static scoping it’s `easy to reason about and understand` just by looking at code. We can see what variables are in the scope just by `looking at the text` in the editor.
 
 Dynamic scoping does `not care how the code is written`, but instead `how it executes`. Each time a new function is executed, a new scope is `pushed onto the stack`.
+
+### Local Storage vs Session Storage vs Cookies
+
+Cookies: 
+  - 4kb
+  - HTML 4/5
+  - expires on demand
+  - stores on browser/server
+  - sent with request
+
+Local:
+  - 10mb
+  - HTML 5
+  - expires never
+  - stores on browser
+  - not  sent with request
+
+Session:
+  - 5mb
+  - HTML 5
+  - expires on tab kill
+  - stores on browser
+  - not sent with request
+
+### CORS
+
+While in SOP (same origin policy), browser never allows to share the resources from different origins.
+
+The requesting website must have same origin means `protocol` e.g. https, `domain` e.g. my-site.com and `port` 4000
+
+It works like when request from one origin is made, a `preflight` OPTIONS call request is made before that to ensure the validity of request. If valid, the requestee will set additional headers which will let the client/browser know its safe and then the actual call is made. The requestee will set the headers like `Access-Control-Allow-Origin: *` where * means any domain can access. Additinally some other headers will help retrict methods like GET, POST, DELETE
 
 ## Data Structures
 - Stack
