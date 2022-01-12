@@ -2,7 +2,7 @@
 
 ## Introduction:
 
-A repo covering basics of programming concepts.
+A repo covering basics of programming concepts specifically JS.
 <br/><br/>
 
 ## Core
