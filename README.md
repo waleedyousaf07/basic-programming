@@ -479,9 +479,30 @@ They are the functions which dont have a name.
 
 ### Closure
 
-When an inner function has access to outer function's variables along with its own and global variables.
+When an inner function has access to (its lexical scope) outer function's variables along with its own and global variables. And even ifs accessed later on, it would have reference to those properties and methods.
 
 They are functions with preserved data.
+
+It also helps in data encapsulation (and functional currying)
+
+    function counter() {
+      var count = 10;
+
+      return () => count++; 
+    }
+
+    // nobody can directly change counter, they'll have to use this method
+
+    counter()();
+
+Also, will help create new copies w/o worrying about the previous counter state
+
+    const counter1 = counter();
+    counter1(); // 11
+    counter1(); // 12
+
+    const counter2 = counter();
+    counter2(); // 11
 
 In JS, the inner functions will have access to its outer vars but anything outside wont have access to the vars defined inside because JS uses `lexical scoping` i.e. a closure is a function that captures variables from its lexical scope.
 
@@ -522,6 +543,35 @@ A closure has three `scope chains`.
 - Has access to its own scope. Vars defined inside it
 - Has access to the vars of outer function
 - Has access to the global variables
+
+Disadvantages:
+- Memory extensive (sometimes garbage is not collected)
+- Can lead to memory leak
+
+### Constructor Function
+
+    function Counter() {
+      var count = 0;
+
+      this.increment = function () {
+        count++;
+      }
+      this.decrement = function () {
+        count--;
+      }
+    }
+
+    var counter1 = new Counter();
+    counter1.increment()
+
+### Async, Defer
+
+While a page can have HTML and scripts, assume some of the HTML is getting parsed, and before ending a script is encountered. Script is ran in 2 parts, first its `fetched` and then its `executed`. So, until these the HTML parsing is blocked. 
+
+We can use `async` attribute which fetches the script while loading the HTML and when it gets loaded, HTML pasring stops and script gets executed. After its execution, HTML parsing continues.
+Async doesnt gurantee order of execution of multiple scripts and dependat scripts can break but defere does.
+
+`Defer` is somewhat same but instead of executing the script right after fething, it `waits for HTML` to completely parsed and then executes.
 
 ### Curring
 
@@ -618,11 +668,11 @@ In JS, every function has a `call` method in which we can pass the reference of 
 
     obj.printFullName.call(obj2, 'speed', 33);
     
-Same as call but sends an array of params as second parameter
+`apply` is same as call but sends an array of params as second parameter
     
     obj.printFullName.apply(obj2, ['speed', 29]);
 
-Its also almost same to call but instead of directly calling, it returns a method which we can call later
+`bind` is also almost same to call but instead of directly calling, it returns a method which we can call later
 
     const bindedMethod = obj.printFullName.apply(obj2, ['speed', 29]);
     bindedMethod();
@@ -1041,11 +1091,42 @@ It works like when request from one origin is made, a `preflight` OPTIONS call r
 
 - Throttling
   
-  Delaying function execution. Like search after 500ms
+  Delaying function execution. Like search after 500ms. It will wait until the delay/timeout.
+
+        const throttle = (func, limit) => {
+        let flag = true;
+        return (...args) => { // `...args` will capture all the params as we dont know how many they can be
+          if (flag) {
+            func.apply(this, args);
+            flag = false;
+
+            setTimeout(() => {
+              timer = undefined;
+            }, limit);
+          }
+        };
+      };
+
+      const throttledSearchRecords = throttle(searchRecords(), 1000);
 
 - Debouncing
   
-  Prevent the event trigger from being fired too often
+  Prevent the event trigger from being fired too often. It waits for certain time (delay/timeout) that is the difference between the events. Means if the trigger difference of two events is greater than the delay, only then make a call.
+
+      const debounce = (func, timeout) => {
+        let timer;
+        return (...args) => { // `...args` will capture all the params as we dont know how many they can be
+          if (!timer) {
+            func.apply(this, args);
+          }
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            timer = undefined;
+          }, timeout);
+        };
+      };
+
+      const debouncedSearchRecords = debounce(searchRecords(), 1000);
 
 - Pure Functions
 
