@@ -1216,14 +1216,27 @@ It works like when request from one origin is made, a `preflight` OPTIONS call r
 
 ## ES6
 
-- Arrow funcs
-- let, const
+Features:
+- let and const Keywords
+- Arrow Functions
+- Multi-line Strings
+- Default Parameters
+- Template Literals
+- Destructuring Assignment
+- Enhanced Object Literals
+- Promises
+- Classes
+- Modules
 
 ## Git/GitHub
 
 ## Middlewares
 
 Software that enables one or more kinds of communication or connectivity between two or more applications or application components in a distributed network.
+
+- Redux Thunk
+
+Its between action and reducers like for redux logger, while making an action, it also logs that action to the console before setting the state in reducer
 
 ## APIs
 - CRUD
