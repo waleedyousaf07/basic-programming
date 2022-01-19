@@ -57,6 +57,43 @@ Transpiler is a type of translator that takes the source code of a program writt
 
 The difference between transpiler and compiler is in the level of abstraction in the output. Generally, a compiler produces machine executable code, whereas transpiler produces another developer artifact
 
+### Treeshaking
+
+Its an `optimization` technique to `remove unused code`. Improves:
+
+- Interpreter execution time
+- Downloading time of code onto the browser
+
+A tree shaking utility analyzes your code before running it, to detect code that was never used and remove it prior to execution.
+
+`ASTs` are used and even extra `whitespaces` are removed.
+
+### HTML 5
+
+- iFrames
+- New elements
+  - <video controls preload><source src="video.mp4" type="video/ogg; codecs='vorbis, theora'" /></video>
+  - <audio autoplay="autoplay" controls="controls"><source src="file.mp3" /></audio>
+  - <nav><a href="/html/">HTML</a></nav>
+  - <header><img src="company-logo.png" /><nav>...</nav></header>
+  - <canvas></canvas>
+  - <footer>...</footer>
+  - <figure><img src="image/image-1.jpg" alt="About ADMEC" />
+      <figcaption><p>This is our institute </p></figcaption>
+    </figure>
+- New types of inputs i.e. email, month, number, range, search, tel, color, week, url, time, date, datetime-local etc. ContentEditable, Progress, section, main(1 page can only have 1 main, also, navs, headers, footers are not allowed)
+- Placeholders
+- Required attribute
+- Preload Videos
+- Regex
+- Accessibility (validations in forms)
+- Inline elements/Dynamic Page Support
+    - mark – It highlights the content that is marked in some or the other way.
+    - time – This helps in adding current time as well as date to the webpage.
+    - meter – It helps in indicating that how much space in the storage disk is still there.
+    - progress bar – It helps in knowing the progress of the task that has been assigned for its completion.
+- nonce (we usually use nonce attribute inside script and style tag. This nonce tag basically generates a random number which is for one time use only. So, it is regenerated each time the page refreshes. It is great features as it can be used to increase the security of the content of the page. This helps in stating and providing the authority to the webpage to specify a particular script or style.)
+
 ### JS Variable declartors
 
 let, const, var
@@ -641,6 +678,8 @@ Which functions to compose:
 
 ### Imediately Invoked Functions
 
+Mostly used to create blocks and can have variables with scope rather than global.
+
     // Block level code
     {
       (function() {
@@ -772,6 +811,8 @@ Although JS is `single threaded`, but that means it can do one thing only at the
 When it gets completed, it `comes to task queue`, and then to the `event loop`. Now the event loop's job is to see if there is anything in the call stack or like its empty, it looks at the  `task queue` and if there is anything, it pushes to the stack.
 
 The reason we need event loop is that we cant simply push back the queued task directly on the stack cuz then it'll disturb the normal flow of things happening.
+
+There are two callback queues, one for macrotasks and one for microtasks (usually for promises) and first micro runs and then macro runs
 
 ### Render Queue
 
