@@ -94,6 +94,10 @@ A tree shaking utility analyzes your code before running it, to detect code that
     - progress bar – It helps in knowing the progress of the task that has been assigned for its completion.
 - nonce (we usually use nonce attribute inside script and style tag. This nonce tag basically generates a random number which is for one time use only. So, it is regenerated each time the page refreshes. It is great features as it can be used to increase the security of the content of the page. This helps in stating and providing the authority to the webpage to specify a particular script or style.)
 
+### Sprites
+
+They are used to load alot of images in a web page together by making single(maybe few) http requests resulting in less time to load the page
+
 ### JS Variable declartors
 
 let, const, var
