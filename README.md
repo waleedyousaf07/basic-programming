@@ -1234,6 +1234,262 @@ Features:
 
 ## Git/GitHub
 
+- installation
+  - Install git from git scm
+- Clone dir/Git Repos
+- Setup in webstorm
+- Adding an existing project to GitHub
+  - in ur project main file, run
+    - git init
+  - add and commit all files in project by
+    - git add .
+    - git commit -m "adds all files" 
+  - change base branch from master to main (optional - need change cuz git creates `main` branch)
+    - git branch -m main
+  - now connect to remote repo by
+    - git remote add origin https://github.com/WaleedYousaf/ttt.git // link of repo
+  - now just push on ur branch
+    - git push origin main
+- Cloning a project in my webstorm myapp project
+- Cloning Margalla/Pulpo
+- Git commands
+  - Mock commands:
+    - git commit --amend --reset-author // resetting author
+    - git remote add origin https://github.com/ waleedyousaf07/football_roster  [To ]
+      OR git clone ssh://git@github.com/[username]/[repository-name].git
+    - git push -u origin master
+    - git checkout -b my_branch [created new my_branch and swithced to mybranch]
+    - //Make changes in the code
+    - git add . [for add all files in current dir] OR git add -A [maybe for all in current dir and its siblings] OR git add filename.js OR $ git add my-file.ts another-file.js new_file.rb  [for adding multiple files concurrently] OR git add folder/subfolder/* 
+    - Custom Add: git add src/actions/* src/components/AddPlayerView.js
+    - git rm --cached my-file.ts  [to remove myfile.ts from staged basket/area] OR git reset another-file.js [works as opposite of add] OR git reset HEAD .eslintrc
+    - git commit -m "my_msg_for the changes" OR git commit -m "my_msg_for the changes" --no-verify [for bypassing .eslint]
+    - git push origin my_branch   OR git push -u origin master [with -u, next time we only needs to call git push]
+  - Getting & Creating Projects
+    - Init
+      - command: git init
+      - Initialize a local Git repository
+      - Getting & Creating Projects
+    - Clone
+      - git clone ssh://git@github.com/[username]/[repository-name].git
+      - git clone /path/to/repository 	//local server
+      - git clone username@host:/path/to/repository
+      - Create a local copy of a remote repository
+      - Getting & Creating Projects
+  - Merging my branch with others
+    - git add mybranch
+    - git commit -m "mybranch msg"
+    - git checkout dosriBranch
+    - git pull
+    - git checkout mybranch
+    - git merge dosriBranch
+    - [Resolve conflicts]
+    - git add mybranch
+    - git commit -m "my msg"
+  - Restoring / Reverting file from another branch
+    - git checkout FROM_BRANCH_NAME path/to/file	
+  - Basic Snapshotting
+    - status
+      - command: git-status
+      - Show the working tree status
+      - Check status
+    - add
+      - command: git add [file-name.txt]
+      - Add a file to the staging area
+    - add
+      - command: git add -A
+      - Add all new and changed files to the staging area
+    - commit
+      - git commit -m "[commit message]"
+      - Commit changes
+    - remove
+      - git rm -r [file-name.txt]
+      - Remove a file (or folder)
+  - Branching & Merging
+    - add/remove files to untracked
+      - git update-index --assume-unchanged
+      - git update-index --no-assume-unchanged path/to/file
+    - replace a file with another branch
+      - git checkout origin/master [filename]
+    - branch
+      - git branch 	
+      - List branches (the asterisk denotes the current branch)
+    - branch 
+      - git branch -a
+      - List all branches (local and remote)
+    - branch
+      - git branch [branch name]
+      - Create a new branch
+    - branch
+      - git branch -d [branch name]
+      - Delete a branch
+    - push
+      - git push origin --delete [branch name]
+      - Delete a remote branch
+    - checkout
+      - git checkout -b [branch name]
+      - Create a new branch and switch to it
+    - checkout
+      - git checkout -b [branch name] origin/[branch name]
+      - Clone a remote branch and switch to it
+    - checkout
+      - git checkout [branch name]
+      - Switch to a branch
+    - checkout
+      - git checkout - 
+      - Switch to the branch last checked out
+    - checkout
+      - git checkout -- [file-name.txt] 	
+      - Discard changes to a file
+    - merge
+      - git merge [branch name] 
+      - Merge a branch into the active branch
+    - merge
+      - git merge [source branch] [target branch]
+      - Merge a branch into a target branch
+    - stash
+      - git stash 
+      - Stash changes in a dirty working directory
+    - stash
+      - git stash apply stash@{0}
+    - stash
+      - git stash clear
+      - Remove all stashed entries 
+  - Sharing & Updating Projects
+    - push
+      - git push origin [branch name]
+      - Push a branch to your remote repository
+    - push
+      - git push -u origin [branch name]
+      - Push changes to remote repository (and remember the branch)
+    - push
+      - git push 	
+      - Push changes to remote repository (remembered branch)
+    - push
+      - git push origin --delete [branch name] 	
+      - Delete a remote branch
+    - pull
+      - git pull 	
+      - Update local repository to the newest commit
+    - pull
+      - git pull origin [branch name] 
+      - Pull changes from remote repository
+    - remote
+      - git remote add origin ssh://git@github.com/[username]/[repository-name].git 	
+      - Add a remote repository
+    - remote
+      - git remote set-url origin ssh://git@github.com/[username]/[repository-name].git 	
+      - Set a repository's origin branch to SSH
+  - Inspection & Comparison
+    - log
+      - git log 	
+      - View changes
+    - log
+      - git log --summary 	
+      - View changes (detailed)
+    - diff
+      - git diff [source branch] [target branch] 	
+      - Preview changes before merging
+    - revert commit
+      - git reset --hard HEAD~1
+      - reset to a specific commit	
+        - git reset --hard \<commit-hash>
+        - git push -f origin \<curr-branch>
+    - revert merge
+      - git merge --abort
+
+## Docker
+
+- installation
+  - [follow official digital ocean link]
+
+- for running docker
+  - for local BE, in docker-compose.yml, comment out app and ngnix and add following at the end of web
+    - same indentation
+      ports:
+        - 8081:8081 
+  - in directory with docker.yml file, run command:
+    - sudo docker compose up -d
+  - for viewing logs
+    - sudo docker logs -f web
+  - check if containers are up
+    - sudo docker ps
+    - docker ps -a [maybe with all details like id]
+  - restart web worker, maybe after changes like restarting npm start
+    - sudo docker-compose up -d --f worker
+  - check web logs
+    - docker logs -f web
+    - docker logs -f worker
+    - docker logs -f [id of container, can be seen by docker ps command]
+    - sudo docker-compose logs -f web worker [maybe for multiple logs in single command]
+- for instance on digital ocean
+  - check and add ssh key by
+    - ssh keygen
+    - cat ~/.ssh/id-rsa.pub
+  - ask the person to add your public ssh key to instance
+  - setup DO instance
+    - ssh root@[instance_ip]
+    - ls {check if has already any project}
+    - git clone [https.. my proj]
+    - cd [proj dir]
+    - git checkout [my branch to test]
+    - {make changes to docker-compose.yml}
+      - {comment out app and ngnix}
+      - {add in web, after entry point as a sibling}
+        ports:
+          - 8081:8081 
+      - {in image worker -> environment, update SL_USERNAME and API_KEY from SL creds trello}
+      - {in image worker -> environment, update WEB_HOOK_BASE_URL to http://[instance_ip]:8081/...}
+      - {in worker -> environment, update WEB_HOOK_BASE_URL to http://[instance_ip]:8081/...}
+      - {now add the docker-compose.yml changes to instance} nano docker-compose.yml {to show that file}
+      - {now clear that file} > docker-compose.yml
+      - {now update with the previous changes} nano docker-compose.yml
+- FE image on dockerhub:
+  - [server/index.js mein https://migrate-db.wanclouds.net address daal dyna url mein]
+  - cd doosra-Frontend > sudo docker build -t wancloudsinc/doosra-vpc-frontend:db-mig-demo . 
+  - [jb build ojaey image phr]
+  - sudo docker push wancloudsinc/doosra-vpc-frontend:db-mig-demo 
+  - [jb push ojaey then]
+  - sudo docker-compose up -d --force-recreate app [in vpcBackend dir]
+- stop and up containers in detach mode:
+  - cd doosra-vpc-be>sudo docker-compose stop
+  - [Then]
+  - sudo docker-compose -d --force-recreate
+- for db container (up)
+  - mongo [pulpo]
+    - sudo docker exec -it mongo sh
+    - \# mongo margalladb -u admin -p --authenticationDatabase margalladb
+    - [password is password]
+    - show collections [shows all tables]
+    - db.dropDatabase() [drop whole db]
+    - db.users.drop() [drop users' table]
+
+  - mysql [vpc]
+    - sudo docker exec -it webdb bash
+    - mysql -uwebuser -padmin123
+    - use doosradb
+- steps to get in remote instances:
+  - Pass ssh key to the admin
+    - cd ~/.ssh
+    - cat id_rsa.pub
+  - get into instance
+    - ssh root@192.168.1.1
+
+  - add ssh key in remote instance
+    - cd .ssh
+    - nano authourized_key
+  - access db
+    - sudo docker exec -it webdb bash
+    - select * from user;
+- For updating the FE (docker):
+  - ssh to 169.59.10.17
+  - cd to proj
+  - pull latest branch
+  - then build `sudo docker build -t wancloudsinc/doosra-vpc-frontend:waleed_test .`
+  - then push to docker `docker push wancloudsinc/doosra-vpc-frontend:waleed_test`
+  - then in doosra-vpc-be -> update file `doosdocker-compose` update image with my image name i.e. `waleed_test` in app section
+  - then `docker-compose up -d --f app`
+
 ## Middlewares
 
 Software that enables one or more kinds of communication or connectivity between two or more applications or application components in a distributed network.
