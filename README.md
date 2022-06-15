@@ -1802,3 +1802,272 @@ Its between action and reducers like for redux logger, while making an action, i
 
 ## Sockets
 - sockets.io
+
+## DSA Questions
+
+Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
+
+- Arrays
+  - Pair Sum
+    - Uses
+      - Two pointers approach
+      - Hashmaps
+    - Question
+    - Example
+  - Overlapping Intervals
+    - Uses
+      - Sorting
+    - Question
+    - Example
+  - Sort 0 1 2
+    - Uses
+      - Dutch National Flag Algorithm
+    - Question
+    - Example
+  - Search in rotated sorted array
+    - Uses
+      - Binary Search
+    - Question
+    - Example
+  - Smallest sub array with K distinct elements
+    - Uses
+      - Sliding Window Algorithm
+    - Question
+    - Example
+
+- Multi-dimensional arrays
+  - Search In Row Wise And Column Wise Sorted Matrix
+    - Uses
+      - Binary Search
+    - Question
+    - Example
+  - Inplace Rotate Matrix By 90 degree
+    - Uses
+      - Adhoc Problem
+    - Question
+    - Example
+  - Matrix Median
+    - Uses
+      - Binary Search
+    - Question
+    - Example
+
+- Strings
+  - Longest Substring Without Repeating Characters
+    - Uses
+      - Sliding Window
+    - Question
+    - Example
+  - Anagram Difference
+    - Uses
+      - Hashmap
+    - Question
+    - Example
+  - Shortest substring with all characters
+    - Uses
+      - Two Pointers
+    - Question
+    - Example
+  - Minimum operations to make strings equal
+    - Uses
+      - Hashmap
+    - Question
+    - Example
+
+- Recursion & Backtracking
+  - Print Permutations Of String
+    - Uses
+    - Question
+    - Example
+  - Return Subsets Sum to K
+    - Uses
+      - Sorting
+    - Question
+    - Example
+  - Sudoku
+    - Uses
+      - 2d array backtracking
+    - Question
+    - Example
+  - Replace ‘O’ with ‘X’
+    - Uses
+      - 2d array backtracking
+    - Question
+    - Example
+  - Reach Destination
+    - Uses
+    - Question
+    - Example
+
+- Linked List
+  - Merge Two Sorted Linked List
+    - Uses
+    - Question
+    - Example
+  - Detect And Remove Loop
+    - Uses
+    - Question
+    - Example
+  - Reverse List In K Groups
+    - Uses
+    - Question
+    - Example
+  - Intersection Of Two Linked List
+    - Uses
+    - Question
+    - Example
+  - Sum Between Zeros
+    - Uses
+    - Question
+    - Example
+
+- Stacks & Queues
+  - Implement Stack Using Linked List
+    - Uses
+    - Question
+    - Example
+  - Next Greater Element
+    - Uses
+    - Question
+    - Example
+  - Implement Queue Using Stack
+    - Uses
+    - Question
+    - Example
+  - LRU Cache Implementation
+    - Uses
+    - Question
+    - Example
+  - Evaluation Of Post Fix Expression
+    - Uses
+    - Question
+    - Example
+
+- Binary Trees
+  - Binary Tree From Parent Array
+    - Uses
+    - Question
+    - Example
+  - Maximum Sum Path From Root To Leaf
+    - Uses
+    - Question
+    - Example
+  - Print Node At Distance K From Given node
+    - Uses
+    - Question
+    - Example
+  - Maximum Width In Binary Tree
+    - Uses
+      - Hashmap
+    - Question
+    - Example
+  - Time To Burn Tree
+    - Uses
+    - Question
+    - Example
+
+- BST
+  - Delete In BST
+    - Uses
+    - Question
+    - Example
+  - Sorted Linked List To Balanced BST
+    - Uses
+    - Question
+    - Example
+  - Kth Smallest Element In BST
+    - Uses
+    - Question
+    - Example
+  - Binary Tree To BST
+    - Uses
+    - Question
+    - Example
+  - Pair Sum in BST
+    - Uses
+    - Question
+    - Example
+
+- Priority Queues & Heaps
+  - Running Median
+    - Uses
+    - Question
+    - Example
+  - Convert Min Heap To Max Heap
+    - Uses
+    - Question
+    - Example
+  - Kth Largest Element In Unsorted Array
+    - Uses
+    - Question
+    - Example
+  - K Most Frequent Words
+    - Uses
+    - Question
+    - Example
+  - Last Stone Weight
+    - Uses
+    - Question
+    - Example
+
+- Graphs
+  - Is Graph A Tree?
+    - Uses
+    - Question
+    - Example
+  - M Coloring Problem
+    - Uses
+    - Question
+    - Example
+  - Snake And Ladder
+    - Uses
+    - Question
+    - Example
+  - Shortest Path In Unweighted Graph
+    - Uses
+    - Question
+    - Example
+  - Smallest sub array with K distinct elements
+    - Uses
+    - Question
+    - Example
+  - Alien Dictionary 
+    - Uses
+    - Question
+    - Example
+
+- Dynamic Programming
+  - Edit Distance
+    - Uses
+    - Question
+    - Example
+  - Rod Cutting Problem
+    - Uses
+    - Question
+    - Example
+  - Longest Palindromic Substring
+    - Uses
+    - Question
+    - Example
+  - Knapsack
+    - Uses
+    - Question
+    - Example
+  - Palindrome Partioning
+    - Uses
+    - Question
+    - Example
+
+- Misc
+  - Implement Hashmap
+    - Uses
+    - Question
+    - Example
+  - Implement Trie
+    - Uses
+    - Question
+    - Example
+  - Implement Deque
+    - Uses
+    - Question
+    - Example
