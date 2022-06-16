@@ -1809,11 +1809,66 @@ Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
 
 - Arrays
   - Pair Sum
+    - Question
+      - Given an array of integers and a target sum
+      - Return pairs in the array which on addition, matches the target sum
     - Uses
       - Two pointers approach
+        - Sort the array
+        - Keep two pointers `startIndex` & `endIndex` one at start and one at end
+        - Run a while loop which will run until `startIndex` is less than `endIndex`
+        - Sum both the values at start and end index
+        - If the sum is 0, those values are the pair
+        - If the sum is less than required sum, increment startIndex
+        - If the sum is greater than the required sum, decrement endIndex 
       - Hashmaps
-    - Question
+        - Loop through the array
+        - On every iteration, check if the number we are on, if adding this in the number (can get by  `currentNum - sum` and extract the value against this key in hashmap) which we have already seen (this will be maintained in the hashmap) is equal to the sum, then its a pair and can return OR push it in a results array
+        - If the number doesnt match, store that number (as key) along with its index (as value) in the hashmap 
     - Example
+      - Two pointers approach (Complexity: O(n))
+        
+	const nums = [1, 2, 3, 4, 6, 7];
+        const goal = 6;
+	function twoSum(nums, goal) {
+	  let result = [];
+	  let start = 0;
+	  let end = nums.length - 1;
+
+	  while (start <= end) {
+	    const curr = nums[start] + nums[end];
+
+	    if (curr > goal) {
+	      end -= 1;
+	    } else if (curr < goal) {
+	      start += 1;
+	    } else {
+	      end -= 1;
+	      start += 1;
+		result.push([start, end]);
+	    }
+	  }
+
+	  return result;
+	}
+
+	console.log(twoSum(nums, goal));
+        
+      - Hasmaps (Complexity: O(n))
+	const twoSum = function(nums, target) {
+	  const hash = {}; // Stores seen numbers: {seenNumber: indexItOccurred}
+	  for (let i = 0; i < nums.length; i++) { // loop through all numbers
+	    const n = nums[i]; // grab the current number `n`.
+	    if (hash[target - n] !== undefined) { // check if the number we need to add to `n` to reach our target has been seen:
+	      return [hash[target - n], i]; // grab the index of the seen number, and the index of the current number
+	    }
+	    hash[n] = i; // update our hash to include the. number we just saw along with its index.
+	  }
+	  return []; // If no numbers add up to equal the `target`, we can return an empty array
+	}
+
+	console.log(twoSum([1, 2, 3], 5)); // [1, 2]
+
   - Overlapping Intervals
     - Uses
       - Sorting
