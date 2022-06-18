@@ -1872,10 +1872,34 @@ Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
             console.log(twoSum([1, 2, 3], 5)); // [1, 2]
 
   - Overlapping Intervals
+    - Question
+      - Given a 2D array where each array/set/tuple is a pair of intervals
+      - Merge the overlapping intervals
     - Uses
       - Sorting
-    - Question
-    - Example
+        - Sort the array by checking every 1st index of the nested arrays
+        - Maintain a results array and the last item/nested array
+        - Loop through the main array
+        - if the value on the first index of current is greater than the value on the last's 1st index, OR we dont have a last, set the last as current and then push the last in the result
+        - Else update the 1st index of last by setting 1st index of the current to 1st index of the last
+    - Example (Complexity O(nLogn) -> O(logn) for sort and O(n) for merging)
+
+          function merge(ranges) {
+            var result = [], last;
+
+            ranges.forEach(function (r) {
+              if (!last || r[0] > last[1])
+                result.push(last = r);
+              else if (r[1] > last[1])
+                last[1] = r[1];
+            });
+
+            return result;
+          }
+
+          r = [[10, 20], [19, 40], [40, 60], [70, 80]];
+          console.log(merge(r));
+
   - Sort 0 1 2
     - Uses
       - Dutch National Flag Algorithm
