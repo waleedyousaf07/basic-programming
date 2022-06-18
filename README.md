@@ -1828,46 +1828,48 @@ Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
     - Example
       - Two pointers approach (Complexity: O(n))
         
-	const nums = [1, 2, 3, 4, 6, 7];
-        const goal = 6;
-	function twoSum(nums, goal) {
-	  let result = [];
-	  let start = 0;
-	  let end = nums.length - 1;
+    	    const nums = [1, 2, 3, 4, 6, 7];
+            const goal = 6;
+          
+            function twoSum(nums, goal) {
+              let result = [];
+              let start = 0;
+              let end = nums.length - 1;
 
-	  while (start <= end) {
-	    const curr = nums[start] + nums[end];
+              while (start <= end) {
+                const curr = nums[start] + nums[end];
 
-	    if (curr > goal) {
-	      end -= 1;
-	    } else if (curr < goal) {
-	      start += 1;
-	    } else {
-	      end -= 1;
-	      start += 1;
-		result.push([start, end]);
-	    }
-	  }
+                if (curr > goal) {
+                  end -= 1;
+                } else if (curr < goal) {
+                  start += 1;
+                } else {
+                  end -= 1;
+                  start += 1;
+              result.push([start, end]);
+                }
+              }
 
-	  return result;
-	}
+              return result;
+            }
 
-	console.log(twoSum(nums, goal));
+    	    console.log(twoSum(nums, goal));
         
       - Hasmaps (Complexity: O(n))
-	const twoSum = function(nums, target) {
-	  const hash = {}; // Stores seen numbers: {seenNumber: indexItOccurred}
-	  for (let i = 0; i < nums.length; i++) { // loop through all numbers
-	    const n = nums[i]; // grab the current number `n`.
-	    if (hash[target - n] !== undefined) { // check if the number we need to add to `n` to reach our target has been seen:
-	      return [hash[target - n], i]; // grab the index of the seen number, and the index of the current number
-	    }
-	    hash[n] = i; // update our hash to include the. number we just saw along with its index.
-	  }
-	  return []; // If no numbers add up to equal the `target`, we can return an empty array
-	}
 
-	console.log(twoSum([1, 2, 3], 5)); // [1, 2]
+            const twoSum = function(nums, target) {
+              const hash = {}; // Stores seen numbers: {seenNumber: indexItOccurred}
+              for (let i = 0; i < nums.length; i++) { // loop through all numbers
+                const n = nums[i]; // grab the current number `n`.
+                if (hash[target - n] !== undefined) { // check if the number we need to add to `n` to reach our target has been seen:
+                  return [hash[target - n], i]; // grab the index of the seen number, and the index of the current number
+                }
+                hash[n] = i; // update our hash to include the. number we just saw along with its index.
+              }
+              return []; // If no numbers add up to equal the `target`, we can return an empty array
+            }
+
+            console.log(twoSum([1, 2, 3], 5)); // [1, 2]
 
   - Overlapping Intervals
     - Uses
