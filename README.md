@@ -1898,13 +1898,49 @@ Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
           }
 
           r = [[10, 20], [19, 40], [40, 60], [70, 80]];
-          console.log(merge(r));
+          console.log(merge(r)); // [[10,60], [70,80]]
 
   - Sort 0 1 2
+    - Question
+      - Sort an array of 0's, 1's and 2's
+      - Space complexity should be constant O(1) and time sequential O(n)
     - Uses
       - Dutch National Flag Algorithm
-    - Question
+        - Keep 3 indexes, low=0, mid=0 and high=arr.length -1
+        - Loop until mid <= high
+        - while in loop, if arr[mid] equals 0, increment low and mid and then swap the values at low and mid
+        - If arr[mid] equals 2, decrement high and then swap values at mid and high
+        - If arr[mid] equals 1, increment mid 
     - Example
+      - Dutch National Flag Algorithm (Complexity time: O(n) and space O(1))
+
+            let swap = (arr, first, second) => {
+              [arr[first], arr[second]] = [arr[second], arr[first]];
+            }
+
+            //Solution
+            let dutchNatFlag = (arr) => {
+              let low = 0;
+              let mid = 0;
+              let high = arr.length - 1;
+
+              //To sort in ascending order
+              while (mid <= high) {
+                if (arr[mid] === 0) { 
+                  swap(arr, low++, mid++);
+                } else if (arr[mid] === 2) {
+                  swap(arr, mid, high--);
+                } else if (arr[mid] === 1) {
+                  mid++;
+                }
+              }
+
+              return arr;
+            }
+
+            let arr = [0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1]
+            console.log(dutchNatFlag(arr)) // [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2]
+
   - Search in rotated sorted array
     - Uses
       - Binary Search
