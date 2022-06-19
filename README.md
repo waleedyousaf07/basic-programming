@@ -1803,6 +1803,35 @@ Its between action and reducers like for redux logger, while making an action, i
 ## Sockets
 - sockets.io
 
+## DSA Techniques/Usage
+
+- Use this for that
+  - If input array is sorted
+    - Binary Search
+    - Two pointers
+  - If asked for all permutations/subsets
+    - Backtracking
+  - If given a tree or graph
+    - DFS
+    - BFS
+  - If given a linked list
+    - Two pointers
+  - If recursion is not allowed
+    - Stack
+  - If must solve in-place
+    - Swap corresponding values
+    - Store one or more different values in the same pointer
+  - If asked for max/min subarray/subset/options
+    - Dynamic Programming
+  - If asked for top/least K items
+    - Heap
+  - If asked for common strings
+    - Map
+    - Trie
+  - Misc
+    - Map/Set for O(1) time & O(n) space
+    - Sort input for O(nLogn) time & O(1) space 
+
 ## DSA Questions
 
 Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
