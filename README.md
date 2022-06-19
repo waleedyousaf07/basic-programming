@@ -1942,10 +1942,86 @@ Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
             console.log(dutchNatFlag(arr)) // [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2]
 
   - Search in rotated sorted array
-    - Uses
-      - Binary Search
     - Question
+      - Search the number in a rotated sorted array
+      - Time complexity should be O(log n)
+    - Uses
+      - Binary Search (Modified)
+        - First find the pivot of the rotated array (i.e. index of greatest number whose next is smaller than it)
+          - Create a function findPivot which takes the arr, low (0 initially), high (arr.length - 1 initially)
+          - Check for base cases, If low is greater than high, return -1 as no pivot and array is not rotated
+          - If high equals low, return low
+          - Then find mid by adding low and high and then dividing by 2 and flooring it
+          - Now check if value in arr at mid is greater than value in arr at mid + 1, then return mid, the pivot
+          - If value in arr at mid is less than value in arr at mid - 1, then return mid - 1, the pivot
+          - If value in arr at low is greater than or equal to value in arr at mid, then return recurred findPivot(arr, low, mid - 1)
+          - Else, return recurred findPivot(arr, mid + 1, high)
+        - Implement a mehtod which will do binarySearch
+          - Create a function which will take the arr in which to find, low index, high index and item to search
+          - If low is greater than high, return -1, i.e. not found
+          - Find mid by adding low and high then divide by 2
+          - If key equals value in arr at mid, then return mid (as we have to return index)
+          - If key is greater than value in arr at mid, then return recurred binarySearch(arr, mid + 1, high, keyToSearch)
+          - Else return recurred binarySearch(arr, low, mid - 1, keyToSearch)
+        - If pivot is -1, means array is not rotated so call binary search with binarySearch(arr, 0, arr.length - 1, keyToSearch)
+        - If pivot found, first check if value in arr at pivot is the value to search, if yes, simpy return pivot w/o binarySearch
+        - If value in arr at 0 is less than equal to key, return binarySearch(arr, 0, pivot -1, keyToSearch)
+        - Else return binarySearch(arr, pivot + 1, arr.length - 1, keyToSearch)
     - Example
+
+          function binarySearch(arr, low, high, key){
+            if (high < low)
+              return -1;
+
+            let mid = Math.floor((low + high) / 2);
+            if (key == arr[mid])
+              return mid;
+
+            if (key > arr[mid])
+              return binarySearch(arr, (mid + 1), high, key);
+
+            return binarySearch(arr, low, (mid - 1), key);
+          }
+
+          function findPivot(arr, low, high){
+            if (high < low)
+              return -1;
+            if (high == low)
+              return low;
+
+            let mid = Math.floor((low + high) / 2);
+            if (mid < high && arr[mid] > arr[mid + 1])
+              return mid;
+
+            if (mid > low && arr[mid] < arr[mid - 1])
+              return (mid - 1);
+
+            if (arr[low] >= arr[mid])
+              return findPivot(arr, low, mid - 1);
+
+            return findPivot(arr, mid + 1, high);
+          }
+          
+          function pivotedBinarySearch(arr, n, key){
+            let pivot = findPivot(arr, 0, n - 1);
+
+            if (pivot == -1)
+              return binarySearch(arr, 0, n - 1, key);
+
+            if (arr[pivot] == key)
+              return pivot;
+
+            if (arr[0] <= key)
+              return binarySearch(arr, 0, pivot - 1, key);
+
+            return binarySearch(arr, pivot + 1, n - 1, key);
+          }
+
+
+          let arr = [5, 6, 7, 8, 9, 10, 1, 2, 3];
+          let keyToFind = 3
+          console.log(pivotedBinarySearch(arr, arr.length, keyToFind))
+
   - Smallest sub array with K distinct elements
     - Uses
       - Sliding Window Algorithm
