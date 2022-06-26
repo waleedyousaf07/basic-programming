@@ -2280,7 +2280,7 @@ Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
 
             console.log(lengthOfLongestSubstring("dvdf")); // 3
 
-        - Hashmap (Time O(n), Space O(26) cuz map can only have this much keys)
+        - Hashmap (Time O(n), Space O(1))
 
               function lengthOfLongestSubstring(str) {
                 if (!str.length || typeof str !== 'string') return 0;
@@ -2303,12 +2303,50 @@ Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
 
               console.log(lengthOfLongestSubstring("dvdf"));
 
-
   - Anagram Difference
+    - Question
+      - Given 2 strings of equal lengths, required to return the minimum number of manipulations required to make the strings anagram, meaning the strings will have same characters and the sequence can differ
     - Uses
       - Hashmap
-    - Question
+        - Initialize a total count of manipulations
+        - Initialize a charMap with the all the characters of english alphabets as keys and 0 as their value
+        - Loop through the first string and at each iteration, set the charMap's key i.e. current string char and increase its value by one
+        - Loop through the second string and at each iteration, set the charMap's key i.e. current string char and decrease the value by one
+        - With that, the map would have 0's against the characters that match and some number against chars which dont match in both arrays
+        - Finally loop through the map's keys and count the values against each key (take absolute while counting to ignore '-' which basically shows count of second array)
+        - Return count/2 as we have sum of counts in both strings and we need manipulation on one
     - Example
+        - Hashmap (Time Complexity O(n), Auxilary O(1))
+            
+              function countManipulations(s1, s2) {
+                let count = 0;
+
+                let charArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+                let charMap = {};
+                
+                for (var i of charArr) {
+                  charMap[i] = 0
+                }
+                  
+                for (let i = 0; i < s1.length; i++) {
+                  charMap[s1[i]] = charMap[s1[i]] + 1
+                }
+
+                for (let i = 0; i < s2.length; i++) {
+                  charMap[s2[i]] = charMap[s2[i]] - 1
+                }
+                
+                for (let i in charMap) {
+                  if (charMap[i] !== 0) {
+                    count += Math.abs(charMap[i]);
+                  }
+                }
+                
+                return count / 2;
+              }
+
+              console.log(countManipulations('except', 'accept'))
+
   - Shortest substring with all characters
     - Uses
       - Two Pointers
