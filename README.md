@@ -1803,6 +1803,72 @@ Its between action and reducers like for redux logger, while making an action, i
 ## Sockets
 - sockets.io
 
+## DSA YT Channels
+
+- Coding Simplidied
+  - Array
+  - DP
+  - Linked List
+  - Trees
+- Lead Coding by FRAZ
+  - Bit Manipulation
+  - Maths
+  - Linked List
+  - Hashing
+  - Binary Search
+- take U forward
+  - Graph
+  - Recursion
+  - Tree
+  - Tries
+  - DP
+- Aditya Verma
+  - Binary Search
+  - Recursion
+  - DP
+  - Stack
+  - Heap
+- Code NCode
+  - Number Theroy
+  - Graph
+  - DSU
+  - String
+  - Segment Tree
+
+## Algorithms
+
+- Searching
+  - Linear Search
+  - Binary Search
+  - Depth First Search
+  - Breadth First Search
+- Sorting
+  - Insertions Sort
+  - Heap Sort
+  - Selection Sort
+  - Merge Sort
+  - Quick Sort
+  - Counting Sort
+  - Bubble Sort
+- Graphs
+  - Dijkstra's Algo
+  - Bellman Ford Algo
+  - Floyd Warshall Algo
+  - Topological Sort Algo
+  - Flood Fill algo
+  - Lee Algo
+  - Kruskal's Algo
+- Arrays
+  - Floyd's Cycle Detection Algo
+  - KMP Algo
+  - Kadane's Algo
+  - Quick Select Algo
+  - Boyer - More Majority Vote Algo
+- Basics
+  - Huffman Coding Compression Algo
+  - Euclid's Algo
+  - Union Find Algo
+
 ## DSA Techniques/Usage
 
 - Use this for that
@@ -2052,10 +2118,87 @@ Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
           console.log(pivotedBinarySearch(arr, arr.length, keyToFind))
 
   - Smallest sub array with K distinct elements
+    - Question
+      - Find find range in array with k distinct elements
     - Uses
       - Sliding Window Algorithm
-    - Question
-    - Example
+    - Example (Complexity time: O(n) and space O(k))
+
+          function minRange(arr,n,k) {
+            // Initially left and right side is -1 and -1,
+            // number of distinct elements are zero and
+            // range is n.
+            let l = 0, r = n;
+
+            // Initialize right side
+            let j = -1;
+
+            let hm = new Map();
+
+            for (let i = 0; i < n; i++) {
+              while (j < n) {
+                // Increment right side.
+                j++;
+
+                // If number of distinct elements less
+                // than k.
+                if (j < n && hm.size < k) {
+                  if (hm.has(arr[j]))
+                    hm.set(arr[j],
+                          hm.get(arr[j]) + 1);
+                  else
+                    hm.set(arr[j],1);
+                }
+                // If distinct elements are equal to k
+                // and length is less than previous length.
+                if (hm.size == k && ((r - l) >= (j - i))) {
+                  l = i;
+                  r = j;
+                  break;
+                }
+              }
+
+              // If number of distinct elements less
+              // than k, then break.
+              if (hm.size < k)
+                break;
+
+              // If distinct elements equals to k then
+              // try to increment left side.
+              while (hm.size == k) {
+                if (hm.has(arr[i]) && hm.get(arr[i]) == 1)
+                  hm.delete(arr[i]);
+                else
+                  if (hm.has(arr[i]))
+                    hm.set(arr[i],hm.get(arr[i]) - 1);
+
+                // Increment left side.
+                i++;
+
+                // It is same as explained in above loop.
+                if (hm.size == k && (r - l) >= (j - i)) {
+                  l = i;
+                  r = j;
+                }
+              }
+              if (hm.has(arr[i]) && hm.get(arr[i]) == 1)
+                hm.delete(arr[i]);
+              else
+                if(hm.has(arr[i]))
+                  hm.set(arr[i],hm.get(arr[i]) - 1);
+            }
+
+            if (l == 0 && r == n)
+              console.log("Invalid k");
+            else
+              console.log(l + " " + r);
+          }
+              
+              
+          // Driver code
+          let arr=[1, 1, 2, 2, 3, 3, 4, 5];
+          let k = 3;
+          minRange(arr, arr.length, k);
 
 - Multi-dimensional arrays
   - Search In Row Wise And Column Wise Sorted Matrix
