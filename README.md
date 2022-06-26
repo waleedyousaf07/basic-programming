@@ -638,26 +638,6 @@ Currying version
 
 We made the function curriable but if we already have functions which are not curriable, then we can use libraries like lodash which provides methods to make them curriable.
 
-
-### Type Coercion
-
-Type coercion is the automatic or implicit conversion of values from one data type to another. For example, converting a string value to an equivalent number value
-
-    let a = 12;
-    let b = "12"
-
-    if (a == b) {
-      console.log('Both are equal');
-    } else {
-      console.log('Both are not equal');
-    }
-    // Output: 'Both are equal'
-
-    let c = a + b
-    console.log(c); // output: '1212'
-
-To avoid this inconsistent behaviour, we can use '===' to also check the type while comparing and explicitly converting the variable to number while adding
-
 ### Functional Chaining
 
 We can call another method on the result of one method. Its a way to call a sequence of methods in `OOP`. Each of the function call would be returning the reference to `this` and hence can call another method against that object.
@@ -1154,6 +1134,25 @@ It works like when request from one origin is made, a `preflight` OPTIONS call r
 
       var objectIsNew = JSON.parse(JSON.stringify(objectIsOld));
 
+- Type Coercion
+
+  Type coercion is the automatic or implicit conversion of values from one data type to another. For example, converting a string value to an equivalent number value
+
+      let a = 12;
+      let b = "12"
+
+      if (a == b) {
+        console.log('Both are equal');
+      } else {
+        console.log('Both are not equal');
+      }
+      // Output: 'Both are equal'
+
+      let c = a + b
+      console.log(c); // output: '1212'
+
+  To avoid this inconsistent behaviour, we can use '===' to also check the type while comparing and explicitly converting the variable to number while adding
+
 - Throttling
   
   Delaying function execution. Like search after 500ms. It will wait until the delay/timeout.
@@ -1192,6 +1191,10 @@ It works like when request from one origin is made, a `preflight` OPTIONS call r
       };
 
       const debouncedSearchRecords = debounce(searchRecords(), 1000);
+
+- Temporal Dead Zone
+
+Variables declared with let and const are not hoisted and they dont have a default value of undefined. That is the Temporal Dead Zone where variabled are un reachable. They exist in temporal dead zone from start until we initialize them.
 
 - Pure Functions
 
@@ -1246,6 +1249,7 @@ Features:
 - Multi-line Strings
 - Default Parameters
 - Template Literals
+- Spread/Rest operators
 - Destructuring Assignment
 - Enhanced Object Literals
 - Promises
