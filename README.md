@@ -2243,10 +2243,67 @@ Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
 
 - Strings
   - Longest Substring Without Repeating Characters
+    - Question
+      - Given a string, find length of longest sub string w/o a repeating character
     - Uses
       - Sliding Window
-    - Question
+        - Maintain a current_string which would be the substring w/o repeating chars
+        - Loop through the str length
+        - On each iteration, check if current char is in the current_string, if yes, slice the current_string to only contain the characters untile the first repeated ones + 1 index
+        - Then append the current char to the current_string and update the lengthOfSubstr to the max of previous lengthOfSubstr and current_string.length 
+      - Hashmap
+        - Maintain a hashmap which contains the visited chars of string as keys and their indexes as their values
+        - Also maintain an index start used to determine already visited chars
+        - Also maintain a lengthOfLongestSubstr
+        - Iterate over the string
+        - On each iteration, check if the the current char of string is a key in hashmap, if yes, update the start with the currentString value + 1
+        - Then, update the hasmap's key i.e. the currentString char and its value as current index
+        - Also update the lengthOfLongestSubstr by taking max of lengthOfLongestSubstr and (i - start + 1)
     - Example
+      - Sliding Window (Time O(n^2 cuz substring is a loop))
+
+            function lengthOfLongestSubstring(string) {
+              var lengthOfSubstr = 0, current_string = "", i, char, pos;
+
+              for (i = 0; i < string.length; i++) {
+                char = string.charAt(i);
+                pos = current_string.indexOf(char);
+                if (pos !== -1) {
+                  // cut "dv" to "v" when you see another "d"
+                  current_string = current_string.substr(pos + 1);
+                }
+                current_string += char;
+                lengthOfSubstr = Math.max(lengthOfSubstr, current_string.length);
+              }
+              return lengthOfSubstr;
+            }
+
+            console.log(lengthOfLongestSubstring("dvdf")); // 3
+
+        - Hashmap (Time O(n), Space O(26) cuz map can only have this much keys)
+
+              function lengthOfLongestSubstring(str) {
+                if (!str.length || typeof str !== 'string') return 0;
+
+                if (str.length == 1) return 1;
+                let hashTable = {};
+                let longestSubstringLength = 0;
+                let start = 0;
+                for (let i = 0; i < str.length; i++) {
+                  console.log('hashTable: ', hashTable)
+                  console.log('hashTable[str[i]]: ', hashTable[str[i]])
+                  if (hashTable[str[i]] && hashTable[str[i]] >= start) {
+                    start = hashTable[str[i]] + 1;
+                  }
+                  hashTable[str[i]] = i;
+                  longestSubstringLength = Math.max(longestSubstringLength, (i - start + 1))
+                }
+                return longestSubstringLength;
+              }
+
+              console.log(lengthOfLongestSubstring("dvdf"));
+
+
   - Anagram Difference
     - Uses
       - Hashmap
