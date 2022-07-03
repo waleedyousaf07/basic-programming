@@ -68,6 +68,10 @@ A tree shaking utility analyzes your code before running it, to detect code that
 
 `ASTs` are used and even extra `whitespaces` are removed.
 
+### Isomorphic JS
+
+Same JS will/can run on a Client or Browser just as it works on the server. The code should be such or have cases that both the browser and server can understand and read
+
 ### HTML 5
 
 - iFrames
