@@ -2348,10 +2348,86 @@ Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
               console.log(countManipulations('except', 'accept'))
 
   - Shortest substring with all characters
-    - Uses
-      - Two Pointers
     - Question
-    - Example
+      - Find the smallest window in a string containing all characters of another string
+    - Uses
+      - Two Pointers and Sliding Window
+        - Initialize a map with all characters/alphabets or an array with all character codes
+        - Initialize 2 pointers i and j and start incrementing j and on each iteration, if the value on j is not in the map, increase it and increase the count variable, dont increase the count var if value already exists
+        - If the count is 0, iterate now using i until the count is zero
+        - While iterating, keep track of start index of the result window and update it if already seen the character
+    - Example 
+      - Sliding Window (Time Complexity: O(n), Auxiliary Complexity: O(1))
+
+            function minWindow(s,t) {
+              let m = new Array(256);
+              for (let i = 0; i < 256; i++) {
+                m[i] = 0;
+              }
+              
+              // Length of ans
+              let ans = Number.MAX_VALUE;
+
+              // Starting index of ans
+              let start = 0;
+              let count = 0;
+
+              // Creating map
+              for (let i = 0; i < t.length; i++) {
+                if (m[t[i].charCodeAt(0)] == 0) {
+                  count++;       
+                }
+
+                m[t[i].charCodeAt(0)]++;
+              }
+
+              // References of Window
+              let i = 0;
+              let j = 0;
+
+              // Traversing the window
+              while (j < s.length) {
+
+                // Calculations
+                m[s[j].charCodeAt(0)]--;
+
+                if (m[s[j].charCodeAt(0)] == 0) {
+                  count--;       
+                }
+
+                // Condition matching
+                if (count == 0) {
+                  while (count == 0) {
+
+                    // Sorting ans
+                    if (ans > j - i + 1) {
+                      ans = Math.min(ans, j - i + 1);
+                      start = i;
+                    }
+
+                    // Sliding I
+                    // Calculation for removing I
+                    m[s[i].charCodeAt(0)]++;
+
+                    if (m[s[i].charCodeAt(0)] > 0) {
+                      count++;
+                    }
+
+                    i++;
+                  }
+                }
+                j++;
+              }
+              if (ans != Number.MAX_VALUE) {
+                return (s).join("").substring(start, (start + ans));
+              }
+              else {
+                return "-1";   
+              }
+            }
+
+            console.log(minWindow('adobecodebanc'.split(''), 'abc'.split('')))
+
   - Minimum operations to make strings equal
     - Uses
       - Hashmap
