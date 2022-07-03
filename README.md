@@ -2426,7 +2426,7 @@ Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
               }
             }
 
-            console.log(minWindow('adobecodebanc'.split(''), 'abc'.split('')))
+            console.log(minWindow('adobecodebanc'.split(''), 'abc'.split(''))) // "banc"
 
   - Minimum operations to make strings equal
     - Uses
@@ -2436,9 +2436,38 @@ Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
 
 - Recursion & Backtracking
   - Print Permutations Of String
-    - Uses
     - Question
+      - You are given an input string 'S'. Your task is to find and return all possible permutations of the input string
+    - Uses
+      - Recursion & Backtracking
+        - Iterate over the string
+        - At each iteration, extract the currentChar at i and the remainingString without that currentChar
+        - Now join the currentChar with each permutation of the remaingString which is extracted by calling the method recursively and push each in a results array
     - Example
+      - Recursion & Backtracking (TC -> O(n!))
+        
+            function permut(string) {
+              if (string.length < 2) return string; // This is our break condition
+
+              var permutations = []; // This array will hold our permutations
+              for (var i = 0; i < string.length; i++) {
+                var char = string[i];
+
+                // Cause we don't want any duplicates:
+                if (string.indexOf(char) != i) // if char was used already
+                  continue; // skip it this time
+
+                var remainingString = string.slice(0, i) + string.slice(i + 1, string.length); //Note: you can concat Strings via '+' in JS
+
+                for (var subPermutation of permut(remainingString)) {
+                  permutations.push(char + subPermutation)    
+                }
+              }
+              return permutations;
+            }
+
+            console.log(permut('bad')) // ["bad", "bda", "abd", "adb", "dba", "dab"]
+
   - Return Subsets Sum to K
     - Uses
       - Sorting
