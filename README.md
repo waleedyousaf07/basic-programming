@@ -6,7 +6,7 @@ JavaScript, DSA, OOP, Databases, and Networking Cheatsheet 🚀📚
 
 My secret weapon for leveling up in Core JavaScript, Data Structures and Algorithms (DSA), Object-Oriented Programming (OOP), Databases, and Networking (loading :p). 
 
-Packed with bite-sized knowledge nuggets and playful explanations. Whether I'm conquering new coding realms or need a speedy refresher before an interview, this is my go-to guide! 🎮⚔️
+Packed with bite-sized knowledge nuggets and playful explanations. Whether I'm exploring new coding realms or need a speedy refresher before an interview, this is my go-to guide! 🎮⚔️
 
 <br><hr><br>
 
