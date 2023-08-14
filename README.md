@@ -80,49 +80,6 @@ For minification, the `productionSourceMap` option disables source maps in the p
 
 Same JS will/can run on a Client or Browser just as it works on the server. The code should be such or have cases that both the browser and server can understand and read
 
-### Semantic HTML *** *
-
-Semantic HTML refers to the practice of using HTML elements according to their intended meaning and purpose, rather than just for visual styling or layout. 
-
-It provides context and meaning to the content of a web page, making it more accessible, understandable, and maintainable. Semantic HTML helps search engines, assistive technologies, and developers to better understand the structure and content of a web page.
-
-- The `<header>` element represents the introductory content at the top of a section or page. It often contains branding, navigation, or other header-related content.
-- The `<nav>` element represents a section of the page that contains navigation links.
-- The `<main>` element represents the main content of a document. It should be unique to the document and not repeated across a set of documents such as site navigation.
-- The `<article>` element represents a self-contained composition that could be distributed and reused independently. It could be a blog post, a news article, a forum post, etc.
-- The `<section>` element represents a thematic grouping of content. It helps to organize and structure the content of the page.
-- The `<aside>` element represents content that is tangentially related to the content around it. It's often used for sidebars, pull quotes, advertising, or similar content.
-- The `<footer>` element represents the footer of a section or the whole page. It typically contains information about the author, copyright, contact details, or links to related documents.
-
-
-### HTML 5 *** *
-
-- iFrames
-- New elements
-  - `<video controls preload><source src="video.mp4" type="video/ogg; codecs='vorbis, theora'" /></video>`
-  - `<audio autoplay="autoplay" controls="controls"><source src="file.mp3" /></audio>`
-  - `<nav><a href="/html/">HTML</a></nav>`
-  - `<header><img src="company-logo.png" /><nav>...</nav></header>`
-  - `<canvas></canvas>`
-  - `<footer>...</footer>`
-  - ```
-    <figure><img src="image/image-1.jpg" alt="About ADMEC" />
-      <figcaption><p>This is our institute </p></figcaption>
-    </figure>
-    ```
-- New types of inputs i.e. email, month, number, range, search, tel, color, week, url, time, date, datetime-local etc. ContentEditable, Progress, section, main(1 page can only have 1 main, also, navs, headers, footers are not allowed)
-- Placeholders
-- Required attribute
-- Preload Videos
-- Regex
-- Accessibility (validations in forms)
-- Inline elements/Dynamic Page Support
-    - mark – It highlights the content that is marked in some or the other way.
-    - time – This helps in adding current time as well as date to the webpage.
-    - meter – It helps in indicating that how much space in the storage disk is still there.
-    - progress bar – It helps in knowing the progress of the task that has been assigned for its completion.
-- nonce (we usually use nonce attribute inside script and style tag. This nonce tag basically generates a random number which is for one time use only. So, it is regenerated each time the page refreshes. It is great features as it can be used to increase the security of the content of the page. This helps in stating and providing the authority to the webpage to specify a particular script or style.)
-
 ### Sprites
 
 They are used to load alot of images in a web page together by making single(maybe few) http requests resulting in less time to load the page
@@ -139,11 +96,11 @@ Var declarations are globally scoped or function/locally scoped. They can be re-
 
 Cannot be reinialized. Has a block level scope. Primitive types cannot be updated/re-assigned/re-declared but objects and arrays can. Every const declaration, therefore, must be initialized at the time of declaration.
 
-Const create a variable name binding so that name cannot be re-inialized but the properties can. So its mutable. They cant be hoisted ***. 
+Const create a variable name binding so that name cannot be re-inialized but the properties can. So its mutable. They are hoisted differently than `var`. 
 
 ### Let
 
-Can be re initialized. Has a block level scope. It cannot be redeclared withing its scope.
+Can be re initialized. Has a block level scope. It cannot be redeclared withing its scope. They are hoisted differently than `var`
 
 ### Var, Let, Const Scopes
 
@@ -398,22 +355,6 @@ We can define a promise like:
 
     myAsyncFunction();
 
-### Time and Space Complexity (BigO) (https://github.com/jamiebuilds/itsy-bitsy-data-structures/blob/master/itsy-bitsy-data-structures.js) **-** *** *
-
-### MVC *** *
-
-It is a design pattern. The goal is divide large application into specific sections each having their own purpose.
-
-User requesting a specific page from the server. The server responds to a specific controller. 
-
-Controller: `Handles the entire request` from the client. And will tell the rest of the server what to do with the request. It acts as a middleman b/w model and view. It should not contain much code. 
-
-Model: After receiving the request, the controller asks the model to get the data. Model is `responsible for all of the data logic` of the request. It interacts with the DB and handles all CRUD saving and other data operations. The controller shouldnt interact with the data it should always ask the model. Model doesnt need to do anything on failure or success, controller will handle that.
-
-View: After the model sends the data to controller, then controller sends the data to view to `render` and view is only concerned for displaying the data its feeded with. The view will send the HTML (or so) back to controller which then is served to the user.
-
-Important to note is that `model and view never interact` with each other. Presentation and Logic is completely separate.
-
 ### Blob
 
 It is a `file-like object` of immutable raw data which can be `read as text or binary data`. Blobs can represent data that isn't necessarily in a JavaScript-native format.
@@ -443,54 +384,6 @@ Binding an object to function:
     playerNameFunc();
 
 Binding doesnt work with arrow function.
-
-### OOP *** *
-
-- Class (`class className`)
-
-- Object (`new ClassName(params)`)
-
-- Inheritance (`extends`)
-
-- Polymorphism
-
-  Polymorphism -> `Many-forms`. Can have a same function in parent and a class which is `inherited` and if we `override` in child class(function overriding) then the parent's function has 2 forms.
-
-- Abstraction
-
-  It is hiding the implementation and only showing the functionality or essentials.
-
-  Not allowing the user to access a class's variable or function. Instead, let other local functions of the class calculate and use those methods and properties.
-
-- Encapsulation
-
-  It is wrapping up the data and methods under a single unit.
-
-  Properties and methods are private.
-
-  It is binding of data to functions.
-
-  A mechanism of `restriciting direct access` to some of the object's components. It also bundles methods which operate on that data. Its required for:
-
-  - Security, controlled access
-  - Hide implementation and expose behaviour
-  - Loose coupling - modify the implementation anytime
-
-  `Getters and setter methods` are used to get those objects/properties. 
-
-- Association
-
-  If two classes in a model need to communicate with each other, there must be a link between them, and that can be represented by an association (connector).
-
-  Aggregation and Composition are subsets of association meaning they are specific cases of association.
-
-- Aggregation
-
-  Aggregation implies a relationship where the child can exist independently of the parent. Example: Class (parent) and Student (child). Delete the Class and the Students still exist.
-
-- Composition 
-
-  Composition implies a relationship where the child cannot exist independent of the parent. Example: House (parent) and Room (child). Rooms don't exist separate to a House.
 
 ### Class & Prototypal Inheritance
 
@@ -845,7 +738,7 @@ When it gets completed, it `comes to task queue`, and then to the `event loop`. 
 
 The reason we need event loop is that we cant simply push back the queued task directly on the stack cuz then it'll disturb the normal flow of things happening.
 
-There are two callback queues, one for macrotasks and one for microtasks (usually for promises) and first micro runs and then macro runs
+There are two callback queues, one for macrotasks/Task Queue and one for microtasks/Job Queue (usually for promises and other priority items) and first micro runs and then macro runs
 
 ### Render Queue
 
@@ -953,149 +846,10 @@ The requesting website must have same origin means `protocol` e.g. https, `domai
 
 It works like when request from one origin is made, a `preflight` OPTIONS call request is made before that to ensure the validity of request. If valid, the requestee will set additional headers which will let the client/browser know its safe and then the actual call is made. The requestee will set the headers like `Access-Control-Allow-Origin: *` where * means any domain can access. Additinally some other headers will help retrict methods like GET, POST, DELETE
 
-## Data Structures *** *
-- Stack
-
-  It follows the LIFO. In js, array can be used cuz it supports stack. Example can be `git stash`
-  functions like 
-    
-    - push() -> adds one item at the top
-    - pop() -> removes the top value and returns the removed item
-    - peek() -> returns the last element but doesnt remove it
-    - size() -> shows the length of stack/array
-
-    Palindrome number is if spelled backward, it remains the same
-
-        let myStack = [];
-        let word = "racecar";
-        let reversed = "";
-
-        // pushing letters in stack
-        for (i = 0; i < word.length; i++) {
-          myStack.push(word[i]);
-        }
-
-        // popping the letters back in a reversed string
-        for (i = 0; i < myStack.length; i++) {
-          reversed += myStack.pop();
-        }
-- Queue
-
-  Its kind of an array follows FIFO.
-
-  - print -> prints or logs collectio
-  - enqueue -> push an item
-  - dequeue -> pop an item but the first one so uses `shift`
-  - front -> return the item at the front (0th index)  w/o removing it
-  - size -> returns length
-  - isEmpty -> returns true if no items
-
-- Priority Queue
-
-  Along with enqueuing an item, we can send a priority, if no priority is passed, it behaves like normal queue
-
-      var pq = new PriorityQueue();
-      pq.enqueue(['ronaldo', 5]);
-      pq.enqueue(['neymar', 3]);
-      pq.enqueue(['bale', 3]);
-
-- Set
-
-   Its kind of an array except no duplicate items and the values
-   are not in any particular order. Basic set method provided by ES6
-   doesnt include all the methods of set, we may need to implement
-   part of it ourself if needed. The methods are
-
-   - has -> returns true false if element is present in set
-   - values -> return the collection/array
-   - add -> only adds if element isnt already added - uses `has` to check - returns true and false if added
-   - remove -> checks if collection has that element and then using its index, removes it by splicing the collection like `coll.splice(indexOfItemToRemove, 1);` and returns true false
-   - size -> returns length of collection. For ES6 set, size is not a method but a property so no need to do `mySet.size()` just use `mySet.size`
-   - union -> returns union of 2 sets. No duplicate entries
-   - intersection -> returns intersection i.e. only common entries
-   - difference -> subtracts entries from 1st collection which are in second
-   - subset -> if the first set is completly contained within another set. Uses `every` 
-
-- Linked list
-
-  A data structure where elements are stored in a node. The node contains 2 key pieces of information, the element itself and the reference to the next node.
-
-  Some advantages and disadvantages over arrays are
-    
-    Array/LinkedList
-
-    - Fixed size/dynamic size (although JS hides this in array)
-    - Inefficient insertions-deletions/efficient insertions-deletions
-    - Random access(effiecient indexing)/no random access
-    - Memory wastage/no memory wastage cuz dynamic size
-    - Sequential access is faster (elements in contagious mem locations)/sequential access is slower
-
-  Every linked list has a `head`  pointer and a size. Last node points to null
-
-- Circular queue
-- Trie
-
-  A datastructure many functional programmings support which `deep freeze` all the properties of the object. 
-
-- Binary Search Tree
-
-  Tree structure has the entries which are `nodes`. The top one is `root`. Have `parent children siblings`. The node which doesnt have any children are `leafNodes`
-
-  In a binary tree however, each node can only have 2 children/branches. They are ordered. Each left sub-tree
-  is less than or equal to parent node and each right sub-tree is greater than or equal to the parent node.
-
-  When they use binary search, an average operation can skip about half of the tree so each look-up, insertion 
-  or deletion takes time proportional to the logrithm of the number of items stored in a tree. Can use recursion to implement BST. 
-
-  - Height
-
-  Height is the distance from the root to any leaf node. Level of nesting represents the height. The root has a 
-  height 0, and so on. Different paths in a same tree can have different heights. 
-  
-  Each tree will have a minimum and a maximum height. If the tree is balanced, these values will differ at most by 1.
-
-  Searching through a balanced tree is much more efficient
-
-  - Traversal
-    
-    Ways to travers a tree
-
-      - in-order -> begin at the left most node and end at the right most node. Like left, then parent, then parent's left child, then parent, then parent's right child if any and so on. Go in order left, root, right
-      - pre-order -> we explore the root nodes before the leaves. First root node, then traverse left side's first root, then its root, and go in order root, left, right 
-      - post-order -> explores the leaf nodes before the roots. So left most leaf, then its right left most leaf, then its right leaf then root and finish one side/branch of the tree.
-      - level-order -> is also called breath first search. It explores all the nodes on one level of the tree before moving on to the next level. For each level from top to bottom, follow left to right. 
-
-- Hash Tables
-
-  A hash table is used to implement associative arrays of mapping of key value pairs. Its a common way to implement mao data structure or objects. Widely used cuz of efficiency. 
-  
-  The average time to lookup is not tied to the number of elements stored in the table.
-  
-  The avg time complexity in big `O` notation is O(1) for search, insert or delete (worst is O(n))
-
-  It works by taking a key input and then runs it through the hash function which maps strings to numbers and 
-  usually numbers corresponds to indexes in an array. All the keys should map to different numbers, cant have same keys/numbers. If two words get hashed to same number, its called collision
-
-## Algos
-
-## Javascript *** *
-- Classes
-- Functions
-- Inheritence (`extends`)
-
-  Inherits properties/functions from its parent class
-
-- Interfaces (`has`)
-
-  Defines a shape objects/classes can take
-
-- Abstraction
-- JS methods
+### JS methods
   - forEach
   - map
-  - shift
-
-  It removes the first item and returns that first item. It mutates the array
+  - shift: It removes the first item and returns that first item. It mutates the array
   - unshift
   - slice
 
@@ -1136,7 +890,7 @@ It works like when request from one origin is made, a `preflight` OPTIONS call r
 
         const myReducedArray = myArray.reduce((total, item) => total + (item.num1 + item.num2), 0) 
 
-- Shallow/Deep Copies
+### Shallow / Deep Copies
 
   In a shallow copy, a new object is created that has an exact copy 
   of the values in the original object. If any of the fields of the 
@@ -1163,7 +917,7 @@ It works like when request from one origin is made, a `preflight` OPTIONS call r
 
       var objectIsNew = JSON.parse(JSON.stringify(objectIsOld));
 
-- Type Coercion
+### Type Coercion
 
   Type coercion is the automatic or implicit conversion of values from one data type to another. For example, converting a string value to an equivalent number value
 
@@ -1182,27 +936,27 @@ It works like when request from one origin is made, a `preflight` OPTIONS call r
 
   To avoid this inconsistent behaviour, we can use '===' to also check the type while comparing and explicitly converting the variable to number while adding
 
-- Throttling
+### Throttling
   
   Delaying function execution. Like search after 500ms. It will wait until the delay/timeout.
 
-        const throttle = (func, limit) => {
-        let flag = true;
-        return (...args) => { // `...args` will capture all the params as we dont know how many they can be
-          if (flag) {
-            func.apply(this, args);
-            flag = false;
+      const throttle = (func, limit) => {
+      let flag = true;
+      return (...args) => { // `...args` will capture all the params as we dont know how many they can be
+        if (flag) {
+          func.apply(this, args);
+          flag = false;
 
-            setTimeout(() => {
-              timer = undefined;
-            }, limit);
-          }
-        };
+          setTimeout(() => {
+            timer = undefined;
+          }, limit);
+        }
       };
+    };
 
-      const throttledSearchRecords = throttle(searchRecords(), 1000);
+    const throttledSearchRecords = throttle(searchRecords(), 1000);
 
-- Debouncing
+### Debouncing
   
   Prevent the event trigger from being fired too often. It waits for certain time (delay/timeout) that is the difference between the events. Means if the trigger difference of two events is greater than the delay, only then make a call.
 
@@ -1221,11 +975,11 @@ It works like when request from one origin is made, a `preflight` OPTIONS call r
 
       const debouncedSearchRecords = debounce(searchRecords(), 1000);
 
-- Temporal Dead Zone
+### Temporal Dead Zone
 
 Variables declared with let and const are not hoisted and they dont have a default value of undefined. That is the Temporal Dead Zone where variabled are un reachable. They exist in temporal dead zone from start until we initialize them.
 
-- Pure Functions
+### Pure Functions
 
   When a function calculates its output from using other than its parameters as an input. When its not completly and only dependant on its inputs. 
 
@@ -1236,7 +990,7 @@ Variables declared with let and const are not hoisted and they dont have a defau
 
   A pure function is `Referentially Transparent`. Referential Transparency, roughly, means that you can replace the call to the function with its return value or vice versa at any point in the program, without changing the meaning of the program.
 
-- HOCs
+### Higher Order Functions
 
   Its a function that either takes a function as a parameter or returns a function
 
@@ -1268,11 +1022,8 @@ Variables declared with let and const are not hoisted and they dont have a defau
       - reduce()
       - sort()
 
-- lodash
+### ES6 Features
 
-## ES6 *** *
-
-Features:
 - let and const Keywords
 - Arrow Functions
 - Multi-line Strings
@@ -1285,282 +1036,58 @@ Features:
 - Classes
 - Modules
 
-## Git/GitHub
+<br>
+<hr>
+<br>
 
-- installation
-  - Install git from git scm
-- Clone dir/Git Repos
-- Setup in webstorm
-- Adding an existing project to GitHub
-  - in ur project main file, run
-    - git init
-  - add and commit all files in project by
-    - git add .
-    - git commit -m "adds all files" 
-  - change base branch from master to main (optional - need change cuz git creates `main` branch)
-    - git branch -m main
-  - now connect to remote repo by
-    - git remote add origin https://github.com/WaleedYousaf/ttt.git // link of repo
-  - now just push on ur branch
-    - git push origin main
-- Cloning a project in my webstorm myapp project
-- Cloning Margalla/Pulpo
-- Git commands
-  - Mock commands:
-    - git commit --amend --reset-author // resetting author
-    - git remote add origin https://github.com/ waleedyousaf07/football_roster  [To ]
-      OR git clone ssh://git@github.com/[username]/[repository-name].git
-    - git push -u origin master
-    - git checkout -b my_branch [created new my_branch and swithced to mybranch]
-    - //Make changes in the code
-    - git add . [for add all files in current dir] OR git add -A [maybe for all in current dir and its siblings] OR git add filename.js OR $ git add my-file.ts another-file.js new_file.rb  [for adding multiple files concurrently] OR git add folder/subfolder/* 
-    - Custom Add: git add src/actions/* src/components/AddPlayerView.js
-    - git rm --cached my-file.ts  [to remove myfile.ts from staged basket/area] OR git reset another-file.js [works as opposite of add] OR git reset HEAD .eslintrc
-    - git commit -m "my_msg_for the changes" OR git commit -m "my_msg_for the changes" --no-verify [for bypassing .eslint]
-    - git push origin my_branch   OR git push -u origin master [with -u, next time we only needs to call git push]
-  - Getting & Creating Projects
-    - Init
-      - command: git init
-      - Initialize a local Git repository
-      - Getting & Creating Projects
-    - Clone
-      - git clone ssh://git@github.com/[username]/[repository-name].git
-      - git clone /path/to/repository 	//local server
-      - git clone username@host:/path/to/repository
-      - Create a local copy of a remote repository
-      - Getting & Creating Projects
-  - Merging my branch with others
-    - git add mybranch
-    - git commit -m "mybranch msg"
-    - git checkout dosriBranch
-    - git pull
-    - git checkout mybranch
-    - git merge dosriBranch
-    - [Resolve conflicts]
-    - git add mybranch
-    - git commit -m "my msg"
-  - Restoring / Reverting file from another branch
-    - git checkout FROM_BRANCH_NAME path/to/file	
-  - Basic Snapshotting
-    - status
-      - command: git-status
-      - Show the working tree status
-      - Check status
-    - add
-      - command: git add [file-name.txt]
-      - Add a file to the staging area
-    - add
-      - command: git add -A
-      - Add all new and changed files to the staging area
-    - commit
-      - git commit -m "[commit message]"
-      - Commit changes
-    - remove
-      - git rm -r [file-name.txt]
-      - Remove a file (or folder)
-  - Branching & Merging
-    - add/remove files to untracked
-      - git update-index --assume-unchanged
-      - git update-index --no-assume-unchanged path/to/file
-    - replace a file with another branch
-      - git checkout origin/master [filename]
-    - branch
-      - git branch 	
-      - List branches (the asterisk denotes the current branch)
-    - branch 
-      - git branch -a
-      - List all branches (local and remote)
-    - branch
-      - git branch [branch name]
-      - Create a new branch
-    - branch
-      - git branch -d [branch name]
-      - Delete a branch
-    - push
-      - git push origin --delete [branch name]
-      - Delete a remote branch
-    - checkout
-      - git checkout -b [branch name]
-      - Create a new branch and switch to it
-    - checkout
-      - git checkout -b [branch name] origin/[branch name]
-      - Clone a remote branch and switch to it
-    - checkout
-      - git checkout [branch name]
-      - Switch to a branch
-    - checkout
-      - git checkout - 
-      - Switch to the branch last checked out
-    - checkout
-      - git checkout -- [file-name.txt] 	
-      - Discard changes to a file
-    - merge
-      - git merge [branch name] 
-      - Merge a branch into the active branch
-    - merge
-      - git merge [source branch] [target branch]
-      - Merge a branch into a target branch
-    - stash
-      - git stash 
-      - Stash changes in a dirty working directory
-    - stash
-      - git stash apply stash@{0}
-    - stash
-      - git stash clear
-      - Remove all stashed entries 
-  - Sharing & Updating Projects
-    - push
-      - git push origin [branch name]
-      - Push a branch to your remote repository
-    - push
-      - git push -u origin [branch name]
-      - Push changes to remote repository (and remember the branch)
-    - push
-      - git push 	
-      - Push changes to remote repository (remembered branch)
-    - push
-      - git push origin --delete [branch name] 	
-      - Delete a remote branch
-    - pull
-      - git pull 	
-      - Update local repository to the newest commit
-    - pull
-      - git pull origin [branch name] 
-      - Pull changes from remote repository
-    - remote
-      - git remote add origin ssh://git@github.com/[username]/[repository-name].git 	
-      - Add a remote repository
-    - remote
-      - git remote set-url origin ssh://git@github.com/[username]/[repository-name].git 	
-      - Set a repository's origin branch to SSH
-  - Inspection & Comparison
-    - log
-      - git log 	
-      - View changes
-    - log
-      - git log --summary 	
-      - View changes (detailed)
-    - diff
-      - git diff [source branch] [target branch] 	
-      - Preview changes before merging
-    - revert commit
-      - git reset --hard HEAD~1
-      - reset to a specific commit	
-        - git reset --hard \<commit-hash>
-        - git push -f origin \<curr-branch>
-    - revert merge
-      - git merge --abort
+## HTML
 
-## Docker *** *
+### Semantic HTML
 
-- installation
-  - [follow official digital ocean link]
+Semantic HTML refers to the practice of using HTML elements according to their intended meaning and purpose, rather than just for visual styling or layout. 
 
-- for running docker
-  - for local BE, in docker-compose.yml, comment out app and ngnix and add following at the end of web
-    - same indentation
-      ports:
-        - 8081:8081 
-  - in directory with docker.yml file, run command:
-    - sudo docker compose up -d
-  - for viewing logs
-    - sudo docker logs -f web
-  - check if containers are up
-    - sudo docker ps
-    - docker ps -a [maybe with all details like id]
-  - restart web worker, maybe after changes like restarting npm start
-    - sudo docker-compose up -d --f worker
-  - check web logs
-    - docker logs -f web
-    - docker logs -f worker
-    - docker logs -f [id of container, can be seen by docker ps command]
-    - sudo docker-compose logs -f web worker [maybe for multiple logs in single command]
-- for instance on digital ocean
-  - check and add ssh key by
-    - ssh keygen
-    - cat ~/.ssh/id-rsa.pub
-  - ask the person to add your public ssh key to instance
-  - setup DO instance
-    - ssh root@[instance_ip]
-    - ls {check if has already any project}
-    - git clone [https.. my proj]
-    - cd [proj dir]
-    - git checkout [my branch to test]
-    - {make changes to docker-compose.yml}
-      - {comment out app and ngnix}
-      - {add in web, after entry point as a sibling}
-        ports:
-          - 8081:8081 
-      - {in image worker -> environment, update SL_USERNAME and API_KEY from SL creds trello}
-      - {in image worker -> environment, update WEB_HOOK_BASE_URL to http://[instance_ip]:8081/...}
-      - {in worker -> environment, update WEB_HOOK_BASE_URL to http://[instance_ip]:8081/...}
-      - {now add the docker-compose.yml changes to instance} nano docker-compose.yml {to show that file}
-      - {now clear that file} > docker-compose.yml
-      - {now update with the previous changes} nano docker-compose.yml
-- FE image on dockerhub:
-  - [server/index.js mein https://migrate-db.wanclouds.net address daal dyna url mein]
-  - cd doosra-Frontend > sudo docker build -t wancloudsinc/doosra-vpc-frontend:db-mig-demo . 
-  - [jb build ojaey image phr]
-  - sudo docker push wancloudsinc/doosra-vpc-frontend:db-mig-demo 
-  - [jb push ojaey then]
-  - sudo docker-compose up -d --force-recreate app [in vpcBackend dir]
-- stop and up containers in detach mode:
-  - cd doosra-vpc-be>sudo docker-compose stop
-  - [Then]
-  - sudo docker-compose -d --force-recreate
-- for db container (up)
-  - mongo [pulpo]
-    - sudo docker exec -it mongo sh
-    - \# mongo margalladb -u admin -p --authenticationDatabase margalladb
-    - [password is password]
-    - show collections [shows all tables]
-    - db.dropDatabase() [drop whole db]
-    - db.users.drop() [drop users' table]
+It provides context and meaning to the content of a web page, making it more accessible, understandable, and maintainable. Semantic HTML helps search engines, assistive technologies, and developers to better understand the structure and content of a web page.
 
-  - mysql [vpc]
-    - sudo docker exec -it webdb bash
-    - mysql -uwebuser -padmin123
-    - use doosradb
-- steps to get in remote instances:
-  - Pass ssh key to the admin
-    - cd ~/.ssh
-    - cat id_rsa.pub
-  - get into instance
-    - ssh root@192.168.1.1
+- The `<header>` element represents the introductory content at the top of a section or page. It often contains branding, navigation, or other header-related content.
+- The `<nav>` element represents a section of the page that contains navigation links.
+- The `<main>` element represents the main content of a document. It should be unique to the document and not repeated across a set of documents such as site navigation.
+- The `<article>` element represents a self-contained composition that could be distributed and reused independently. It could be a blog post, a news article, a forum post, etc.
+- The `<section>` element represents a thematic grouping of content. It helps to organize and structure the content of the page.
+- The `<aside>` element represents content that is tangentially related to the content around it. It's often used for sidebars, pull quotes, advertising, or similar content.
+- The `<footer>` element represents the footer of a section or the whole page. It typically contains information about the author, copyright, contact details, or links to related documents.
 
-  - add ssh key in remote instance
-    - cd .ssh
-    - nano authourized_key
-  - access db
-    - sudo docker exec -it webdb bash
-    - select * from user;
-- For updating the FE (docker):
-  - ssh to 169.59.10.17
-  - cd to proj
-  - pull latest branch
-  - then build `sudo docker build -t wancloudsinc/doosra-vpc-frontend:waleed_test .`
-  - then push to docker `docker push wancloudsinc/doosra-vpc-frontend:waleed_test`
-  - then in doosra-vpc-be -> update file `doosdocker-compose` update image with my image name i.e. `waleed_test` in app section
-  - then `docker-compose up -d --f app`
 
-## Middlewares
+### HTML 5
 
-Software that enables one or more kinds of communication or connectivity between two or more applications or application components in a distributed network.
+- iFrames
+- New elements
+  - `<video controls preload><source src="video.mp4" type="video/ogg; codecs='vorbis, theora'" /></video>`
+  - `<audio autoplay="autoplay" controls="controls"><source src="file.mp3" /></audio>`
+  - `<nav><a href="/html/">HTML</a></nav>`
+  - `<header><img src="company-logo.png" /><nav>...</nav></header>`
+  - `<canvas></canvas>`
+  - `<footer>...</footer>`
+  - ```
+    <figure><img src="image/image-1.jpg" alt="About ADMEC" />
+      <figcaption><p>This is our institute </p></figcaption>
+    </figure>
+    ```
+- New types of inputs i.e. email, month, number, range, search, tel, color, week, url, time, date, datetime-local etc. ContentEditable, Progress, section, main(1 page can only have 1 main, also, navs, headers, footers are not allowed)
+- Placeholders
+- Required attribute
+- Preload Videos
+- Regex
+- Accessibility (validations in forms)
+- Inline elements/Dynamic Page Support
+    - mark – It highlights the content that is marked in some or the other way.
+    - time – This helps in adding current time as well as date to the webpage.
+    - meter – It helps in indicating that how much space in the storage disk is still there.
+    - progress bar – It helps in knowing the progress of the task that has been assigned for its completion.
+- nonce (we usually use nonce attribute inside script and style tag. This nonce tag basically generates a random number which is for one time use only. So, it is regenerated each time the page refreshes. It is great features as it can be used to increase the security of the content of the page. This helps in stating and providing the authority to the webpage to specify a particular script or style.)
 
-- Redux Thunk
-
-Its between action and reducers like for redux logger, while making an action, it also logs that action to the console before setting the state in reducer
-
-## APIs
-- CRUD
-- Axios
-
-  Used to make requests to an API endpoint
-
-- REST Arch & RestFul APIs
-
-## Linting
-- ESLint
+<br>
+<hr>
+<br>
 
 ## CSS/SASS
 - CSS
@@ -1807,13 +1334,340 @@ Its between action and reducers like for redux logger, while making an action, i
         .col-12 {width: 100%;}
       } 
 
+<br>
+<hr>
+<br>
+
+## Git/GitHub
+
+- installation
+  - Install git from git scm
+- Clone dir/Git Repos
+- Setup in webstorm
+- Adding an existing project to GitHub
+  - in ur project main file, run
+    - git init
+  - add and commit all files in project by
+    - git add .
+    - git commit -m "adds all files" 
+  - change base branch from master to main (optional - need change cuz git creates `main` branch)
+    - git branch -m main
+  - now connect to remote repo by
+    - git remote add origin https://github.com/WaleedYousaf/ttt.git // link of repo
+  - now just push on ur branch
+    - git push origin main
+- Cloning a project in my webstorm myapp project
+- Cloning Margalla/Pulpo
+- Git commands
+  - Mock commands:
+    - git commit --amend --reset-author // resetting author
+    - git remote add origin https://github.com/ waleedyousaf07/football_roster  [To ]
+      OR git clone ssh://git@github.com/[username]/[repository-name].git
+    - git push -u origin master
+    - git checkout -b my_branch [created new my_branch and swithced to mybranch]
+    - //Make changes in the code
+    - git add . [for add all files in current dir] OR git add -A [maybe for all in current dir and its siblings] OR git add filename.js OR $ git add my-file.ts another-file.js new_file.rb  [for adding multiple files concurrently] OR git add folder/subfolder/* 
+    - Custom Add: git add src/actions/* src/components/AddPlayerView.js
+    - git rm --cached my-file.ts  [to remove myfile.ts from staged basket/area] OR git reset another-file.js [works as opposite of add] OR git reset HEAD .eslintrc
+    - git commit -m "my_msg_for the changes" OR git commit -m "my_msg_for the changes" --no-verify [for bypassing .eslint]
+    - git push origin my_branch   OR git push -u origin master [with -u, next time we only needs to call git push]
+  - Getting & Creating Projects
+    - Init
+      - command: git init
+      - Initialize a local Git repository
+      - Getting & Creating Projects
+    - Clone
+      - git clone ssh://git@github.com/[username]/[repository-name].git
+      - git clone /path/to/repository 	//local server
+      - git clone username@host:/path/to/repository
+      - Create a local copy of a remote repository
+      - Getting & Creating Projects
+  - Merging my branch with others
+    - git add mybranch
+    - git commit -m "mybranch msg"
+    - git checkout dosriBranch
+    - git pull
+    - git checkout mybranch
+    - git merge dosriBranch
+    - [Resolve conflicts]
+    - git add mybranch
+    - git commit -m "my msg"
+  - Restoring / Reverting file from another branch
+    - git checkout FROM_BRANCH_NAME path/to/file	
+  - Basic Snapshotting
+    - status
+      - command: git-status
+      - Show the working tree status
+      - Check status
+    - add
+      - command: git add [file-name.txt]
+      - Add a file to the staging area
+    - add
+      - command: git add -A
+      - Add all new and changed files to the staging area
+    - commit
+      - git commit -m "[commit message]"
+      - Commit changes
+    - remove
+      - git rm -r [file-name.txt]
+      - Remove a file (or folder)
+  - Branching & Merging
+    - add/remove files to untracked
+      - git update-index --assume-unchanged
+      - git update-index --no-assume-unchanged path/to/file
+    - replace a file with another branch
+      - git checkout origin/master [filename]
+    - branch
+      - git branch 	
+      - List branches (the asterisk denotes the current branch)
+    - branch 
+      - git branch -a
+      - List all branches (local and remote)
+    - branch
+      - git branch [branch name]
+      - Create a new branch
+    - branch
+      - git branch -d [branch name]
+      - Delete a branch
+    - push
+      - git push origin --delete [branch name]
+      - Delete a remote branch
+    - checkout
+      - git checkout -b [branch name]
+      - Create a new branch and switch to it
+    - checkout
+      - git checkout -b [branch name] origin/[branch name]
+      - Clone a remote branch and switch to it
+    - checkout
+      - git checkout [branch name]
+      - Switch to a branch
+    - checkout
+      - git checkout - 
+      - Switch to the branch last checked out
+    - checkout
+      - git checkout -- [file-name.txt] 	
+      - Discard changes to a file
+    - merge
+      - git merge [branch name] 
+      - Merge a branch into the active branch
+    - merge
+      - git merge [source branch] [target branch]
+      - Merge a branch into a target branch
+    - stash
+      - git stash 
+      - Stash changes in a dirty working directory
+    - stash
+      - git stash apply stash@{0}
+    - stash
+      - git stash clear
+      - Remove all stashed entries 
+  - Sharing & Updating Projects
+    - push
+      - git push origin [branch name]
+      - Push a branch to your remote repository
+    - push
+      - git push -u origin [branch name]
+      - Push changes to remote repository (and remember the branch)
+    - push
+      - git push 	
+      - Push changes to remote repository (remembered branch)
+    - push
+      - git push origin --delete [branch name] 	
+      - Delete a remote branch
+    - pull
+      - git pull 	
+      - Update local repository to the newest commit
+    - pull
+      - git pull origin [branch name] 
+      - Pull changes from remote repository
+    - remote
+      - git remote add origin ssh://git@github.com/[username]/[repository-name].git 	
+      - Add a remote repository
+    - remote
+      - git remote set-url origin ssh://git@github.com/[username]/[repository-name].git 	
+      - Set a repository's origin branch to SSH
+  - Inspection & Comparison
+    - log
+      - git log 	
+      - View changes
+    - log
+      - git log --summary 	
+      - View changes (detailed)
+    - diff
+      - git diff [source branch] [target branch] 	
+      - Preview changes before merging
+    - revert commit
+      - git reset --hard HEAD~1
+      - reset to a specific commit	
+        - git reset --hard \<commit-hash>
+        - git push -f origin \<curr-branch>
+    - revert merge
+      - git merge --abort
+
+<br>
+<hr>
+<br>
+
+## Docker
+
+- installation
+  - [follow official digital ocean link]
+
+- for running docker
+  - for local BE, in docker-compose.yml, comment out app and ngnix and add following at the end of web
+    - same indentation
+      ports:
+        - 8081:8081 
+  - in directory with docker.yml file, run command:
+    - sudo docker compose up -d
+  - for viewing logs
+    - sudo docker logs -f web
+  - check if containers are up
+    - sudo docker ps
+    - docker ps -a [maybe with all details like id]
+  - restart web worker, maybe after changes like restarting npm start
+    - sudo docker-compose up -d --f worker
+  - check web logs
+    - docker logs -f web
+    - docker logs -f worker
+    - docker logs -f [id of container, can be seen by docker ps command]
+    - sudo docker-compose logs -f web worker [maybe for multiple logs in single command]
+- for instance on digital ocean
+  - check and add ssh key by
+    - ssh keygen
+    - cat ~/.ssh/id-rsa.pub
+  - ask the person to add your public ssh key to instance
+  - setup DO instance
+    - ssh root@[instance_ip]
+    - ls {check if has already any project}
+    - git clone [https.. my proj]
+    - cd [proj dir]
+    - git checkout [my branch to test]
+    - {make changes to docker-compose.yml}
+      - {comment out app and ngnix}
+      - {add in web, after entry point as a sibling}
+        ports:
+          - 8081:8081 
+      - {in image worker -> environment, update SL_USERNAME and API_KEY from SL creds trello}
+      - {in image worker -> environment, update WEB_HOOK_BASE_URL to http://[instance_ip]:8081/...}
+      - {in worker -> environment, update WEB_HOOK_BASE_URL to http://[instance_ip]:8081/...}
+      - {now add the docker-compose.yml changes to instance} nano docker-compose.yml {to show that file}
+      - {now clear that file} > docker-compose.yml
+      - {now update with the previous changes} nano docker-compose.yml
+- FE image on dockerhub:
+  - [server/index.js mein https://migrate-db.wanclouds.net address daal dyna url mein]
+  - cd doosra-Frontend > sudo docker build -t wancloudsinc/doosra-vpc-frontend:db-mig-demo . 
+  - [jb build ojaey image phr]
+  - sudo docker push wancloudsinc/doosra-vpc-frontend:db-mig-demo 
+  - [jb push ojaey then]
+  - sudo docker-compose up -d --force-recreate app [in vpcBackend dir]
+- stop and up containers in detach mode:
+  - cd doosra-vpc-be>sudo docker-compose stop
+  - [Then]
+  - sudo docker-compose -d --force-recreate
+- for db container (up)
+  - mongo [pulpo]
+    - sudo docker exec -it mongo sh
+    - \# mongo margalladb -u admin -p --authenticationDatabase margalladb
+    - [password is password]
+    - show collections [shows all tables]
+    - db.dropDatabase() [drop whole db]
+    - db.users.drop() [drop users' table]
+
+  - mysql [vpc]
+    - sudo docker exec -it webdb bash
+    - mysql -uwebuser -padmin123
+    - use doosradb
+- steps to get in remote instances:
+  - Pass ssh key to the admin
+    - cd ~/.ssh
+    - cat id_rsa.pub
+  - get into instance
+    - ssh root@192.168.1.1
+
+  - add ssh key in remote instance
+    - cd .ssh
+    - nano authourized_key
+  - access db
+    - sudo docker exec -it webdb bash
+    - select * from user;
+- For updating the FE (docker):
+  - ssh to 169.59.10.17
+  - cd to proj
+  - pull latest branch
+  - then build `sudo docker build -t wancloudsinc/doosra-vpc-frontend:waleed_test .`
+  - then push to docker `docker push wancloudsinc/doosra-vpc-frontend:waleed_test`
+  - then in doosra-vpc-be -> update file `doosdocker-compose` update image with my image name i.e. `waleed_test` in app section
+  - then `docker-compose up -d --f app`
+
+<br>
+<hr>
+<br>
+
+## Middlewares
+
+Software that enables one or more kinds of communication or connectivity between two or more applications or application components in a distributed network.
+
+- Redux Thunk
+
+Its between action and reducers like for redux logger, while making an action, it also logs that action to the console before setting the state in reducer
+
+<br>
+<hr>
+<br>
+
+## APIs
+- CRUD
+- Axios
+
+  Used to make requests to an API endpoint
+
+- REST Arch & RestFul APIs
+
+<br>
+<hr>
+<br>
+
+## MVC
+
+It is a design pattern. The goal is divide large application into specific sections each having their own purpose.
+
+User requesting a specific page from the server. The server responds to a specific controller. 
+
+Controller: `Handles the entire request` from the client. And will tell the rest of the server what to do with the request. It acts as a middleman b/w model and view. It should not contain much code. 
+
+Model: After receiving the request, the controller asks the model to get the data. Model is `responsible for all of the data logic` of the request. It interacts with the DB and handles all CRUD saving and other data operations. The controller shouldnt interact with the data it should always ask the model. Model doesnt need to do anything on failure or success, controller will handle that.
+
+View: After the model sends the data to controller, then controller sends the data to view to `render` and view is only concerned for displaying the data its feeded with. The view will send the HTML (or so) back to controller which then is served to the user.
+
+Important to note is that `model and view never interact` with each other. Presentation and Logic is completely separate.
+
+<br>
+<hr>
+<br>
+
+## Linting
+- ESLint
+
+<br>
+<hr>
+<br>
+
 ## Test Cases
 - Unit Tests
   - JEST
   - Enzymes
 - Integration Tests
 
+<br>
+<hr>
+<br>
+
 ## JWTs
+
+<br>
+<hr>
+<br>
 
 ## JSON Server
  - ### <b>Installation:</b>
@@ -1827,6 +1681,10 @@ Its between action and reducers like for redux logger, while making an action, i
         json-server --watch db.json --port 3001
 
     where `db.json` can have static json
+
+<br>
+<hr>
+<br>
 
 ## Express Server
 - ### <b>Installation</b>
@@ -1853,10 +1711,268 @@ Its between action and reducers like for redux logger, while making an action, i
 			  
     Use server.js for HTTP requests i.e. GET, POST. For validation use joi library
 
+<br>
+<hr>
+<br>
+
 ## Sockets
 - sockets.io
 
-## DSA YT Channels *** *
+<br>
+<hr>
+<br>
+
+## OOP
+
+### Class (`class className`)
+
+### Object (`new ClassName(params)`)
+
+### Interfaces (`has`)
+
+Defines a shape objects/classes can take
+
+### Polymorphism
+
+Polymorphism -> `Many-forms`. Can have a same function in parent and a class which is `inherited` and if we `override` in child class(function overriding) then the parent's function has 2 forms.
+
+### Abstraction
+
+It is hiding the implementation and only showing the functionality or essentials.
+
+Not allowing the user to access a class's variable or function. Instead, let other local functions of the class calculate and use those methods and properties.
+
+### Encapsulation
+
+It is wrapping up the data and methods under a single unit.
+
+Properties and methods are private.
+
+It is binding of data to functions.
+
+A mechanism of `restriciting direct access` to some of the object's components. It also bundles methods which operate on that data. Its required for:
+
+- Security, controlled access
+- Hide implementation and expose behaviour
+- Loose coupling - modify the implementation anytime
+
+`Getters and setter methods` are used to get those objects/properties. 
+
+### Inheritance (`extends`)
+
+Inherits properties/functions from its parent class
+
+### Association
+
+If two classes in a model need to communicate with each other, there must be a link between them, and that can be represented by an association (connector).
+
+Aggregation and Composition are subsets of association meaning they are specific cases of association.
+
+### Aggregation
+
+Aggregation implies a relationship where the child can exist independently of the parent. Example: Class (parent) and Student (child). Delete the Class and the Students still exist.
+
+### Composition 
+
+Composition implies a relationship where the child cannot exist independent of the parent. Example: House (parent) and Room (child). Rooms don't exist separate to a House.
+
+<br>
+<hr>
+<br>
+
+## DSA
+
+### Data Structures
+- Stack
+
+  It follows the LIFO. In js, array can be used cuz it supports stack. Example can be `git stash`
+  functions like 
+    
+    - push() -> adds one item at the top
+    - pop() -> removes the top value and returns the removed item
+    - peek() -> returns the last element but doesnt remove it
+    - size() -> shows the length of stack/array
+
+    Palindrome number is if spelled backward, it remains the same
+
+        let myStack = [];
+        let word = "racecar";
+        let reversed = "";
+
+        // pushing letters in stack
+        for (i = 0; i < word.length; i++) {
+          myStack.push(word[i]);
+        }
+
+        // popping the letters back in a reversed string
+        for (i = 0; i < myStack.length; i++) {
+          reversed += myStack.pop();
+        }
+- Queue
+
+  Its kind of an array follows FIFO.
+
+  - print -> prints or logs collectio
+  - enqueue -> push an item
+  - dequeue -> pop an item but the first one so uses `shift`
+  - front -> return the item at the front (0th index)  w/o removing it
+  - size -> returns length
+  - isEmpty -> returns true if no items
+
+- Priority Queue
+
+  Along with enqueuing an item, we can send a priority, if no priority is passed, it behaves like normal queue
+
+      var pq = new PriorityQueue();
+      pq.enqueue(['ronaldo', 5]);
+      pq.enqueue(['neymar', 3]);
+      pq.enqueue(['bale', 3]);
+
+- Set
+
+   Its kind of an array except no duplicate items and the values
+   are not in any particular order. Basic set method provided by ES6
+   doesnt include all the methods of set, we may need to implement
+   part of it ourself if needed. The methods are
+
+   - has -> returns true false if element is present in set
+   - values -> return the collection/array
+   - add -> only adds if element isnt already added - uses `has` to check - returns true and false if added
+   - remove -> checks if collection has that element and then using its index, removes it by splicing the collection like `coll.splice(indexOfItemToRemove, 1);` and returns true false
+   - size -> returns length of collection. For ES6 set, size is not a method but a property so no need to do `mySet.size()` just use `mySet.size`
+   - union -> returns union of 2 sets. No duplicate entries
+   - intersection -> returns intersection i.e. only common entries
+   - difference -> subtracts entries from 1st collection which are in second
+   - subset -> if the first set is completly contained within another set. Uses `every` 
+
+- Linked list
+
+  A data structure where elements are stored in a node. The node contains 2 key pieces of information, the element itself and the reference to the next node.
+
+  Some advantages and disadvantages over arrays are
+    
+    Array/LinkedList
+
+    - Fixed size/dynamic size (although JS hides this in array)
+    - Inefficient insertions-deletions/efficient insertions-deletions
+    - Random access(effiecient indexing)/no random access
+    - Memory wastage/no memory wastage cuz dynamic size
+    - Sequential access is faster (elements in contagious mem locations)/sequential access is slower
+
+  Every linked list has a `head`  pointer and a size. Last node points to null
+
+- Circular queue
+- Trie
+
+  A datastructure many functional programmings support which `deep freeze` all the properties of the object. 
+
+- Binary Search Tree
+
+  Tree structure has the entries which are `nodes`. The top one is `root`. Have `parent children siblings`. The node which doesnt have any children are `leafNodes`
+
+  In a binary tree however, each node can only have 2 children/branches. They are ordered. Each left sub-tree
+  is less than or equal to parent node and each right sub-tree is greater than or equal to the parent node.
+
+  When they use binary search, an average operation can skip about half of the tree so each look-up, insertion 
+  or deletion takes time proportional to the logrithm of the number of items stored in a tree. Can use recursion to implement BST. 
+
+  - Height
+
+  Height is the distance from the root to any leaf node. Level of nesting represents the height. The root has a 
+  height 0, and so on. Different paths in a same tree can have different heights. 
+  
+  Each tree will have a minimum and a maximum height. If the tree is balanced, these values will differ at most by 1.
+
+  Searching through a balanced tree is much more efficient
+
+  - Traversal
+    
+    Ways to travers a tree
+
+      - in-order -> begin at the left most node and end at the right most node. Like left, then parent, then parent's left child, then parent, then parent's right child if any and so on. Go in order left, root, right
+      - pre-order -> we explore the root nodes before the leaves. First root node, then traverse left side's first root, then its root, and go in order root, left, right 
+      - post-order -> explores the leaf nodes before the roots. So left most leaf, then its right left most leaf, then its right leaf then root and finish one side/branch of the tree.
+      - level-order -> is also called breath first search. It explores all the nodes on one level of the tree before moving on to the next level. For each level from top to bottom, follow left to right. 
+
+- Hash Tables
+
+  A hash table is used to implement associative arrays of mapping of key value pairs. Its a common way to implement mao data structure or objects. Widely used cuz of efficiency. 
+  
+  The average time to lookup is not tied to the number of elements stored in the table.
+  
+  The avg time complexity in big `O` notation is O(1) for search, insert or delete (worst is O(n))
+
+  It works by taking a key input and then runs it through the hash function which maps strings to numbers and 
+  usually numbers corresponds to indexes in an array. All the keys should map to different numbers, cant have same keys/numbers. If two words get hashed to same number, its called collision
+
+### Important Algorithms **-**
+
+- Searching
+  - Linear Search
+  - Binary Search
+  - Depth First Search
+  - Breadth First Search
+- Sorting
+  - Insertions Sort
+  - Heap Sort
+  - Selection Sort
+  - Merge Sort
+  - Quick Sort
+  - Counting Sort
+  - Bubble Sort
+  - Shell Sort
+  - Timsort
+  - Bucket Sort
+  - Radix Sort
+- Graphs
+  - Dijkstra's Algo
+  - Bellman Ford Algo
+  - Floyd Warshall Algo
+  - Topological Sort Algo
+  - Flood Fill algo
+  - Lee Algo
+  - Kruskal's Algo
+- Arrays
+  - Floyd's Cycle Detection Algo
+  - KMP Algo
+  - Kadane's Algo
+  - Quick Select Algo
+  - Boyer - More Majority Vote Algo
+- Basics
+  - Huffman Coding Compression Algo
+  - Euclid's Algo
+  - Union Find Algo
+
+### DSA Techniques/Usage **-**
+
+- Use this for that
+  - If input array is sorted
+    - Binary Search
+    - Two pointers
+  - If asked for all permutations/subsets
+    - Backtracking
+  - If given a tree or graph
+    - DFS
+    - BFS
+  - If given a linked list
+    - Two pointers
+  - If recursion is not allowed
+    - Stack
+  - If must solve in-place
+    - Swap corresponding values
+    - Store one or more different values in the same pointer
+  - If asked for max/min subarray/subset/options
+    - Dynamic Programming
+  - If asked for top/least K items
+    - Heap
+  - If asked for common strings
+    - Map
+    - Trie
+  - Misc
+    - Map/Set for O(1) time & O(n) space
+    - Sort input for O(nLogn) time & O(1) space 
+
+### DSA YT Channels
 
 - Coding Simplified
   - Array
@@ -1888,70 +2004,68 @@ Its between action and reducers like for redux logger, while making an action, i
   - String
   - Segment Tree
 
-## Algorithms *** *
+### Time and Space Complexity (BigO) **-**
 
-- Searching
-  - Linear Search
-  - Binary Search
-  - Depth First Search
-  - Breadth First Search
-- Sorting
-  - Insertions Sort
-  - Heap Sort
-  - Selection Sort
-  - Merge Sort
-  - Quick Sort
-  - Counting Sort
-  - Bubble Sort
-- Graphs
-  - Dijkstra's Algo
-  - Bellman Ford Algo
-  - Floyd Warshall Algo
-  - Topological Sort Algo
-  - Flood Fill algo
-  - Lee Algo
-  - Kruskal's Algo
-- Arrays
-  - Floyd's Cycle Detection Algo
-  - KMP Algo
-  - Kadane's Algo
-  - Quick Select Algo
-  - Boyer - More Majority Vote Algo
-- Basics
-  - Huffman Coding Compression Algo
-  - Euclid's Algo
-  - Union Find Algo
+Ref: https://github.com/jamiebuilds/itsy-bitsy-data-structures/blob/master/itsy-bitsy-data-structures.js
 
-## DSA Techniques/Usage *** *
+    / =========================================================================== \
+      == - BIG-O NOTATION ------------------------------------------------------ ==
+      = ========================================================================= =
+      =           a           b                                 d                 =
+      =           a         b    O(N^2)                      d                    =
+      =     O(N!) a        b                O(N log N)    d                    c  =
+      =           a      b                            d                 c         =
+      =          a      b                          d             c        O(N)    =
+      =          a    b                         d         c                       =
+      =          a  b                       d      c                              =
+      =         a  b                     d  c                                     =
+      =         ab                   c                          O(1)              =
+      =  e    e    e    e    ec   d    e    e    e    e    e     e    e    e      =
+      =      ba        c      d                                                   =
+      =    ba   c        d                       f    f    f    f    f    f    f  =
+      == cadf    f d    f    f    f    f    f       O(log N)                     ==
+    \ =========================================================================== /
 
-- Use this for that
-  - If input array is sorted
-    - Binary Search
-    - Two pointers
-  - If asked for all permutations/subsets
-    - Backtracking
-  - If given a tree or graph
-    - DFS
-    - BFS
-  - If given a linked list
-    - Two pointers
-  - If recursion is not allowed
-    - Stack
-  - If must solve in-place
-    - Swap corresponding values
-    - Store one or more different values in the same pointer
-  - If asked for max/min subarray/subset/options
-    - Dynamic Programming
-  - If asked for top/least K items
-    - Heap
-  - If asked for common strings
-    - Map
-    - Trie
-  - Misc
-    - Map/Set for O(1) time & O(n) space
-    - Sort input for O(nLogn) time & O(1) space 
+Some common BigO's
 
-## DSA Questions *** *
+    =
+    =     Name           Notation     How you feel when they show up at your party
+    =     ------------------------------------------------------------------------
+    =     Constant       O(1)         AWESOME!!
+    =     Logarithmic    O(log N)     GREAT!
+    =     Linear         O(N)         OKAY.
+    =     Linearithmic   O(N log N)   UGH...
+    =     Polynomial     O(N ^ 2)     SHITTY
+    =     Exponential    O(2 ^ N)     HORRIBLE
+    =     Factorial      O(N!)        WTF
+    =
+
+What these would equal given the (N) number of items
+
+    =
+    =                N = 5            10             20             30
+    =     -----------------------------------------------------------------------
+    =     O(1)           1            1              1              1
+    =     O(log N)       2.3219...    3.3219...      4.3219...      4.9068...
+    =     O(N)           5            10             20             30
+    =     O(N log N)     11.609...    33.219...      84.638...      147.204...
+    =     O(N ^ 2)       25           100            400            900
+    =     O(2 ^ N)       32           1024           1,048,576      1,073,741,824
+    =     O(N!)          120          3,628,800      2,432,902,0... 265,252,859,812,191,058,636,308,480,000,000
+    =
+
+ It is important to note that data structures may be good at one action but
+ bad at another.
+ 
+    =
+    =                            Accessing    Searching    Inserting    Deleting
+    =    -------------------------------------------------------------------------
+    =                  Array     O(1)         O(N)         O(N)         O(N)
+    =            Linked List     O(N)         O(N)         O(1)         O(1)
+    =     Binary Search Tree     O(log N)     O(log N)     O(log N)     O(log N)
+    =
+
+### DSA Questions **-**
 
 Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
 
@@ -2727,6 +2841,3 @@ Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
 
           const n = 10;
           printExcelCellReferences(n);
-
-
-## DSA
