@@ -1,6 +1,6 @@
 # basic-programming
 
-## Intro
+# Intro
 
 JavaScript, DSA, OOP, Databases, and Networking Cheatsheet 🚀📚
 
@@ -10,7 +10,7 @@ Packed with bite-sized knowledge nuggets and playful explanations. Whether I'm c
 
 <br><hr><br>
 
-## Navigation Nexus
+# Navigation Nexus
 
 - [Core JS](#core-js)
   - [JS to Machine Code](#js-to-machine-code)
@@ -118,13 +118,13 @@ Packed with bite-sized knowledge nuggets and playful explanations. Whether I'm c
 
 <br><hr><br>
 
-## Core JS
+# Core JS
 
 JavaScript is a lightweight, interpreted, object-oriented language with first-class functions, and is best known as the scripting language for Web pages, but it's used in many non-browser environments as well.
 
 EcmaScript uses `just in time` compiler.
 
-### JS to Machine Code
+## JS to Machine Code
 
 JS file enters the engine (`V8`). The parser does `lexical analysis (tokennizer)` which breaks the code into tokens to indentify their meaning. These tokens makes `Abstract Syntax Tree` which validates the correct use of language keywords and elements. Later on `ASTs` are used to generate actual machine code.
 
@@ -138,7 +138,7 @@ Using this profiler, `any unoptimized code` is `passed to the compiler` to perfo
 
 As the `profiler and compiler constantly make changes` to the bytecode, the JavaScript execution `performance gradually improves`.
 
-### Interpreter
+## Interpreter
 
 In interpreter, the source code is read line by line.
 It neither links the files nor generates machine code.
@@ -149,7 +149,7 @@ It neither links the files nor generates machine code.
 - Keeps translating the program continuously till the first error is confronted. If any error is spotted, it stops working and hence debugging becomes easy. 
 - Interpreters are used by programming languages like Ruby and Python for example. 
 
-### Compiler
+## Compiler
 
 In compiled, the source file typically will be “compiled” to machine code (or byte code) before being executed.
 Compiler will first analyze all the code, if something is worng, it thorws an error. If no errors are spotted, it converts into machine code.
@@ -162,15 +162,15 @@ Compiler will first analyze all the code, if something is worng, it thorws an er
 
 JS does just in time compilation. There is no clear distinction that JS is a compiled or interpreted language. 
 
-### Transpiler
+## Transpiler
 
 Transpiler is a type of translator that takes the source code of a program written in a programming language as its input and produces an equivalent source code in the same or a different programming language
 
-### Transpiler vs Compiler
+## Transpiler vs Compiler
 
 The difference between transpiler and compiler is in the level of abstraction in the output. Generally, a compiler produces machine executable code, whereas transpiler produces another developer artifact
 
-### Treeshaking
+## Treeshaking
 
 Its an `optimization` technique to `remove unused code`. Improves:
 
@@ -189,33 +189,33 @@ Make use of ES6 import and export statements. This helps tree shaking identify w
 
 For minification, the `productionSourceMap` option disables source maps in the production build, which is often recommended to reduce the size of the build artifacts.
 
-### Isomorphic JS
+## Isomorphic JS
 
 Same JS will/can run on a Client or Browser just as it works on the server. The code should be such or have cases that both the browser and server can understand and read
 
-### Sprites
+## Sprites
 
 They are used to load alot of images in a web page together by making single(maybe few) http requests resulting in less time to load the page
 
-### JS Variable declartors
+## JS Variable declartors
 
 let, const, var
 
-### Var
+## Var
 
 Var declarations are globally scoped or function/locally scoped. They can be re-declared and updated. They are hoisted and can be used if declared after getting called.
 
-### Const
+## Const
 
 Cannot be reinialized. Has a block level scope. Primitive types cannot be updated/re-assigned/re-declared but objects and arrays can. Every const declaration, therefore, must be initialized at the time of declaration.
 
 Const create a variable name binding so that name cannot be re-inialized but the properties can. So its mutable. They are hoisted differently than `var`. 
 
-### Let
+## Let
 
 Can be re initialized. Has a block level scope. It cannot be redeclared withing its scope. They are hoisted differently than `var`
 
-### Var, Let, Const Scopes
+## Var, Let, Const Scopes
 
     var a = 5;
     const b = 10;
@@ -245,7 +245,7 @@ Following is only true for `var`
 
     console.log('i outside is: ', i, blockLevelVar); // i outside is: 5 Heyy
 
-### Primitive Types
+## Primitive Types
 
 They are simple and atomic. They are stored as values in memory.
 
@@ -289,7 +289,7 @@ They are simple and atomic. They are stored as values in memory.
     You can access all the symbols assigned to an object using the `Object.getOwnPropertySymbols()` method.
 
 
-### Referenced Types
+## Referenced Types
 
 They are not simple atomic values but are objects made up of multiple properties. They are stored as a reference in memory.
 
@@ -297,7 +297,7 @@ They are not simple atomic values but are objects made up of multiple properties
 - arrays
 - functions
 
-### Functional Programming (FP)
+## Functional Programming (FP)
 
 A process of creating software through `pure functions`, `avoiding shared state`, `mutable data` and `side effects`.
 
@@ -309,7 +309,7 @@ It is declarative.
 - Avoid mutating state
 - Avoid side effects (any state change that is observed outside the called function other than its return value. The include: Modifying external var/prop, logging to console, writing to screen, writing to file, writing to network, triggering external process, calling any other function with side effects)
 
-### Imperitive vs Declarative
+## Imperitive vs Declarative
 
 In imperative style, we'll have to tell the framework step by step what needs to be done
 
@@ -329,7 +329,7 @@ In a declarative style, we'll just ask the framework what needs to be done and t
 
     console.log(doubleMap([2, 3, 4])); // [4, 6, 8]
 
-### Mutable/Imutable
+## Mutable/Imutable
 
   In immuatability, we create and assign it again, the reference is also changed. In mutability, the reference remains the same, only value changes.
 
@@ -341,7 +341,7 @@ In a declarative style, we'll just ask the framework what needs to be done and t
 
   We can use `Object.assign` or `spread` to avoid mutation.
 
-### DOM
+## DOM
 
     const btn = document.querySelector('button');
     btn.addEventListener('click', () => {
@@ -352,13 +352,13 @@ In a declarative style, we'll just ask the framework what needs to be done and t
       document.body.appendChild(pElem);
     });
 
-### Component vs Element (React)
+## Component vs Element (React)
 
 An element is a basis object that describe DOM node and its properties. Cant apply any methods on it.
 
 A component is a function or class which takes props and can have state and returns an element.
 
-### Controlled vs Uncontrolled Components (React)
+## Controlled vs Uncontrolled Components (React)
 
 A Controlled Component is one that takes its `current value through props` and `notifies changes through callbacks` like onChange. A `parent component "controls"` it by handling the callback and managing its own state and passing the new values as props to the controlled component. You could also call this a `"dumb component"`. 
 
@@ -369,15 +369,15 @@ A Uncontrolled Component is one that `stores its own state internally`, and you 
     <input type="text" defaultValue="foo" ref={inputRef} />
     // Use `inputRef.current.value` to read the current value of <input>
 
-### Asynchronous
+## Asynchronous
 
 Some actions may take time like fetching data from api, video streaming etc. To overcome these, we use `async callbacks` or `promises` which keeps the task in the background and continue main program execution and responds/notifies when the task is completed. Now as JS is `single threaded`, the async operations which are in-progress in the background are pushed in an `event queue` which runs after the `main thread` has finished processing. The queued operations finish asap and return their result to js environment. 
 
-### Synchronous
+## Synchronous
 
 While each operation is being processed, rendering is blocked.
 
-### Promise **-**
+## Promise **-**
 
 The promise is an object representing the completion or failure of the async operation. They are essentially a returned object to which you attach callback functions, rather than having to pass callbacks into a function. 
 
@@ -440,7 +440,7 @@ We can define a promise like:
       Promise.race([myPromise1, myPromise2, myPromise3]).then((message) => console.log(message);
       // it returns the first resolved promise's result
 
-### Async await
+## Async await
 
     const myPromise = () => {
       return new Promise((resolve, reject) => {
@@ -468,7 +468,7 @@ We can define a promise like:
 
     myAsyncFunction();
 
-### Blob
+## Blob
 
 It is a `file-like object` of immutable raw data which can be `read as text or binary data`. Blobs can represent data that isn't necessarily in a JavaScript-native format.
 
@@ -477,7 +477,7 @@ It is a `file-like object` of immutable raw data which can be `read as text or b
 
 One way to read content from a Blob is to use a FileReader. Another way to read content from a Blob is to use a Response.
 
-### Binding
+## Binding
 
 It is when we explicitly(by default its windows, objects' own etc) assign this to a value.
 
@@ -498,7 +498,7 @@ Binding an object to function:
 
 Binding doesnt work with arrow function.
 
-### Class & Prototypal Inheritance
+## Class & Prototypal Inheritance
 
 Its like one object trying to access properties and methods of other objects.
 
@@ -518,7 +518,7 @@ Every function is a constructor in JS.
 
 We create an object from the func/class, then is created from a master object and all have the properties and they look up the prototype chain. 
 
-### Threads
+## Threads
 
 A thread is basically a `single process` that a program can use to complete tasks. Each thread can only do a `single task at once`. Each task `will run sequentially`; a task has to complete before the next one can be started.
 
@@ -527,7 +527,7 @@ Many computers now have `multiple cores`, so can do multiple things at once. Pro
 `JS is single threaded`. Means everything runs on the main thread. Although, now `Web workers` allow you to send some of the js processing off to a `separate thread`, called a `worker` so that you `can run multiple js chunks` simultaneously. You'd generally use a worker to run `expensive processes off the main thread` so that user interaction is `not blocked`. The worker thread can perform tasks `without interfering with the user interface`.
 
 
-### Web Workers
+## Web Workers
 
 When `executing scripts` in an HTML page, the page becomes `unresponsive` until the script is finished.
 
@@ -549,11 +549,11 @@ If you need to immediately terminate a running worker from the main thread, you 
 Problem:
 - Not able to access the DOM — you can't get a worker to directly do anything to update the UI.
 
-### Anonymous Functions
+## Anonymous Functions
 
 They are the functions which dont have a name.
 
-### Closure ***
+## Closure ***
 
 When an inner function has access to (its lexical scope) outer function's variables along with its own and global variables. And even ifs accessed later on, it would have reference to those properties and methods.
 
@@ -624,7 +624,7 @@ Disadvantages:
 - Memory extensive (sometimes garbage is not collected)
 - Can lead to memory leak
 
-### Constructor Function
+## Constructor Function
 
     function Counter() {
       var count = 0;
@@ -640,7 +640,7 @@ Disadvantages:
     var counter1 = new Counter();
     counter1.increment()
 
-### Async, Defer
+## Async, Defer
 
 While a page can have HTML and scripts, assume some of the HTML is getting parsed, and before ending a script is encountered. Script is ran in 2 parts, first its `fetched` and then its `executed`. So, until these the HTML parsing is blocked. 
 
@@ -649,7 +649,7 @@ Async doesnt gurantee order of execution of multiple scripts and dependat script
 
 `Defer` is somewhat same but instead of executing the script right after fething, it `waits for HTML` to completely parsed and then executes.
 
-### Curring
+## Curring
 
 It is when a function `doesnt take all of its arguments` upfront. It `gets one argument` and then it `returns another function` which we'll call with the second argument and so on until all the arguments are provided. The function at the end of the chain will return the value.
 
@@ -673,7 +673,7 @@ Currying version
 
 We made the function curriable but if we already have functions which are not curriable, then we can use libraries like lodash which provides methods to make them curriable.
 
-### Functional Chaining
+## Functional Chaining
 
 We can call another method on the result of one method. Its a way to call a sequence of methods in `OOP`. Each of the function call would be returning the reference to `this` and hence can call another method against that object.
 
@@ -682,7 +682,7 @@ We can call another method on the result of one method. Its a way to call a sequ
       .reduce((mem, x) => mem + x)
 
 
-### Functional Composition
+## Functional Composition
 We can call another method on the result of one method. Its a way to call a sequence of methods in `Functional Programming`. f(g(x)). This functionality of calling the first function and passing its result directly to a second function can be extracted to avoid code repetition.
 
     const isEven = x => x % 2 === 0;
@@ -715,7 +715,7 @@ Which functions to compose:
 - pure — this is especially important when composing complex functionality, as function impurity is “contagious”,
 - curried, and accepting data as the last argument — to make expressions more concise.
 
-### Imediately Invoked Functions Expressions (IIFE)
+## Imediately Invoked Functions Expressions (IIFE)
 
 Mostly used to create blocks and can have variables with scope rather than global.
 
@@ -727,7 +727,7 @@ Mostly used to create blocks and can have variables with scope rather than globa
       })()
     }
     
-### call, apply and bind methods
+## call, apply and bind methods
 
 In JS, every function has a `call` method in which we can pass the reference of the callee (the params can be the 2nd parameter (and go on)) like another function can borrow it. 
 
@@ -755,19 +755,19 @@ In JS, every function has a `call` method in which we can pass the reference of 
     const bindedMethod = obj.printFullName.apply(obj2, ['speed', 29]);
     bindedMethod();
 
-### Memoization
+## Memoization
 
 A technique where we `store the result` of a function for later usage. If in future, we call that method with the same input, it wouldnt do complex and long computations and will return the same `cached result`. It should be applied to pure functions.
 
 Can use `Ramda` which has other features as well. `nano-memoize` is another
 
-### Event Bubbling
+## Event Bubbling
 
 Click events execute from the element clicked and then will go all the way to the parent.
 
 `e.stopPropagation()` can be used to avoid bubbling and will stop execution of the elements further up the order. 
 
-### Event Capturing
+## Event Capturing
 
 First the parent element executes and goes all the way to the child. 
 
@@ -776,7 +776,7 @@ By default event bubbling occurs but we can choose to use event capturing by:
     var elem = document.querySelector('#my-element');
     elem.addEventListener('click', () => console.log('Element clicked'), true); // 3rd arg is useCapture
 
-### Hoisting ***
+## Hoisting ***
 
 The default behavior of moving all the declarations at the top of the scope before code execution. A function or a variable can be used before declaration.
 
@@ -813,7 +813,7 @@ But it can be fixed by
         console.log('Hi, there.');
     }
 
-### Heap
+## Heap
 
 Whenever you `define a variable, constant, object, etc` in your javascript program, you need some `place to store` it. This place is nothing but the `memory heap`.
 
@@ -823,19 +823,19 @@ The memory available is limited and complex programs may have a number of variab
 
 Unlike languages like C, where we need to explicitly allocate and free memory, JS provides the feature of `automatic garbage collection`. Once the `object/variable is out of context` and will not be of use anymore, it’s `memory is reclaimed and returned to the free memory pool`.
 
-### Mark and Sweep algorithm
+## Mark and Sweep algorithm
 
 Mark the objects as reachable/unreachable and sweep the unreachable ones.
 
-### Memory Leaks
+## Memory Leaks
 
 Memory leaks are `parts of memory` that the `application needed` and used `in the past` and it is `not needed anymore` but its `storage is yet not returned` to the memory pool. `Global variables` are common examples which are kept even if they arent being used. Also, if we create `Event Listeners` and not remove them after going out of context.
 
-### Web APIs
+## Web APIs
 
 The things which browsers provide out of the box which V8 doesnt orivudes. Like `DOM, ajax (XMLHTTPRequest), setTimeout`. They are other threads but we cant use them as normal threads.
 
-### Call Stack
+## Call Stack
 
 As JS is a single threaded language, it has one call stack, can do one thing at a time(so we need asynchronous to get around).
 
@@ -843,7 +843,7 @@ Callstack records where in the program we are. We call a function, we push it on
 
 If we go in an infinite loop or many function calls pushed in the stack, the stack overflows giving error `Maximum call stack size exceeded`.
 
-### Event Loops
+## Event Loops
 
 Although JS is `single threaded`, but that means it can do one thing only at the `runtime` but browser is more than runtime. When an async task starts, it comes to `call stack`, initiates and then goes to web apis and gets removed from the call stack. Then in `web apis` it keeps on processing as a background task in thread. 
 
@@ -853,11 +853,11 @@ The reason we need event loop is that we cant simply push back the queued task d
 
 There are two callback queues, one for macrotasks/Task Queue and one for microtasks/Job Queue (usually for promises and other priority items) and first micro runs and then macro runs
 
-### Render Queue
+## Render Queue
 
 Render runs after every around 16ms. Render only runs if the callstack is empty. So debounce can be used on heavy event based process like on scroll if something is happening. 
 
-### Stack vs Heap based Memory
+## Stack vs Heap based Memory
 
 Because the data is added and removed in a `LIFO` manner, `stack-based memory` allocation is `very simple` and typically `much faster` than `heap-based` memory allocation (also known as `dynamic memory allocation`) typically allocated via `malloc` (memory allocation).
 
@@ -867,7 +867,7 @@ The major difference between Stack memory and heap memory is that the stack is u
 
 Stack variables can't be `resized` whereas Heap variables can be resized. Stack memory is allocated in a `contiguous block` (consective) whereas Heap memory is allocated in any random order.
 
-### Lexical Scoping (Static Scoping)
+## Lexical Scoping (Static Scoping)
 
 Lexical scoping is a convention used with many programming languages that sets the scope (range of functionality) of a variable so that it may only be called (referenced) from within the block of code in which it is defined. The scope is determined when the code is compiled.
 
@@ -901,7 +901,7 @@ In this scoping a variable always `refers to its top level` environment.
 
   In static scoping the compiler first searches in the `current block`, then in `global variables`, then in successively `smaller scopes`.
 
-### Dynamic Scope
+## Dynamic Scope
 
 With dynamic scope, a global identifier refers to the identifier associated with the most recent environment. This means that each identifier has a `global stack` of bindings and the occurrence of an identifier is searched in the `most recent binding`.
 
@@ -920,7 +920,7 @@ With dynamic scope, a global identifier refers to the identifier associated with
 
 In simpler terms, in dynamic scoping the compiler first searches the `current block` and then successively all the `calling functions`.
 
-### Lexical vs Dynamic Scope
+## Lexical vs Dynamic Scope
 
 Lexical scoping refers to when the location of a function's definition determines which variables you have access to. On the other hand, dynamic scoping uses the location of the function's invocation to determine which variables are available.
 
@@ -928,7 +928,7 @@ In most programming languages `static scoping is dominant`. This is simply becau
 
 Dynamic scoping does `not care how the code is written`, but instead `how it executes`. Each time a new function is executed, a new scope is `pushed onto the stack`.
 
-### Local Storage vs Session Storage vs Cookies
+## Local Storage vs Session Storage vs Cookies
 
 Cookies: 
   - 4kb
@@ -951,7 +951,7 @@ Session:
   - stores on browser
   - not sent with request
 
-### CORS
+## CORS
 
 While in SOP (same origin policy), browser never allows to share the resources from different origins.
 
@@ -959,7 +959,7 @@ The requesting website must have same origin means `protocol` e.g. https, `domai
 
 It works like when request from one origin is made, a `preflight` OPTIONS call request is made before that to ensure the validity of request. If valid, the requestee will set additional headers which will let the client/browser know its safe and then the actual call is made. The requestee will set the headers like `Access-Control-Allow-Origin: *` where * means any domain can access. Additinally some other headers will help retrict methods like GET, POST, DELETE
 
-### JS methods
+## JS methods
   - forEach
   - map
   - shift: It removes the first item and returns that first item. It mutates the array
@@ -1003,7 +1003,7 @@ It works like when request from one origin is made, a `preflight` OPTIONS call r
 
         const myReducedArray = myArray.reduce((total, item) => total + (item.num1 + item.num2), 0) 
 
-### Shallow / Deep Copies
+## Shallow / Deep Copies
 
   In a shallow copy, a new object is created that has an exact copy 
   of the values in the original object. If any of the fields of the 
@@ -1030,7 +1030,7 @@ It works like when request from one origin is made, a `preflight` OPTIONS call r
 
       var objectIsNew = JSON.parse(JSON.stringify(objectIsOld));
 
-### Type Coercion
+## Type Coercion
 
   Type coercion is the automatic or implicit conversion of values from one data type to another. For example, converting a string value to an equivalent number value
 
@@ -1049,7 +1049,7 @@ It works like when request from one origin is made, a `preflight` OPTIONS call r
 
   To avoid this inconsistent behaviour, we can use '===' to also check the type while comparing and explicitly converting the variable to number while adding
 
-### Throttling
+## Throttling
   
   Delaying function execution. Like search after 500ms. It will wait until the delay/timeout.
 
@@ -1069,7 +1069,7 @@ It works like when request from one origin is made, a `preflight` OPTIONS call r
 
     const throttledSearchRecords = throttle(searchRecords(), 1000);
 
-### Debouncing
+## Debouncing
   
   Prevent the event trigger from being fired too often. It waits for certain time (delay/timeout) that is the difference between the events. Means if the trigger difference of two events is greater than the delay, only then make a call.
 
@@ -1088,11 +1088,11 @@ It works like when request from one origin is made, a `preflight` OPTIONS call r
 
       const debouncedSearchRecords = debounce(searchRecords(), 1000);
 
-### Temporal Dead Zone **-**
+## Temporal Dead Zone **-**
 
 Variables declared with let and const are differently hoisted and they dont have a default value of undefined. That is the Temporal Dead Zone where variabled are un reachable. They exist in temporal dead zone from start until we initialize them.
 
-### Pure Functions
+## Pure Functions
 
   When a function calculates its output from using other than its parameters as an input. When its not completly and only dependant on its inputs. 
 
@@ -1103,7 +1103,7 @@ Variables declared with let and const are differently hoisted and they dont have
 
   A pure function is `Referentially Transparent`. Referential Transparency, roughly, means that you can replace the call to the function with its return value or vice versa at any point in the program, without changing the meaning of the program.
 
-### Higher Order Functions
+## Higher Order Functions
 
   Its a function that either takes a function as a parameter or returns a function
 
@@ -1135,7 +1135,7 @@ Variables declared with let and const are differently hoisted and they dont have
       - reduce()
       - sort()
 
-### ES6 Features
+## ES6 Features
 
 - let and const Keywords
 - Arrow Functions
@@ -1151,9 +1151,9 @@ Variables declared with let and const are differently hoisted and they dont have
 
 <br><hr><br>
 
-## HTML
+# HTML
 
-### Semantic HTML
+## Semantic HTML
 
 Semantic HTML refers to the practice of using HTML elements according to their intended meaning and purpose, rather than just for visual styling or layout. 
 
@@ -1168,7 +1168,7 @@ It provides context and meaning to the content of a web page, making it more acc
 - The `<footer>` element represents the footer of a section or the whole page. It typically contains information about the author, copyright, contact details, or links to related documents.
 
 
-### HTML 5
+## HTML 5
 
 - iFrames
 - New elements
@@ -1198,11 +1198,11 @@ It provides context and meaning to the content of a web page, making it more acc
 
 <br><hr><br>
 
-## CSS/SASS
+# CSS/SASS
 
-### CSS
+## CSS
 
-#### Selectors
+## Selectors
 
 CSS selectors are patterns used to select and style HTML elements in a document. They define the criteria for matching elements to apply styles. Selectors can target elements based on their tag name, class, ID, attributes, and more. They provide a way to specify which elements should be affected by a particular set of styles.
 
@@ -1230,7 +1230,7 @@ All Selectors
 - \[target=_blank] =	Selects all elements with target="_blank"
 - \[title~=flower] =	Selects all elements with a title attribute containing the word "flower"
 
-#### Pseudo Classes
+## Pseudo Classes
 
 Pseudo-classes are special keywords that can be added to selectors to target specific states or occurrences of elements that cannot be selected with regular selectors alone. They allow you to style elements based on user interactions or element characteristics that are not present in the HTML markup. Pseudo-classes are preceded by a colon `:` and are used to apply styles to specific states or conditions.
 
@@ -1249,7 +1249,7 @@ All Classes
 - :first-child - styles applied to the first child element of a parent.
 :last-child - styles applied to the last child element of a parent.
 
-### SASS
+## SASS
 
 Sass is a preprocessor scripting language that is interpreted or compiled into Cascading Style Sheets.
 Its an extension to CSS. It allows us to use variables, functions
@@ -1472,7 +1472,7 @@ conditions. Its written in ruby.
 
 <br><hr><br>
 
-## Git
+# Git
 
 - installation
   - Install git from git scm
@@ -1640,7 +1640,7 @@ conditions. Its written in ruby.
 
 <br><hr><br>
 
-## Docker
+# Docker
 
 - installation
   - [follow official digital ocean link]
@@ -1734,7 +1734,7 @@ conditions. Its written in ruby.
 
 <br><hr><br>
 
-## Middlewares
+# Middlewares
 
 Software that enables one or more kinds of communication or connectivity between two or more applications or application components in a distributed network.
 
@@ -1744,7 +1744,7 @@ Its between action and reducers like for redux logger, while making an action, i
 
 <br><hr><br>
 
-## APIs
+# APIs
 - CRUD
 - Axios
 
@@ -1754,7 +1754,7 @@ Its between action and reducers like for redux logger, while making an action, i
 
 <br><hr><br>
 
-## MVC
+# MVC
 
 It is a design pattern. The goal is divide large application into specific sections each having their own purpose.
 
@@ -1770,12 +1770,12 @@ Important to note is that `model and view never interact` with each other. Prese
 
 <br><hr><br>
 
-## Linting
+# Linting
 - ESLint
 
 <br><hr><br>
 
-## Test Cases
+# Test Cases
 - Unit Tests
   - JEST
   - Enzymes
@@ -1783,12 +1783,12 @@ Important to note is that `model and view never interact` with each other. Prese
 
 <br><hr><br>
 
-## JWTs **-**
+# JWTs **-**
 
 <br><hr><br>
 
-## JSON Server
- - ### <b>Installation:</b>
+# JSON Server
+ - ## <b>Installation:</b>
 
     To install, go in any project folder or install it globally using `-g` like
 
@@ -1802,8 +1802,8 @@ Important to note is that `model and view never interact` with each other. Prese
 
 <br><hr><br>
 
-## Express Server
-- ### <b>Installation</b>
+# Express Server
+- ## <b>Installation</b>
     Can install in any empty directory. Just cd into a folder and create a new dir, we'll create `pes-app`
 		  
         mkdir pes-app
@@ -1829,36 +1829,36 @@ Important to note is that `model and view never interact` with each other. Prese
 
 <br><hr><br>
 
-## Sockets
+# Sockets
 - sockets.io
 
 <br><hr><br>
 
-## OOP
+# OOP
 
-### Class
+## Class
 
 Define by using `class className`
 
-### Object 
+## Object 
 
 Define by using `new ClassName(params)`
 
-### Interfaces
+## Interfaces
 
 Defines a shape objects/classes can take. Uses `has`
 
-### Polymorphism
+## Polymorphism
 
 Polymorphism -> `Many-forms`. Can have a same function in parent and a class which is `inherited` and if we `override` in child class(function overriding) then the parent's function has 2 forms.
 
-### Abstraction
+## Abstraction
 
 It is hiding the implementation and only showing the functionality or essentials.
 
 Not allowing the user to access a class's variable or function. Instead, let other local functions of the class calculate and use those methods and properties.
 
-### Encapsulation
+## Encapsulation
 
 It is wrapping up the data and methods under a single unit.
 
@@ -1874,37 +1874,37 @@ A mechanism of `restriciting direct access` to some of the object's components. 
 
 `Getters and setter methods` are used to get those objects/properties. 
 
-### Inheritance
+## Inheritance
 
 Inherits properties/functions from its parent class. Uses `extends`
 
-### Association
+## Association
 
 If two classes in a model need to communicate with each other, there must be a link between them, and that can be represented by an association (connector).
 
 Aggregation and Composition are subsets of association meaning they are specific cases of association.
 
-### Aggregation
+## Aggregation
 
 Aggregation implies a relationship where the child can exist independently of the parent. Example: Class (parent) and Student (child). Delete the Class and the Students still exist.
 
-### Composition 
+## Composition 
 
 Composition implies a relationship where the child cannot exist independent of the parent. Example: House (parent) and Room (child). Rooms don't exist separate to a House.
 
 <br><hr><br>
 
-## Networking **-**
+# Networking **-**
 
 <br><hr><br>
 
-## Databases **-**
+# Databases **-**
 
 <br><hr><br>
 
-## DSA
+# DSA
 
-### Data Structures
+## Data Structures
 - Stack
 
   It follows the LIFO. In js, array can be used cuz it supports stack. Example can be `git stash`
@@ -2027,7 +2027,7 @@ Composition implies a relationship where the child cannot exist independent of t
   It works by taking a key input and then runs it through the hash function which maps strings to numbers and 
   usually numbers corresponds to indexes in an array. All the keys should map to different numbers, cant have same keys/numbers. If two words get hashed to same number, its called collision
 
-### Important Algorithms **-**
+## Important Algorithms **-**
 
 - Searching
   - Linear Search
@@ -2065,7 +2065,7 @@ Composition implies a relationship where the child cannot exist independent of t
   - Euclid's Algo
   - Union Find Algo
 
-### DSA Techniques/Usage **-**
+## DSA Techniques/Usage **-**
 
 - Use this for that
   - If input array is sorted
@@ -2094,7 +2094,7 @@ Composition implies a relationship where the child cannot exist independent of t
     - Map/Set for O(1) time & O(n) space
     - Sort input for O(nLogn) time & O(1) space 
 
-### DSA YT Channels
+## DSA YT Channels
 
 - Coding Simplified
   - Array
@@ -2126,7 +2126,7 @@ Composition implies a relationship where the child cannot exist independent of t
   - String
   - Segment Tree
 
-### Time and Space Complexity (BigO) **-**
+## Time and Space Complexity (BigO) **-**
 
 Ref: https://github.com/jamiebuilds/itsy-bitsy-data-structures/blob/master/itsy-bitsy-data-structures.js
 
@@ -2187,7 +2187,7 @@ What these would equal given the (N) number of items
     =     Binary Search Tree     O(log N)     O(log N)     O(log N)     O(log N)
     =
 
-### DSA Questions **-**
+## DSA Questions **-**
 
 Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
 
