@@ -1,12 +1,120 @@
 # basic-programming
 
-## Introduction:
+## Intro
 
 JavaScript, DSA, OOP, Databases, and Networking Cheatsheet 🚀📚
 
 My secret weapon for leveling up in Core JavaScript, Data Structures and Algorithms (DSA), Object-Oriented Programming (OOP), Databases, and Networking (loading :p). 
 
 Packed with bite-sized knowledge nuggets and playful explanations. Whether I'm conquering new coding realms or need a speedy refresher before an interview, this is my go-to guide! 🎮⚔️
+
+<br><hr><br>
+
+## Navigation Nexus
+
+- [Core JS](#core-js)
+  - [JS to Machine Code](#js-to-machine-code)
+  - [Interpreter](#interpreter)
+  - [Compiler](#compiler)
+  - [Transpiler](#transpiler)
+  - [Transpiler vs Compiler](#transpiler-vs-compiler)
+  - [Treeshaking](#treeshaking)
+  - [Isomorphic JS](#isomorphic-js)
+  - [Sprites](#sprites)
+  - [JS Variable declartors](#js-variable-declartors)
+  - [Var](#var)
+  - [Const](#const)
+  - [Let](#let)
+  - [Var, Let, Const Scopes](#var-let-const-scopes)
+  - [Primitive Types](#primitive-types)
+  - [Referenced Types](#referenced-types)
+  - [Functional Programming (FP)](#functional-programming-fp)
+  - [Imperitive vs Declarative](#imperitive-vs-declarative)
+  - [Mutable/Imutable](#mutable-imutable)
+  - [DOM](#dom)
+  - [Component vs Element (React)](#component-vs-element-react)
+  - [Controlled vs Uncontrolled Components (React)](#controlled-vs-uncontrolled-components-react)
+  - [Asynchronous](#asynchronous)
+  - [Synchronous](#synchronous)
+  - [Promise](#promise)
+  - [Async await](#async-await)
+  - [Blob](#blob)
+  - [Binding](#binding)
+  - [Class & Prototypal Inheritance](#class--prototypal-inheritance)
+  - [Threads](#threads)
+  - [Web Workers](#web-workers)
+  - [Anonymous Functions](#anonymous-functions)
+  - [Closure](#closure)
+  - [Constructor Function](#constructor-function)
+  - [Async, Defer](#async-defer)
+  - [Curring](#curring)
+  - [Functional Chaining](#functional-chaining)
+  - [Functional Composition](#functional-composition)
+  - [Imediately Invoked Functions Expressions (IIFE)](#imediately-invoked-functions-expressions-iife)
+  - [call, apply and bind methods](#call-apply-and-bind-methods)
+  - [Memoization](#memoization)
+  - [Event Bubbling](#event-bubbling)
+  - [Event Capturing](#event-capturing)
+  - [Hoisting](#hoisting)
+  - [Heap](#heap)
+  - [Mark and Sweep algorithm](#mark-and-sweep-algorithm)
+  - [Memory Leaks](#memory-leaks)
+  - [Web APIs](#web-apis)
+  - [Call Stack](#call-stack)
+  - [Event Loops](#event-loops)
+  - [Render Queue](#render-queue)
+  - [Stack vs Heap based Memory](#stack-vs-heap-based-memory)
+  - [Lexical Scoping (Static Scoping)](#lexical-scoping-static-scoping)
+  - [Dynamic Scope](#dynamic-scope)
+  - [Lexical vs Dynamic Scope](#lexical-vs-dynamic-scope)
+  - [Local Storage vs Session Storage vs Cookies](#local-storage-vs-session-storage-vs-cookies)
+  - [CORS](#cors)
+  - [JS methods](#js-methods)
+  - [Shallow / Deep Copies](#shallow--deep-copies)
+  - [Type Coercion](#type-coercion)
+  - [Throttling](#throttling)
+  - [Debouncing](#debouncing)
+  - [Temporal Dead Zone](#temporal-dead-zone)
+  - [Pure Functions](#pure-functions)
+  - [Higher Order Functions](#higher-order-functions)
+  - [ES6 Features](#es6-features)
+- [HTML](#html)
+  - [Semantic HTML](#semantic-html)
+  - [HTML5](#html-5)
+- [CSS/SASS](#csssass)
+  - [CSS](#css)
+  - [SASS](#sass)
+- [Git](#gitgithub)
+- [Docker](#docker)
+- [Middlewares](#middlewares)
+- [APIs](#apis)
+- [MVS](#mvc)
+- [Linting](#linting)
+- [Test Cases](#test-cases)
+- [JWTs](#jwts)
+- [JSON Server](#json-server)
+- [Express Server](#express-server)
+- [Sockets](#sockets)
+- [OOP](#oop)
+  - [Class](#class)
+  - [Object](#object)
+  - [Interfaces](#interfaces)
+  - [Polymorphism](#polymorphism)
+  - [Abstraction](#abstraction)
+  - [Encapsulation](#encapsulation)
+  - [Inheritance](#inheritance)
+  - [Association](#association)
+  - [Aggregation](#aggregation)
+  - [Composition](#composition)
+- [Networking](#networking)
+- [Databases](#databases)
+- [DSA](#dsa)
+  - [Data Structures](#data-structures)
+  - [Important Algorithms](#important-algorithms)
+  - [DSA Techniques/Usage](#dsa-techniquesusage)
+  - [DSA YT Channels](#dsa-yt-channels)
+  - [Time and Space Complexity (BigO)](#time-and-space-complexity-bigo)
+  - [DSA Questions](#dsa-questions)
 
 <br><hr><br>
 
@@ -980,9 +1088,9 @@ It works like when request from one origin is made, a `preflight` OPTIONS call r
 
       const debouncedSearchRecords = debounce(searchRecords(), 1000);
 
-### Temporal Dead Zone
+### Temporal Dead Zone **-**
 
-Variables declared with let and const are not hoisted and they dont have a default value of undefined. That is the Temporal Dead Zone where variabled are un reachable. They exist in temporal dead zone from start until we initialize them.
+Variables declared with let and const are differently hoisted and they dont have a default value of undefined. That is the Temporal Dead Zone where variabled are un reachable. They exist in temporal dead zone from start until we initialize them.
 
 ### Pure Functions
 
@@ -1091,35 +1199,62 @@ It provides context and meaning to the content of a web page, making it more acc
 <br><hr><br>
 
 ## CSS/SASS
-- CSS
-  - Selectors
-    - \# = id
-    - . = class
-    - .name1.name2 = Selects all elements with both name1 and name2 set within its class attribute
-    - .name1 .name2 = Selects all elements with name2 that is a descendant of an element with name1
-    - \* = Selects all elements
-    - p = Selects all \<p> elements
-    - p.intro = Selects all \<p> elements with class="intro"
-    - div, p = Selects all \<div> elements and all \<p> elements
-    - div p =	Selects all \<p> elements inside \<div> elements
-    - div > p =	Selects all \<p> elements where the parent is a \<div> element
-    - div + p =	Selects the first \<p> element that is placed immediately after \<div> elements
-    - p ~ ul =	Selects every \<ul> element that is preceded by a \<p> element
-    - \[target] =	Selects all elements with a target attribute
-    - \[target=_blank] =	Selects all elements with target="_blank"
-    - \[title~=flower] =	Selects all elements with a title attribute containing the word "flower"
 
-    - a:active = Selects the active link
-    - p::after =	Insert something after the content of each \<p> element
-    - input:checked =	Selects every checked \<input> element
+### CSS
 
-  - Pseudo classes
-- SASS
+#### Selectors
 
-  Sass is a preprocessor scripting language that is interpreted or compiled into Cascading Style Sheets.
-  Its an extension to CSS. It allows us to use variables, functions
-  conditions. Its written in ruby.
-  
+CSS selectors are patterns used to select and style HTML elements in a document. They define the criteria for matching elements to apply styles. Selectors can target elements based on their tag name, class, ID, attributes, and more. They provide a way to specify which elements should be affected by a particular set of styles.
+
+Example
+- Tag selector: `p { color: blue; }`
+- Class selector: `.highlight { background-color: yellow; }`
+- ID selector: `#header { font-size: 24px; }`
+- Attribute selector: `input[type="text"] { border: 1px solid gray; }`
+
+All Selectors
+
+- \# = id
+- . = class
+- .name1.name2 = Selects all elements with both name1 and name2 set within its class attribute
+- .name1 .name2 = Selects all elements with name2 that is a descendant of an element with name1
+- \* = Selects all elements
+- p = Selects all \<p> elements
+- p.intro = Selects all \<p> elements with class="intro"
+- div, p = Selects all \<div> elements and all \<p> elements
+- div p =	Selects all \<p> elements inside \<div> elements
+- div > p =	Selects all \<p> elements where the parent is a \<div> element
+- div + p =	Selects the first \<p> element that is placed immediately after \<div> elements
+- p ~ ul =	Selects every \<ul> element that is preceded by a \<p> element
+- \[target] =	Selects all elements with a target attribute
+- \[target=_blank] =	Selects all elements with target="_blank"
+- \[title~=flower] =	Selects all elements with a title attribute containing the word "flower"
+
+#### Pseudo Classes
+
+Pseudo-classes are special keywords that can be added to selectors to target specific states or occurrences of elements that cannot be selected with regular selectors alone. They allow you to style elements based on user interactions or element characteristics that are not present in the HTML markup. Pseudo-classes are preceded by a colon `:` and are used to apply styles to specific states or conditions.
+
+Example
+
+- a:active = Selects the active link
+- p::after =	Insert something after the content of each \<p> element
+- input:checked =	Selects every checked \<input> element
+
+All Classes
+
+- :hover - styles applied when the mouse hovers over an element.
+- :active - styles applied when an element is being clicked.
+- :focus - styles applied when an element receives focus (usually through keyboard navigation).
+- :nth-child(n) - styles applied to elements based on their position within a parent element.
+- :first-child - styles applied to the first child element of a parent.
+:last-child - styles applied to the last child element of a parent.
+
+### SASS
+
+Sass is a preprocessor scripting language that is interpreted or compiled into Cascading Style Sheets.
+Its an extension to CSS. It allows us to use variables, functions
+conditions. Its written in ruby.
+
   - Using variables:
 
         $myFavColor: #323232;
@@ -1337,7 +1472,7 @@ It provides context and meaning to the content of a web page, making it more acc
 
 <br><hr><br>
 
-## Git/GitHub
+## Git
 
 - installation
   - Install git from git scm
@@ -1648,7 +1783,7 @@ Important to note is that `model and view never interact` with each other. Prese
 
 <br><hr><br>
 
-## JWTs
+## JWTs **-**
 
 <br><hr><br>
 
@@ -1701,13 +1836,17 @@ Important to note is that `model and view never interact` with each other. Prese
 
 ## OOP
 
-### Class (`class className`)
+### Class
 
-### Object (`new ClassName(params)`)
+Define by using `class className`
 
-### Interfaces (`has`)
+### Object 
 
-Defines a shape objects/classes can take
+Define by using `new ClassName(params)`
+
+### Interfaces
+
+Defines a shape objects/classes can take. Uses `has`
 
 ### Polymorphism
 
@@ -1735,9 +1874,9 @@ A mechanism of `restriciting direct access` to some of the object's components. 
 
 `Getters and setter methods` are used to get those objects/properties. 
 
-### Inheritance (`extends`)
+### Inheritance
 
-Inherits properties/functions from its parent class
+Inherits properties/functions from its parent class. Uses `extends`
 
 ### Association
 
