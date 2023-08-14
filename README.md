@@ -5,7 +5,7 @@
 A repo covering basics of programming concepts specifically JS.
 <br/><br/>
 
-## Core
+## Core JS
 
 JavaScript is a lightweight, interpreted, object-oriented language with first-class functions, and is best known as the scripting language for Web pages, but it's used in many non-browser environments as well.
 
@@ -68,23 +68,48 @@ A tree shaking utility analyzes your code before running it, to detect code that
 
 `ASTs` are used and even extra `whitespaces` are removed.
 
+Tools like `webpack` automatically performs `treeshaking` but to ensure, in your `webpack.config.js` or `vue.config.js` (if you're using Vue CLI), ensure that the mode is set to "production". This enables various optimizations, including tree shaking.
+
+Vue 3 supports component-level tree shaking. This means that if you're using the Composition API and splitting your components into smaller functions, unused code from those functions can be eliminated during the build process.
+
+Make use of ES6 import and export statements. This helps tree shaking identify which parts of your code are used and which are not. Tree shaking is most effective when you're using modular code and only importing what you need. If you import entire libraries or large chunks of code, tree shaking might not work as effectively.
+
+For minification, the `productionSourceMap` option disables source maps in the production build, which is often recommended to reduce the size of the build artifacts.
+
 ### Isomorphic JS
 
 Same JS will/can run on a Client or Browser just as it works on the server. The code should be such or have cases that both the browser and server can understand and read
 
-### HTML 5
+### Semantic HTML *** *
+
+Semantic HTML refers to the practice of using HTML elements according to their intended meaning and purpose, rather than just for visual styling or layout. 
+
+It provides context and meaning to the content of a web page, making it more accessible, understandable, and maintainable. Semantic HTML helps search engines, assistive technologies, and developers to better understand the structure and content of a web page.
+
+- The `<header>` element represents the introductory content at the top of a section or page. It often contains branding, navigation, or other header-related content.
+- The `<nav>` element represents a section of the page that contains navigation links.
+- The `<main>` element represents the main content of a document. It should be unique to the document and not repeated across a set of documents such as site navigation.
+- The `<article>` element represents a self-contained composition that could be distributed and reused independently. It could be a blog post, a news article, a forum post, etc.
+- The `<section>` element represents a thematic grouping of content. It helps to organize and structure the content of the page.
+- The `<aside>` element represents content that is tangentially related to the content around it. It's often used for sidebars, pull quotes, advertising, or similar content.
+- The `<footer>` element represents the footer of a section or the whole page. It typically contains information about the author, copyright, contact details, or links to related documents.
+
+
+### HTML 5 *** *
 
 - iFrames
 - New elements
-  - <video controls preload><source src="video.mp4" type="video/ogg; codecs='vorbis, theora'" /></video>
-  - <audio autoplay="autoplay" controls="controls"><source src="file.mp3" /></audio>
-  - <nav><a href="/html/">HTML</a></nav>
-  - <header><img src="company-logo.png" /><nav>...</nav></header>
-  - <canvas></canvas>
-  - <footer>...</footer>
-  - <figure><img src="image/image-1.jpg" alt="About ADMEC" />
+  - `<video controls preload><source src="video.mp4" type="video/ogg; codecs='vorbis, theora'" /></video>`
+  - `<audio autoplay="autoplay" controls="controls"><source src="file.mp3" /></audio>`
+  - `<nav><a href="/html/">HTML</a></nav>`
+  - `<header><img src="company-logo.png" /><nav>...</nav></header>`
+  - `<canvas></canvas>`
+  - `<footer>...</footer>`
+  - ```
+    <figure><img src="image/image-1.jpg" alt="About ADMEC" />
       <figcaption><p>This is our institute </p></figcaption>
     </figure>
+    ```
 - New types of inputs i.e. email, month, number, range, search, tel, color, week, url, time, date, datetime-local etc. ContentEditable, Progress, section, main(1 page can only have 1 main, also, navs, headers, footers are not allowed)
 - Placeholders
 - Required attribute
@@ -114,7 +139,7 @@ Var declarations are globally scoped or function/locally scoped. They can be re-
 
 Cannot be reinialized. Has a block level scope. Primitive types cannot be updated/re-assigned/re-declared but objects and arrays can. Every const declaration, therefore, must be initialized at the time of declaration.
 
-Const create a variable name binding so that name cannot be re-inialized but the properties can. So its mutable. They cant be hoisted. 
+Const create a variable name binding so that name cannot be re-inialized but the properties can. So its mutable. They cant be hoisted ***. 
 
 ### Let
 
@@ -373,9 +398,9 @@ We can define a promise like:
 
     myAsyncFunction();
 
-### Time and Space Complexity (BigO) (https://github.com/jamiebuilds/itsy-bitsy-data-structures/blob/master/itsy-bitsy-data-structures.js) **-**
+### Time and Space Complexity (BigO) (https://github.com/jamiebuilds/itsy-bitsy-data-structures/blob/master/itsy-bitsy-data-structures.js) **-** *** *
 
-### MVC
+### MVC *** *
 
 It is a design pattern. The goal is divide large application into specific sections each having their own purpose.
 
@@ -419,7 +444,7 @@ Binding an object to function:
 
 Binding doesnt work with arrow function.
 
-### OOP
+### OOP *** *
 
 - Class (`class className`)
 
@@ -522,7 +547,7 @@ Problem:
 
 They are the functions which dont have a name.
 
-### Closure
+### Closure ***
 
 When an inner function has access to (its lexical scope) outer function's variables along with its own and global variables. And even ifs accessed later on, it would have reference to those properties and methods.
 
@@ -684,7 +709,7 @@ Which functions to compose:
 - pure — this is especially important when composing complex functionality, as function impurity is “contagious”,
 - curried, and accepting data as the last argument — to make expressions more concise.
 
-### Imediately Invoked Functions
+### Imediately Invoked Functions Expressions (IIFE)
 
 Mostly used to create blocks and can have variables with scope rather than global.
 
@@ -745,7 +770,7 @@ By default event bubbling occurs but we can choose to use event capturing by:
     var elem = document.querySelector('#my-element');
     elem.addEventListener('click', () => console.log('Element clicked'), true); // 3rd arg is useCapture
 
-### Hoisting
+### Hoisting ***
 
 The default behavior of moving all the declarations at the top of the scope before code execution. A function or a variable can be used before declaration.
 
@@ -928,7 +953,7 @@ The requesting website must have same origin means `protocol` e.g. https, `domai
 
 It works like when request from one origin is made, a `preflight` OPTIONS call request is made before that to ensure the validity of request. If valid, the requestee will set additional headers which will let the client/browser know its safe and then the actual call is made. The requestee will set the headers like `Access-Control-Allow-Origin: *` where * means any domain can access. Additinally some other headers will help retrict methods like GET, POST, DELETE
 
-## Data Structures
+## Data Structures *** *
 - Stack
 
   It follows the LIFO. In js, array can be used cuz it supports stack. Example can be `git stash`
@@ -1053,7 +1078,7 @@ It works like when request from one origin is made, a `preflight` OPTIONS call r
 
 ## Algos
 
-## Javascript
+## Javascript *** *
 - Classes
 - Functions
 - Inheritence (`extends`)
@@ -1245,7 +1270,7 @@ Variables declared with let and const are not hoisted and they dont have a defau
 
 - lodash
 
-## ES6
+## ES6 *** *
 
 Features:
 - let and const Keywords
@@ -1426,7 +1451,7 @@ Features:
     - revert merge
       - git merge --abort
 
-## Docker
+## Docker *** *
 
 - installation
   - [follow official digital ocean link]
@@ -1831,9 +1856,9 @@ Its between action and reducers like for redux logger, while making an action, i
 ## Sockets
 - sockets.io
 
-## DSA YT Channels
+## DSA YT Channels *** *
 
-- Coding Simplidied
+- Coding Simplified
   - Array
   - DP
   - Linked List
@@ -1863,7 +1888,7 @@ Its between action and reducers like for redux logger, while making an action, i
   - String
   - Segment Tree
 
-## Algorithms
+## Algorithms *** *
 
 - Searching
   - Linear Search
@@ -1897,7 +1922,7 @@ Its between action and reducers like for redux logger, while making an action, i
   - Euclid's Algo
   - Union Find Algo
 
-## DSA Techniques/Usage
+## DSA Techniques/Usage *** *
 
 - Use this for that
   - If input array is sorted
@@ -1926,7 +1951,7 @@ Its between action and reducers like for redux logger, while making an action, i
     - Map/Set for O(1) time & O(n) space
     - Sort input for O(nLogn) time & O(1) space 
 
-## DSA Questions
+## DSA Questions *** *
 
 Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
 
@@ -2284,28 +2309,28 @@ Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
 
             console.log(lengthOfLongestSubstring("dvdf")); // 3
 
-        - Hashmap (Time O(n), Space O(1))
+      - Hashmap (Time O(n), Space O(1))
 
-              function lengthOfLongestSubstring(str) {
-                if (!str.length || typeof str !== 'string') return 0;
+            function lengthOfLongestSubstring(str) {
+              if (!str.length || typeof str !== 'string') return 0;
 
-                if (str.length == 1) return 1;
-                let hashTable = {};
-                let longestSubstringLength = 0;
-                let start = 0;
-                for (let i = 0; i < str.length; i++) {
-                  console.log('hashTable: ', hashTable)
-                  console.log('hashTable[str[i]]: ', hashTable[str[i]])
-                  if (hashTable[str[i]] && hashTable[str[i]] >= start) {
-                    start = hashTable[str[i]] + 1;
-                  }
-                  hashTable[str[i]] = i;
-                  longestSubstringLength = Math.max(longestSubstringLength, (i - start + 1))
+              if (str.length == 1) return 1;
+              let hashTable = {};
+              let longestSubstringLength = 0;
+              let start = 0;
+              for (let i = 0; i < str.length; i++) {
+                console.log('hashTable: ', hashTable)
+                console.log('hashTable[str[i]]: ', hashTable[str[i]])
+                if (hashTable[str[i]] && hashTable[str[i]] >= start) {
+                  start = hashTable[str[i]] + 1;
                 }
-                return longestSubstringLength;
+                hashTable[str[i]] = i;
+                longestSubstringLength = Math.max(longestSubstringLength, (i - start + 1))
               }
+              return longestSubstringLength;
+            }
 
-              console.log(lengthOfLongestSubstring("dvdf"));
+            console.log(lengthOfLongestSubstring("dvdf"));
 
   - Anagram Difference
     - Question
@@ -2664,3 +2689,44 @@ Helper link (https://dynalist.io/d/wMhagOjScrKMaPtSti0tiJZk)
     - Uses
     - Question
     - Example
+  - Excel sheet cell references
+    - Question
+      - Write a program or function that generates and prints Excel sheet cell references in the format A1, B1, C1, ..., Z1, AA1, AB1, AC1, ..., ZZ1, AAA1, AAB1, AAC1, and so on. Given a positive integer 'n', your program should generate and print the first 'n' cell references of an Excel sheet.
+    - Uses
+      - Base conversion
+        - Run a for loop on the count given in question
+        - On each iteration, get the cell number from method `generateExcelCellReferences` by passing current iteration (+1 if loop starting from 0) and print it
+        - In `generateExcelCellReferences`, initialize a string `letters` containing all 26 english alphabets
+        - Also initialize an empty array `result` which would keep the cell reference letters which we can join to make a string before returning cell ref
+        - Now run a loop until the `n` (index parameter passed) is greater than 0
+        - In loop iteration, get `remainder` by taking modulus of `n-1` (minus 1 cuz we want to find alphabet by index in `letters` string and index start at 0) to 26 i.e. our base in this base-26 problem
+        - now update the `result` array by getting the alphabet by using `remainder` as index on `letters` and adding it as first element of `result` array
+        - Now update the `n` for next iteration, by dividing `n-1` by 26 and flooring it
+        - Finally outside the loop, return the `result` array by joining it to make it a string and adding `'1'` to it because it would be the row ref (we are dealing in only one row) 
+    - Example
+
+          function generateExcelCellReferences(n) {
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const result = [];
+
+            while (n > 0) {
+              let remainder = (n - 1) % 26; // Get the remainder after dividing by 26
+              result.unshift(letters[remainder]); // Add the letter to the front of the result array
+              n = Math.floor((n - 1) / 26); // Update n for the next iteration
+            }
+
+            return result.join('') + '1'; // Combine the letters and add '1' to form the cell reference
+          }
+
+          function printExcelCellReferences(count) {
+            for (let i = 1; i <= count; i++) {
+              const cellReference = generateExcelCellReferences(i);
+              console.log(cellReference);
+            }
+          }
+
+          const n = 10;
+          printExcelCellReferences(n);
+
+
+## DSA
