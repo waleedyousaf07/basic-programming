@@ -2,8 +2,13 @@
 
 ## Introduction:
 
-A repo covering basics of programming concepts specifically JS.
-<br/><br/>
+JavaScript, DSA, OOP, Databases, and Networking Cheatsheet 🚀📚
+
+My secret weapon for leveling up in Core JavaScript, Data Structures and Algorithms (DSA), Object-Oriented Programming (OOP), Databases, and Networking (loading :p). 
+
+Packed with bite-sized knowledge nuggets and playful explanations. Whether I'm conquering new coding realms or need a speedy refresher before an interview, this is my go-to guide! 🎮⚔️
+
+<br><hr><br>
 
 ## Core JS
 
@@ -1036,9 +1041,7 @@ Variables declared with let and const are not hoisted and they dont have a defau
 - Classes
 - Modules
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## HTML
 
@@ -1085,9 +1088,7 @@ It provides context and meaning to the content of a web page, making it more acc
     - progress bar – It helps in knowing the progress of the task that has been assigned for its completion.
 - nonce (we usually use nonce attribute inside script and style tag. This nonce tag basically generates a random number which is for one time use only. So, it is regenerated each time the page refreshes. It is great features as it can be used to increase the security of the content of the page. This helps in stating and providing the authority to the webpage to specify a particular script or style.)
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## CSS/SASS
 - CSS
@@ -1334,9 +1335,7 @@ It provides context and meaning to the content of a web page, making it more acc
         .col-12 {width: 100%;}
       } 
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## Git/GitHub
 
@@ -1504,9 +1503,7 @@ It provides context and meaning to the content of a web page, making it more acc
     - revert merge
       - git merge --abort
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## Docker
 
@@ -1600,9 +1597,7 @@ It provides context and meaning to the content of a web page, making it more acc
   - then in doosra-vpc-be -> update file `doosdocker-compose` update image with my image name i.e. `waleed_test` in app section
   - then `docker-compose up -d --f app`
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## Middlewares
 
@@ -1612,9 +1607,7 @@ Software that enables one or more kinds of communication or connectivity between
 
 Its between action and reducers like for redux logger, while making an action, it also logs that action to the console before setting the state in reducer
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## APIs
 - CRUD
@@ -1624,9 +1617,7 @@ Its between action and reducers like for redux logger, while making an action, i
 
 - REST Arch & RestFul APIs
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## MVC
 
@@ -1642,16 +1633,12 @@ View: After the model sends the data to controller, then controller sends the da
 
 Important to note is that `model and view never interact` with each other. Presentation and Logic is completely separate.
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## Linting
 - ESLint
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## Test Cases
 - Unit Tests
@@ -1659,15 +1646,11 @@ Important to note is that `model and view never interact` with each other. Prese
   - Enzymes
 - Integration Tests
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## JWTs
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## JSON Server
  - ### <b>Installation:</b>
@@ -1682,9 +1665,7 @@ Important to note is that `model and view never interact` with each other. Prese
 
     where `db.json` can have static json
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## Express Server
 - ### <b>Installation</b>
@@ -1711,16 +1692,12 @@ Important to note is that `model and view never interact` with each other. Prese
 			  
     Use server.js for HTTP requests i.e. GET, POST. For validation use joi library
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## Sockets
 - sockets.io
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## OOP
 
@@ -1776,9 +1753,15 @@ Aggregation implies a relationship where the child can exist independently of th
 
 Composition implies a relationship where the child cannot exist independent of the parent. Example: House (parent) and Room (child). Rooms don't exist separate to a House.
 
-<br>
-<hr>
-<br>
+<br><hr><br>
+
+## Networking **-**
+
+<br><hr><br>
+
+## Databases **-**
+
+<br><hr><br>
 
 ## DSA
 
